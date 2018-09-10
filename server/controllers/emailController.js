@@ -3,6 +3,7 @@ const keys = require("../config/dev");
 const User = require("../models/authSchema");
 const forgotTemplate = require("../services/forgotEmailTemplate");
 const resetTemplate = require("../services/resetEmailTemplate");
+const confirmTemplate = require("../services/confirmEmailTemplate");
 const sgMail = require("@sendgrid/mail");
 
 exports.confirmEmail = async (req, res, next) => {
@@ -22,15 +23,29 @@ exports.confirmEmail = async (req, res, next) => {
         res.status(422).send({ error: "User was not found" });
       }
 
-     await user.save(err => {
+      await user.save(err => {
         if (err) {
           return next(err);
         }
       });
 
-      res.send({});
+
+      const url = `http://localhost:5000/reset/${resetToken}`; 
+
+      console.log(msg)
+
+      const msg = {
+        to: email,
+        from: "lzvikas1@gmail.com",
+        subject: "Confirm Your Password",
+        text: "and easy to do anywhere, even with Node.js",
+        html: confirmTemplate(url)
+      };
+      sgMail.send(msg);
     }
   );
+
+  res.send({});
 };
 
 exports.forgot = async (req, res, next) => {
@@ -85,7 +100,7 @@ exports.forgotTokenGet = async (req, res, next) => {
     }
 
     if (!user) {
-      return res.status(401).send({error: "User was not found"});
+      return res.status(401).send({ error: "User was not found" });
     }
 
     res.send({ success: "true" });
@@ -93,33 +108,36 @@ exports.forgotTokenGet = async (req, res, next) => {
 };
 
 exports.forgotTokenPost = async (req, res, next) => {
-  await User.findOne({ resetPassToken: req.params.token }, async (err, user) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      res.status(422).send({ error: "User was not found" });
-    }
-    user.password = req.body.password;
-    user.resetPassToken = undefined;
-
-    await user.save(err => {
+  await User.findOne(
+    { resetPassToken: req.params.token },
+    async (err, user) => {
       if (err) {
-        next(err);
+        return next(err);
       }
-    });
+      if (!user) {
+        res.status(422).send({ error: "User was not found" });
+      }
+      user.password = req.body.password;
+      user.resetPassToken = undefined;
 
-    const url = "http://localhost:5000/login";
+      await user.save(err => {
+        if (err) {
+          next(err);
+        }
+      });
 
-    const msg = {
-      to: user.email,
-      from: "lzvikas1@gmail.com",
-      subject: "Reset Your Password",
-      text: "and easy to do anywhere, even with Node.js",
-      html: resetTemplate(url)
-    };
-    sgMail.send(msg);
-  });
+      const url = "http://localhost:5000/login";
+
+      const msg = {
+        to: user.email,
+        from: "lzvikas1@gmail.com",
+        subject: "Reset Your Password",
+        text: "and easy to do anywhere, even with Node.js",
+        html: resetTemplate(url)
+      };
+      sgMail.send(msg);
+    }
+  );
 
   res.send({});
 };

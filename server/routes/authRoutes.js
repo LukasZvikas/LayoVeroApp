@@ -4,6 +4,7 @@ const emailController = require("../controllers/emailController");
 const passport = require("passport");
 const JWT = require("jwt-simple");
 const keys = require("../config/dev");
+const cors = require('cors');
 
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
@@ -31,7 +32,7 @@ module.exports = app => {
 
   app.post("/signup", authController.signup);
 
-  app.post("/signin", requireSignin, authController.signin);
+  app.post("http://10.236.97.137/signin", cors(), requireSignin, authController.signin);
 
   app.get("/confirmation/:token", emailController.confirmEmail);
 

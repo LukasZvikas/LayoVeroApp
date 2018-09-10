@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const keys = require("./config/dev");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const cors = require('cors');
 
 require("./services/regularAuth");
 require("./services/googleAuth");
@@ -11,6 +12,7 @@ mongoose.connect(keys.MONGO_KEY);
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(passport.initialize())
 

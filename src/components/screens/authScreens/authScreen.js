@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { style } from "../../styles/authStyle";
+import { style } from "../../../styles/authStyle";
 import { LinearGradient } from "expo";
 
 class AuthScreen extends Component {

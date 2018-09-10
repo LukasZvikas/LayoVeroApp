@@ -1,18 +1,35 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { LinearGradient } from "expo";
-import { style } from "../../styles/authStyle";
+import { style } from "../../../styles/authStyle";
 
 class emailAuthScreen extends Component {
-  static navigationOptions = {
-    headerStyle: {
-      backgroundColor: "#FF3366",
-      borderBottomWidth: 0
-    },
 
-    headerTintColor: "#fff",
-    headerRight: <Button title="Next" color="#fff" />
+  static navigationOptions = ({ navigation, state }) => {
+    return {
+      headerStyle: {
+        backgroundColor: "#FF3366",
+        borderBottomWidth: 0
+      },
+
+      headerTintColor: "#fff",
+      headerRight: (
+        <Text
+          style={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}
+          onPress={() => navigation.navigate("passwordAuth", {email: navigation.state.params})}
+        >
+          Next
+        </Text>
+      )
+    };
   };
+
+  onNext(email) {
+    if (email != "") {
+      return this.state.email;
+    }
+  }
+
   render() {
     return (
       <View>
@@ -22,15 +39,15 @@ class emailAuthScreen extends Component {
         >
           <View
             style={{
-              marginBottom: 120,
-              width: 170,
+              marginBottom: 65,
+              width: 200,
               alignItems: "center",
               justifyContent: "center"
             }}
           >
             <Text
               style={{
-                fontSize: 18,
+                fontSize: 22,
                 marginBottom: 10,
                 color: "#fff",
                 fontWeight: "bold"
@@ -38,12 +55,13 @@ class emailAuthScreen extends Component {
             >
               Welcome Back!
             </Text>
-            <Text style={{ fontSize: 15, color: "#fff", textAlign: "center" }}>
+            <Text style={{ fontSize: 18, color: "#fff", textAlign: "center" }}>
               Enter your email to sign in to your account
             </Text>
           </View>
           <View
             style={{
+              marginTop: 100,
               marginBottom: 380,
               alignItems: "center",
               justifyContent: "center"
@@ -54,9 +72,12 @@ class emailAuthScreen extends Component {
               placeholderTextColor="#fff"
               style={{
                 fontSize: 20,
-
                 height: 30,
                 width: 280
+              }}
+              onChangeText={text => {
+                
+                this.props.navigation.setParams({ email: text });
               }}
             />
             <View

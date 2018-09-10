@@ -17,5 +17,16 @@ export const style = {
     alignItems: "center",
     height: 100 + "%",
     width: 100 + "%"
+  },
+  signinButton: {
+    backgroundColor: "#fff",
+    opacity: 0.6,
+    height: 40,
+    width: 200,
+    marginTop: 40,
+    alignItems: "center",
+    justifyContent: "center"
+
+
   }
 };
