@@ -15,83 +15,51 @@ class passwordAuthScreen extends Component {
   }
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: "#FF3366",
+      backgroundColor: "",
       borderBottomWidth: 0
     },
 
-    headerTintColor: "#fff"
+    headerTintColor: "#000"
   };
   render() {
     return (
-      <View>
-        <LinearGradient
+      <View style={style.Gradient}>
+        {/*<LinearGradient
           colors={["#FF3366", "#BA265D"]}
           style={style.authGradient}
-        >
-          <View
-            style={{
-              width: 200,
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 22,
-                marginBottom: 10,
-                color: "#fff",
-                fontWeight: "bold"
-              }}
-            >
-              Almost there!
-            </Text>
-            <Text style={{ fontSize: 18, color: "#fff", textAlign: "center" }}>
-              Enter password to sign in with email
-            </Text>
-          </View>
+        >*/}
+        <View style={style.PassScreenFieldView}>
+          <Text style={style.FieldText}>Almost there!</Text>
+          <Text style={style.ScreenTextMain}>
+            Enter password to sign in with email
+          </Text>
+        </View>
 
-          <View
-            style={{
-              marginTop: 100,
-              marginBottom: 380,
-              alignItems: "center",
-              justifyContent: "center"
+        <View style={style.ScreenTextMainAlign}>
+          <TextInput
+            placeholder="Password (6+ characters)"
+            placeholderTextColor="#000"
+            style={style.FieldPlaceholder}
+            onChangeText={text => {
+              this.setState({ password: text });
             }}
-          >
-            <TextInput
-              placeholder="Password (6+ characters)"
-              placeholderTextColor="#fff"
-              style={{
-                fontSize: 20,
-                height: 30,
-                width: 280
-              }}
-              onChangeText={text => {
-                this.setState({ password: text });
-              }}
-            />
-            <View
-              style={{
-                backgroundColor: "#fff",
-                height: 1.8,
-                width: 280
-              }}
-            />
-            <TouchableOpacity style={style.signinButton}>
-              <Text
-                style={{ fontSize: 15, fontWeight: "bold" }}
-                onPress={() =>
-                  this.props.SignInAction(this.state.email, this.state.password)
-                }
-              >
-                Sign in
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </LinearGradient>
+          />
+          <View style={style.FieldBottom} />
+          <TouchableOpacity style={style.signinButton}>
+            <Text
+              style={{ fontSize: 15, fontWeight: "bold" }}
+              onPress={() =>
+                this.props.SignInAction(this.state.email, this.state.password)
+              }
+            >
+              Sign in
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {/*</LinearGradient>*/}
       </View>
     );
   }
 }
 
-export default connect(null, {SignInAction})(passwordAuthScreen);
+export default connect(null, { SignInAction })(passwordAuthScreen);

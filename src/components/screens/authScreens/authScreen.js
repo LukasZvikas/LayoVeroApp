@@ -10,48 +10,35 @@ class AuthScreen extends Component {
 
   render() {
     return (
-      <View>
-        <LinearGradient
-          colors={["#FF3366", "#BA265D"]}
-          style={style.authGradient}
+      <View style={style.Gradient}>
+        {/* /// <LinearGradient
+       ///  colors={["#FF3366", "#BA265D"]}
+       ///  style={style.authGradient}
+       ///*/}
+        <TouchableOpacity
+          style={style.buttonStyle}
+          onPress={() => this.props.navigation.navigate("emailAuth")}
         >
-          <TouchableOpacity style={style.buttonStyle} onPress={ () => this.props.navigation.navigate("emailAuth")}>
-            <Text> Sign in with Email </Text>
-          </TouchableOpacity>
+          <Text> Sign in with Email </Text>
+        </TouchableOpacity>
+        <View style={style.MainScreenMiddle}>
           <View
             style={{
-              flexDirection: "row",
-              marginTop: 30,
-              marginBottom: 30,
-              justifyContent: "center",
-              alignItems: "center"
+              backgroundColor: "#000",
+              height: 3,
+              width: 100
             }}
-          >
-            <View
-              style={{
-                backgroundColor: "#fff",
-                height: 3,
-                width: 100
-              }}
-            />
-            <Text style={{ marginLeft: 15, marginRight: 15, color: "#fff" }}>
-              or
-            </Text>
-            <View
-              style={{
-                backgroundColor: "#fff",
-                height: 3,
-                width: 100
-              }}
-            />
-          </View>
-          <TouchableOpacity style={style.buttonStyle} onPress={this.onPress}>
-            <Text> Sign in with Facebook </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={style.buttonStyle} onPress={this.onPress}>
-            <Text> Sign in with Google </Text>
-          </TouchableOpacity>
-        </LinearGradient>
+          />
+          <Text style={style.MainScreenMiddleMargin}>or</Text>
+          <View style={style.MainScreenMiddlePosition} />
+        </View>
+        <TouchableOpacity style={style.buttonStyle} onPress={this.onPress}>
+          <Text> Sign in with Facebook </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={style.buttonStyle} onPress={this.onPress}>
+          <Text> Sign in with Google </Text>
+        </TouchableOpacity>
+        {/* //</LinearGradient>*/}
       </View>
     );
   }
