@@ -9,19 +9,20 @@ class passwordAuthScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: this.props.navigation.state.params.email,
+      email: this.props.navigation.state.params.email.email,
       password: ""
     };
   }
   static navigationOptions = {
     headerStyle: {
-      backgroundColor: "",
+      // backgroundColor: "",
       borderBottomWidth: 0
     },
 
     headerTintColor: "#000"
   };
   render() {
+    console.log(this.state.email)
     return (
       <View style={style.Gradient}>
         {/*<LinearGradient

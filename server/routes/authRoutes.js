@@ -4,7 +4,7 @@ const emailController = require("../controllers/emailController");
 const passport = require("passport");
 const JWT = require("jwt-simple");
 const keys = require("../config/dev");
-const cors = require('cors');
+const cors = require("cors");
 
 const requireSignin = passport.authenticate("local", { session: false });
 const requireAuth = passport.authenticate("jwt", { session: false });
@@ -30,9 +30,17 @@ module.exports = app => {
     authController.googleToken
   );
 
+  app.get("/hello", (req, res) => {
+    res.send({ hello: "there" });
+  });
+
   app.post("/signup", authController.signup);
 
-  app.post("http://10.236.97.137/signin", cors(), requireSignin, authController.signin);
+  app.post(
+    "/signin",
+    requireSignin,
+    authController.signin
+  );
 
   app.get("/confirmation/:token", emailController.confirmEmail);
 

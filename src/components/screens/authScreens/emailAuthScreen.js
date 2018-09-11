@@ -7,7 +7,7 @@ class emailAuthScreen extends Component {
   static navigationOptions = ({ navigation, state }) => {
     return {
       headerStyle: {
-        backgroundColor: "",
+        // backgroundColor: "",
         borderBottomWidth: 0
       },
 
