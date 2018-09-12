@@ -1,28 +1,37 @@
 export const style = {
-  buttonStyleFb: {
+  buttonWrapperFb: {
     height: 40,
     width: 280,
-    // shadowColor: "#000",
-    // shadowOpacity: 0.5,
-    alignItems: "center",
-    justifyContent: "center",
     borderRadius: 20,
     marginBottom: 10,
-    marginTop: 10,
     backgroundColor: "#3b5998"
   },
-  buttonStyleGoogle: {
+  buttonWrapperGoogle: {
     height: 40,
     width: 280,
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 0.2 },
-    // shadowOpacity: 0.5,
-    alignItems: "center",
-    justifyContent: "center",
     borderRadius: 20,
     marginBottom: 10,
     marginTop: 10,
     backgroundColor: "#dd4b39"
+  },
+
+  buttonView: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: 40,
+    justifyContent: "center"
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontSize: 13,
+    textAlign: "center",
+    margin: 12
+  },
+
+  buttonIconView: {
+    textAlign: "center",
+    paddingLeft: 20
   },
 
   MainScreenMiddle: {

@@ -5,8 +5,9 @@ import { LinearGradient } from "expo";
 import layoveroLogo from "../../../assets/images/layovero.png";
 import { connect } from "react-redux";
 import { SignInAction } from "../../../actions/authActions";
+import { Facebook, Google } from "../../svg";
 
-class AuthScreen extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +38,6 @@ class AuthScreen extends Component {
           />
           <View style={style.FieldBottom} />
         </View>
-        //*******************
         <View style={style.ScreenTextMainAlign}>
           <TextInput
             placeholder="Password (6+ characters)"
@@ -59,28 +59,38 @@ class AuthScreen extends Component {
             Sign in
           </Text>
         </TouchableOpacity>
-        ////////// 
+        //////////////////////////////////////////////////
         //////////MIDDLE LINE
         <View style={style.MainScreenMiddle}>
           <View style={style.MainScreenMiddlePosition} />
           <Text style={style.MainScreenMiddleMargin}>or</Text>
           <View style={style.MainScreenMiddlePosition} />
         </View>
-        ////////// 
+        //////////////////////////////////////////////////
         //////////OAUTH
-        <TouchableOpacity style={style.buttonStyleFb} onPress={this.onPress}>
-          <Text style={{ color: "#fff", fontSize: 13 }}> Sign in with Facebook </Text>
+        <TouchableOpacity style={style.buttonWrapperFb} onPress={this.onPress}>
+          <View style={style.buttonView}>
+            <View style={style.buttonIconView}>
+              <Facebook />
+            </View>
+            <Text style={style.buttonText}>Sign in with Facebook</Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity
-          style={style.buttonStyleGoogle}
+          style={style.buttonWrapperGoogle}
           onPress={this.onPress}
         >
-          <Text style={{ color: "#fff", fontSize: 13 }}> Sign in with Google </Text>
+          <View style={style.buttonView}>
+            <View style={style.buttonIconView}>
+              <Google />
+            </View>
+            <Text style={style.buttonText}>Sign in with Google</Text>
+          </View>
         </TouchableOpacity>
-        //////////
+        //////////////////////////////////////////////////
       </View>
     );
   }
 }
 
-export default connect(null, { SignInAction })(AuthScreen);
+export default connect(null, { SignInAction })(Login);
