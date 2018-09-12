@@ -14,7 +14,7 @@ class emailAuthScreen extends Component {
       headerTintColor: "#000",
       headerRight: (
         <Text
-          style={{ color: "#000", fontWeight: "bold", fontSize: 18 }}
+          style={{ color: "#000", fontWeight: "bold", fontSize: 18, margin: 10 }}
           onPress={() =>
             navigation.navigate("passwordAuth", {
               email: navigation.state.params
