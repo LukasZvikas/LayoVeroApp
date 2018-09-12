@@ -22,32 +22,35 @@ class Login extends Component {
   render() {
     return (
       <View style={style.Gradient}>
+ {/*     <LinearGradient
+         colors={["#EEEEEE", "#e5e0e0"]}
+         style={style.authGradient}>*/}
         <Image
           style={{ width: 90, height: 90, marginBottom: 60 }}
           source={layoveroLogo}
         />
         //////////SIGNIN FIELDS
-        <View style={(style.ScreenTextMainAlign, { padding: 20 })}>
+        <View style={(style.inputView, { padding: 20,  })}>
           <TextInput
             placeholder="Enter your email"
-            placeholderTextColor="#000"
-            style={style.FieldPlaceholder}
+            placeholderTextColor="#686868"
+            style={style.fieldInput}
             onChangeText={text => {
               this.setState({ email: text });
             }}
           />
-          <View style={style.FieldBottom} />
+          {/*<View style={style.FieldBottom} />*/}
         </View>
-        <View style={style.ScreenTextMainAlign}>
+        <View style={style.inputView}>
           <TextInput
             placeholder="Password (6+ characters)"
-            placeholderTextColor="#000"
-            style={style.FieldPlaceholder}
+            placeholderTextColor="#686868"
+            style={style.fieldInput}
             onChangeText={text => {
               this.setState({ password: text });
             }}
           />
-          <View style={style.FieldBottom} />
+          {/*<View style={style.FieldBottom} />*/}
         </View>
         <TouchableOpacity style={style.signinButton}>
           <Text
@@ -61,14 +64,14 @@ class Login extends Component {
         </TouchableOpacity>
         //////////////////////////////////////////////////
         //////////MIDDLE LINE
-        <View style={style.MainScreenMiddle}>
-          <View style={style.MainScreenMiddlePosition} />
-          <Text style={style.MainScreenMiddleMargin}>or</Text>
-          <View style={style.MainScreenMiddlePosition} />
+        <View style={style.middleLineView}>
+          <View style={style.middleLinePosition} />
+          <Text style={style.middleLineMargin}>or</Text>
+          <View style={style.middleLinePosition} />
         </View>
         //////////////////////////////////////////////////
         //////////OAUTH
-        <TouchableOpacity style={style.buttonWrapperFb} onPress={this.onPress}>
+        <TouchableOpacity style={style.buttonViewFb} onPress={this.onPress}>
           <View style={style.buttonView}>
             <View style={style.buttonIconView}>
               <Facebook />
@@ -77,7 +80,7 @@ class Login extends Component {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          style={style.buttonWrapperGoogle}
+          style={style.buttonViewGoogle}
           onPress={this.onPress}
         >
           <View style={style.buttonView}>
@@ -88,6 +91,7 @@ class Login extends Component {
           </View>
         </TouchableOpacity>
         //////////////////////////////////////////////////
+       
       </View>
     );
   }
