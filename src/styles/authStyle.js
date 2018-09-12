@@ -1,22 +1,33 @@
 export const style = {
-  buttonStyle: {
-    borderColor: "#A9A9A9",
-    height: 32,
+  buttonStyleFb: {
+    height: 40,
     width: 280,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 0.2 },
-    shadowOpacity: 0.8,
-    backgroundColor: "#fff",
+    // shadowColor: "#000",
+    // shadowOpacity: 0.5,
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 20,
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 10,
+    backgroundColor: "#3b5998"
+  },
+  buttonStyleGoogle: {
+    height: 40,
+    width: 280,
+    // shadowColor: "#000",
+    // shadowOffset: { width: 0, height: 0.2 },
+    // shadowOpacity: 0.5,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
+    marginBottom: 10,
+    marginTop: 10,
+    backgroundColor: "#dd4b39"
   },
 
   MainScreenMiddle: {
     flexDirection: "row",
-    marginTop: 30,
-    marginBottom: 30,
+    marginBottom: 40,
     justifyContent: "center",
     alignItems: "center"
   },
@@ -29,7 +40,7 @@ export const style = {
 
   MainScreenMiddlePosition: {
     backgroundColor: "#000",
-    height: 3,
+    height: 2,
     width: 100
   },
 
@@ -37,7 +48,8 @@ export const style = {
     justifyContent: "center",
     alignItems: "center",
     height: 100 + "%",
-    width: 100 + "%"
+    width: 100 + "%",
+    backgroundColor: "#fff"
   },
 
   signinButton: {
@@ -45,9 +57,12 @@ export const style = {
     opacity: 0.6,
     height: 40,
     width: 200,
-    marginTop: 40,
+    margin: 40,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderRadius: 20,
+    borderWidth: 1.2,
+    borderColor: "#009092"
   },
 
   FieldText: {
@@ -64,10 +79,9 @@ export const style = {
   },
 
   ScreenTextMainAlign: {
-    marginTop: 100,
-    marginBottom: 380,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: 20
   },
 
   FieldPlaceholder: {
@@ -88,10 +102,10 @@ export const style = {
     alignItems: "center",
     justifyContent: "center"
   },
-  
+
   FieldBottom: {
     backgroundColor: "#000",
-    height: 1.8,
+    height: 2,
     width: 280
   }
 };
