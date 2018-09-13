@@ -22,7 +22,7 @@ class Login extends Component {
   render() {
     return (
       <View style={style.Gradient}>
- {/*     <LinearGradient
+        {/*     <LinearGradient
          colors={["#EEEEEE", "#e5e0e0"]}
          style={style.authGradient}>*/}
         <Image
@@ -30,7 +30,7 @@ class Login extends Component {
           source={layoveroLogo}
         />
         //////////SIGNIN FIELDS
-        <View style={(style.inputView, { padding: 20,  })}>
+        <View style={(style.inputView, { padding: 20 })}>
           <TextInput
             placeholder="Enter your email"
             placeholderTextColor="#686868"
@@ -52,25 +52,24 @@ class Login extends Component {
           />
           {/*<View style={style.FieldBottom} />*/}
         </View>
-        <TouchableOpacity style={style.signinButton}>
-          <Text
-            style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}
-            onPress={() =>
-              this.props.SignInAction(this.state.email, this.state.password)
-            }
-          >
+        <TouchableOpacity
+          style={style.signinButton}
+          onPress={() => {
+            this.props.SignInAction(this.state.email, this.state.password);
+            this.props.navigation.navigate("afterAuth");
+          }}
+        >
+          <Text style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}>
             Sign in
           </Text>
         </TouchableOpacity>
-        //////////////////////////////////////////////////
-        //////////MIDDLE LINE
+        ////////////////////////////////////////////////// //////////MIDDLE LINE
         <View style={style.middleLineView}>
           <View style={style.middleLinePosition} />
           <Text style={style.middleLineMargin}>or</Text>
           <View style={style.middleLinePosition} />
         </View>
-        //////////////////////////////////////////////////
-        //////////OAUTH
+        ////////////////////////////////////////////////// //////////OAUTH
         <TouchableOpacity style={style.buttonViewFb} onPress={this.onPress}>
           <View style={style.buttonView}>
             <View style={style.buttonIconView}>
@@ -79,10 +78,7 @@ class Login extends Component {
             <Text style={style.buttonText}>Sign in with Facebook</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={style.buttonViewGoogle}
-          onPress={this.onPress}
-        >
+        <TouchableOpacity style={style.buttonViewGoogle} onPress={this.onPress}>
           <View style={style.buttonView}>
             <View style={style.buttonIconView}>
               <Google />
@@ -91,7 +87,6 @@ class Login extends Component {
           </View>
         </TouchableOpacity>
         //////////////////////////////////////////////////
-       
       </View>
     );
   }
