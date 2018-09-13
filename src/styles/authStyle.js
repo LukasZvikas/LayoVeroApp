@@ -35,12 +35,10 @@ export const style = {
   buttonText: {
     color: "#fff",
     fontSize: 13,
-    textAlign: "center",
     margin: 12
   },
 
   buttonIconView: {
-    textAlign: "center",
     paddingLeft: 20
   },
 
