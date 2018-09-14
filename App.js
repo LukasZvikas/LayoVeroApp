@@ -4,34 +4,72 @@ import { StyleSheet, Text, View } from "react-native";
 import Login from "./src/components/screens/authScreens/Login";
 import IndexDash from "./src/components/screens/dashScreens/IndexDash";
 import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
+import Saved from "./src/components/screens/dashScreens/Saved";
+import Profile from "./src/components/screens/dashScreens/Profile";
 import { LinearGradient } from "expo";
 import store from "./store";
 import {
   createStackNavigator,
   TabNavigator,
-  createDrawerNavigator
+  createBottomTabNavigator
 } from "react-navigation";
+import { Plane, Search, Favorites, Account } from "./src/components/svg";
 
 export default class App extends React.Component {
   render() {
-    const DrawerStack = createDrawerNavigator(
+    const TabStack = createBottomTabNavigator(
       {
-        dashboard: { screen: IndexDash },
-        myLayovers: { screen: MyLayovers }
+        dashboard: {
+          screen: IndexDash,
+          navigationOptions: {
+            tabBarLabel: "Home",
+            tabBarIcon: <Search />
+          }
+        },
+        saved: {
+          screen: Saved,
+          navigationOptions: {
+            tabBarLabel: "Saved",
+            tabBarIcon: <Favorites />
+          }
+        },
+        myLayovers: {
+          screen: MyLayovers,
+          navigationOptions: {
+            tabBarLabel: "My Layovers",
+            tabBarIcon: <Plane />
+          }
+        },
+        profile: {
+          screen: Profile,
+          navigationOptions: {
+            tabBarLabel: "Profile",
+            tabBarIcon: <Account />
+          }
+        }
       },
-      { drawerWidth: 280 }
+      {
+        tabBarOptions: {
+          activeTintColor: "#7bcebc",
+          labelStyle: {
+            fontSize: 10
+          },
+          style: {
+            backgroundColor: "#fff",
+            paddingBottom: 2  
+          }
+        }
+      }
     );
-    const DrawerNavigation = createStackNavigator(
+    const TabNavigation = createStackNavigator(
       {
-        DrawerStack: { screen: DrawerStack }
+        DrawerStack: { screen: TabStack }
       },
       {
-        headerMode: "float",
         navigationOptions: ({ navigation }) => ({
-          headerStyle: { backgroundColor: "#4C3E54" },
-          title: "Welcome!",
-          headerTintColor: "white",
-          gesturesEnabled: false
+          header: null,
+          gesturesEnabled: false,
+          activeTintColor: "#000"
         })
       }
     );
@@ -39,7 +77,7 @@ export default class App extends React.Component {
     const MainNav = createStackNavigator(
       {
         auth: { screen: Login },
-        afterAuth: { screen: DrawerNavigation }
+        afterAuth: { screen: TabNavigation }
       },
       {
         // Default config for all screens
