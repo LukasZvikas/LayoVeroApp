@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Text, View, TextInput } from "react-native";
 import { style } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
-import { getCities } from "../../../actions/cityActions"
+import { getCities } from "../../../actions/routeActions";
 
 class FilterFirst extends Component {
   constructor(props) {
@@ -16,13 +17,24 @@ class FilterFirst extends Component {
   };
 
   renderCities = () => {
-    this.props.getCities();
+    return this.props.cities.map(city => {
+      return <Text key={city}>{city}</Text>;
+    });
+  };
+
+  areCitiesAvailable = () => {
+    if (this.props.cities == undefined) {
+      return <Text> Loading... </Text>;
+    } else {
+      return <View>{this.renderCities()} </View>;
+    }
   };
 
   componentDidMount() {
-    this.renderCities();
+    this.props.getCities();
   }
   render() {
+    console.log(this.props.cities);
     return (
       <View
         style={{
@@ -33,11 +45,16 @@ class FilterFirst extends Component {
           paddingTop: 100
         }}
       >
-        <Text> First </Text>
-        <View />
+        {this.areCitiesAvailable()}
       </View>
     );
   }
 }
 
-export default FilterFirst;
+const mapStateToProps = state => {
+  return {
+    cities: state.routes.citiesArray
+  };
+};
+
+export default connect(mapStateToProps, { getCities })(FilterFirst);

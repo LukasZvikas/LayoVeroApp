@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize())
 
 require("./routes/authRoutes")(app);
+require("./routes/routeRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 
