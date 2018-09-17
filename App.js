@@ -1,11 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { StyleSheet, Text, View } from "react-native";
-import Login from "./src/components/screens/authScreens/Login";
-import IndexDash from "./src/components/screens/dashScreens/IndexDash";
-import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
-import Saved from "./src/components/screens/dashScreens/Saved";
-import Profile from "./src/components/screens/dashScreens/Profile";
 import { LinearGradient } from "expo";
 import store from "./store";
 import {
@@ -14,82 +9,22 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import NavigationService from "./NavigationService";
-import { Plane, Search, Favorites, Account } from "./src/components/svg";
+import {
+  FilterStack,
+  DashStack,
+  BottomTab,
+  TabNavigation,
+  MainNav
+} from "./NavigationLogic";
 
 export default class App extends React.Component {
   render() {
-    const TabStack = createBottomTabNavigator(
-      {
-        dashboard: {
-          screen: IndexDash,
-          navigationOptions: {
-            tabBarLabel: "Home",
-            tabBarIcon: <Search />
-          }
-        },
-        saved: {
-          screen: Saved,
-          navigationOptions: {
-            tabBarLabel: "Saved",
-            tabBarIcon: <Favorites />
-          }
-        },
-        myLayovers: {
-          screen: MyLayovers,
-          navigationOptions: {
-            tabBarLabel: "My Layovers",
-            tabBarIcon: <Plane />
-          }
-        },
-        profile: {
-          screen: Profile,
-          navigationOptions: {
-            tabBarLabel: "Profile",
-            tabBarIcon: <Account />
-          }
-        }
-      },
-      {
-        tabBarOptions: {
-          activeTintColor: "#7bcebc",
-          labelStyle: {
-            fontSize: 10
-          },
-          style: {
-            backgroundColor: "#fff",
-            paddingBottom: 2
-          }
-        }
-      }
-    );
-    const TabNavigation = createStackNavigator(
-      {
-        DrawerStack: { screen: TabStack }
-      },
-      {
-        navigationOptions: ({ navigation }) => ({
-          header: null,
-          gesturesEnabled: false,
-          activeTintColor: "#000"
-        })
-      }
-    );
-
-    const MainNav = createStackNavigator(
-      {
-        auth: { screen: Login },
-        afterAuth: { screen: TabNavigation }
-      },
-      {
-        // Default config for all screens
-        headerMode: "none",
-        title: "Main",
-        initialRouteName: "auth",
-        navigationOptions: {
-          gesturesEnabled: false
-        }
-      }
-    );
+    <View>
+      <FilterStack />
+      <DashStack />
+      <BottomTab />
+      <TabNavigation />
+    </View>;
 
     return (
       <Provider store={store}>

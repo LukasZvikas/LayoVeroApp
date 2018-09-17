@@ -8,6 +8,5 @@ export const style = {
     alignItems: "center",
     height: 55,
     justifyContent: "center",
-    fontSize: 30
   }
 };

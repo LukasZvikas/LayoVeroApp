@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { style } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
 import { Search } from "../../svg";
@@ -31,11 +31,17 @@ class IndexDash extends Component {
               <Search color="#686868" />
             </View>
           ) : null}
-          <TextInput style={{ width: 80 + "%", }} placeholder="Try London" />
+          <TextInput style={{ width: 80 + "%" }} placeholder="Try London" />
         </View>
-        <Text style={{ marginTop: 12, fontWeight: "bold", color: "#686868" }}>
-          Need Help Looking?
-        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("FirstFilter");
+          }}
+        >
+          <Text style={{ marginTop: 12, fontWeight: "bold", color: "#686868" }}>
+            Need Help Looking?
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
