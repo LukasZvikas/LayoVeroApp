@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { style } from "../../../styles/authStyle";
-import { LinearGradient } from "expo";
+import { baseStyle } from "../../../styles/base";
+import { LinearGradient, SecureStore } from "expo";
 import layoveroLogo from "../../../assets/images/layovero.png";
 import { connect } from "react-redux";
 import { SignInAction } from "../../../actions/authActions";
 import { Facebook, Google } from "../../svg";
+import { NavigationActions } from "react-navigation";
 
 class Login extends Component {
   constructor(props) {
@@ -19,12 +21,19 @@ class Login extends Component {
     header: null
   };
 
+  isSignedIn = async () => {
+    await SecureStore.getItemAsync("jwt").then(token => {
+      if (token != null) this.props.navigation.navigate("afterAuth");
+    });
+  };
+
+  async componentDidMount() {
+    this.isSignedIn();
+  }
+
   render() {
     return (
-      <View style={style.Gradient}>
-        {/*     <LinearGradient
-         colors={["#EEEEEE", "#e5e0e0"]}
-         style={style.authGradient}>*/}
+      <View style={baseStyle.mainView}>
         <Image
           style={{ width: 90, height: 90, marginBottom: 60 }}
           source={layoveroLogo}
@@ -56,20 +65,21 @@ class Login extends Component {
           style={style.signinButton}
           onPress={() => {
             this.props.SignInAction(this.state.email, this.state.password);
-            this.props.navigation.navigate("afterAuth");
           }}
         >
           <Text style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}>
             Sign in
           </Text>
         </TouchableOpacity>
-        ////////////////////////////////////////////////// //////////MIDDLE LINE
+        ////////////////////////////////////////////////// 
+        //////////MIDDLE LINE
         <View style={style.middleLineView}>
           <View style={style.middleLinePosition} />
           <Text style={style.middleLineMargin}>or</Text>
           <View style={style.middleLinePosition} />
         </View>
-        ////////////////////////////////////////////////// //////////OAUTH
+        ////////////////////////////////////////////////// 
+        //////////OAUTH
         <TouchableOpacity style={style.buttonViewFb} onPress={this.onPress}>
           <View style={style.buttonView}>
             <View style={style.buttonIconView}>
@@ -91,5 +101,11 @@ class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isSigned: state.auth.authenticated
+  };
+};
 
 export default connect(null, { SignInAction })(Login);

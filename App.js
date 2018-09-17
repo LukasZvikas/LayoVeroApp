@@ -13,6 +13,7 @@ import {
   TabNavigator,
   createBottomTabNavigator
 } from "react-navigation";
+import NavigationService from "./NavigationService";
 import { Plane, Search, Favorites, Account } from "./src/components/svg";
 
 export default class App extends React.Component {
@@ -56,7 +57,7 @@ export default class App extends React.Component {
           },
           style: {
             backgroundColor: "#fff",
-            paddingBottom: 2  
+            paddingBottom: 2
           }
         }
       }
@@ -92,7 +93,11 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <MainNav />
+        <MainNav
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
       </Provider>
     );
   }

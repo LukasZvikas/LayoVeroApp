@@ -29,7 +29,8 @@ export const style = {
     flexDirection: "row",
     alignItems: "center",
     height: 40,
-    justifyContent: "center"
+    justifyContent: "center",
+
   },
 
   buttonText: {
@@ -60,15 +61,7 @@ export const style = {
     height: 2,
     width: 100
   },
-
-  Gradient: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 100 + "%",
-    width: 100 + "%",
-    backgroundColor: "#fff"
-  },
-
+  
   authGradient: {
     justifyContent: "center",
     alignItems: "center",
