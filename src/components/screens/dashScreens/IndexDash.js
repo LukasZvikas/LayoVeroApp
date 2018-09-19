@@ -35,7 +35,7 @@ class IndexDash extends Component {
         </View>
         <TouchableOpacity
           onPress={() => {
-            this.props.navigation.navigate("FirstFilter");
+            this.props.navigation.navigate("SecondFilter");
           }}
         >
           <Text style={{ marginTop: 12, fontWeight: "bold", color: "#686868" }}>

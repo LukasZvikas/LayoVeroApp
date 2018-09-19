@@ -1,33 +1,145 @@
 import React, { Component } from "react";
-import { Text, View, TextInput } from "react-native";
-import { style } from "../../../styles/indexAfterLogin";
+import { connect } from "react-redux";
+import {
+  Text,
+  View,
+  TextInput,
+  FlatList,
+  Picker,
+  TouchableOpacity
+} from "react-native";
+import CheckBox from "./checkBox";
+import { getCities } from "../../../actions/routeActions";
+import { filterStyle } from "../../../styles/filterStyle";
 import { baseStyle } from "../../../styles/base";
 
 class FilterSecond extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showSearchIcon: true };
+    this.state = {
+      showSearchIcon: true,
+      pickerState: false
+    };
   }
   static navigationOptions = {
     header: null,
     headerLeft: null
   };
+
+  renderCities = () => {
+    const cityList = this.props.cities.map(city => {
+      return <Picker.Item key={city} label={city} value={city} />;
+    });
+    return cityList;
+  };
+
+  areCitiesAvailable = () => {
+    if (this.props.cities == undefined) {
+      return <Text> Loading... </Text>;
+    } else {
+      if (this.state.pickerState) {
+        return (
+          <Picker
+            style={{
+              height: 25,
+              width: 250
+            }}
+            selectedValue={this.props.cities[0]}
+            itemStyle={filterStyle.pickerItemStyle}
+          >
+            {this.renderCities()}
+          </Picker>
+        );
+      } else {
+        return null;
+      }
+    }
+  };
+
+  componentDidMount() {
+    this.props.getCities();
+  }
   render() {
     return (
-      <View
-        style={{
-          alignItems: "center",
-          height: 100 + "%",
-          width: 100 + "%",
-          backgroundColor: "#fff",
-          paddingTop: 100
-        }}
-      >
-        <Text> Second </Text>
+      <View style={baseStyle.mainView}>
+        <View style={filterStyle.pickerView}>
+          <Text style={filterStyle.mainHeadingText}>
+            In order to find you the best layover, we need you to provide us
+            some information
+          </Text>
+
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <Text style={{ fontSize: 13 }} t>
+              What is the city of your layover?
+            </Text>
+            <Text
+              onPress={() => {
+                this.state.picker
+                  ? this.setState({ pickerState: false })
+                  : this.setState({ pickerState: true });
+              }}
+              style={filterStyle.pickerInput}
+            />
+
+            {this.areCitiesAvailable()}
+          </View>
+
+          <Text style={filterStyle.fieldBottom}> </Text>
+
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <Text style={filterStyle.secondaryHeadingText}>
+              How long is your layover?
+            </Text>
+            <View style={filterStyle.checkBoxViewSA}>
+              <CheckBox text={"2-4 hours"} checkBoxState={false} />
+              <CheckBox
+                marginForSides={10}
+                text={"4-6 hours"}
+                checkBoxState={false}
+              />
+              <CheckBox text={">6 hours"} checkBoxState={false} />
+            </View>
+          </View>
+
+          <Text style={filterStyle.fieldBottom}> </Text>
+
+          <View style={filterStyle.checkBoxViewCenter}>
+            <Text style={filterStyle.secondaryHeadingText}>
+              What would you like to do during your layover?
+            </Text>
+
+            <View style={filterStyle.activitiesCheckBoxView}>
+              <CheckBox
+                padding={20}
+                text={"Sightseeing"}
+                checkBoxState={false}
+              />
+              <CheckBox text={"Museum"} checkBoxState={false} />
+            </View>
+            <View style={filterStyle.activitiesCheckBoxView}>
+              <CheckBox
+                padding={20}
+                text={"Restaurants / Bars"}
+                checkBoxState={false}
+              />
+              <CheckBox text={"Parks"} checkBoxState={false} />
+            </View>
+            <View style={filterStyle.activitiesCheckBoxView}>
+              <CheckBox padding={20} text={"Theathers"} checkBoxState={false} />
+              <CheckBox text={"Other"} checkBoxState={false} />
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
 }
 
-export default FilterSecond;
+const mapStateToProps = state => {
+  return {
+    cities: state.routes.citiesArray
+  };
+};
+
+export default connect(mapStateToProps, { getCities })(FilterSecond);

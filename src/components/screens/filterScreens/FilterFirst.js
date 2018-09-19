@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Text, View, TextInput } from "react-native";
-import { style } from "../../../styles/indexAfterLogin";
+import { Text, View, TextInput, FlatList } from "react-native";
+// import { style } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
 import { getCities } from "../../../actions/routeActions";
+import { style } from "../../../styles/authStyle";
 
 class FilterFirst extends Component {
   constructor(props) {
@@ -16,17 +17,45 @@ class FilterFirst extends Component {
     headerLeft: null
   };
 
+  getItemLayout = (data, index) => (
+    { length: 50, offset: 50 * index, index }
+  ) 
+
   renderCities = () => {
-    return this.props.cities.map(city => {
-      return <Text key={city}>{city}</Text>;
-    });
+    return (
+      <FlatList
+        data={this.props.cities}
+        getItemLayout = {this.getItemLayout}
+        initialScrollIndex={9}
+        renderItem={({ item }) => {
+          console.log("Item", item.city);
+          return (
+            <Text
+              style={{
+                fontSize: 15,
+                height: 45,
+                width: 280,
+                borderWidth: 1.2,
+                borderColor: "#686868",
+                borderRadius: 22,
+                paddingLeft: 10,
+                margin: 10
+              }}
+              key={item}
+            >
+              {item}
+            </Text>
+          );
+        }}
+      />
+    );
   };
 
   areCitiesAvailable = () => {
     if (this.props.cities == undefined) {
       return <Text> Loading... </Text>;
     } else {
-      return <View>{this.renderCities()} </View>;
+      return this.renderCities();
     }
   };
 
@@ -45,7 +74,15 @@ class FilterFirst extends Component {
           paddingTop: 100
         }}
       >
-        {this.areCitiesAvailable()}
+        <View
+          style={{
+            height: 50 + "%",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          {this.areCitiesAvailable()}
+        </View>
       </View>
     );
   }

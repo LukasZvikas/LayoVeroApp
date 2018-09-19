@@ -98,9 +98,4 @@ export const style = {
     paddingLeft: 10
   }
 
-  // FieldBottom: {
-  //   backgroundColor: "#000",
-  //   height: 2,
-  //   width: 280
-  // }
 };

@@ -15,7 +15,7 @@ import {
 } from "react-navigation";
 
 export const FilterStack = createStackNavigator({
-  FirstFilter: { screen: FilterFirst },
+  // FirstFilter: { screen: FilterFirst },
   SecondFilter: { screen: FilterSecond },
   ThirdFilter: { screen: FilterThird }
 });
