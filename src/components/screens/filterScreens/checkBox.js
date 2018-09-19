@@ -13,9 +13,6 @@ class CheckBox extends Component {
       <View
         style={{
           flexDirection: "row",
-          marginTop: 10,
-          marginBottom: 10,
-
           paddingRight: this.props.padding
         }}
       >

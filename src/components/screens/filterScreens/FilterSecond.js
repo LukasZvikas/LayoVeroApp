@@ -27,12 +27,12 @@ class FilterSecond extends Component {
     headerLeft: null
   };
 
-  renderCities = () => {
-    const cityList = this.props.cities.map(city => {
-      return <Picker.Item key={city} label={city} value={city} />;
-    });
-    return cityList;
-  };
+  // renderCities = () => {
+  //   const cityList = this.props.cities.map(city => {
+  //     return <Picker.Item key={city} label={city} value={city} />;
+  //   });
+  //   return cityList;
+  // };
 
   areCitiesAvailable = () => {
     if (this.props.cities == undefined) {
@@ -40,16 +40,22 @@ class FilterSecond extends Component {
     } else {
       if (this.state.pickerState) {
         return (
-          <Picker
+          <FlatList
             style={{
-              height: 25,
-              width: 250
+              height: 150,
+              width: 250,
+              borderWidth: 1,
+              borderColor: "#009092",
+
+              borderTopColor: "#fff",
+              backgroundColor: "#fff"
             }}
-            selectedValue={this.props.cities[0]}
-            itemStyle={filterStyle.pickerItemStyle}
-          >
-            {this.renderCities()}
-          </Picker>
+            keyExtractor={item => item}
+            data={this.props.cities}
+            renderItem={({ item }) => (
+              <Text style={{ fontSize: 16, margin: 3 }}>{item}</Text>
+            )}
+          />
         );
       } else {
         return null;
@@ -63,31 +69,60 @@ class FilterSecond extends Component {
   render() {
     return (
       <View style={baseStyle.mainView}>
+
         <View style={filterStyle.pickerView}>
           <Text style={filterStyle.mainHeadingText}>
             In order to find you the best layover, we need you to provide us
             some information
           </Text>
 
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 13 }} t>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 3
+            }}
+          >
+            <Text style={filterStyle.secondaryHeadingText} >
               What is the city of your layover?
             </Text>
-            <Text
-              onPress={() => {
-                this.state.picker
-                  ? this.setState({ pickerState: false })
-                  : this.setState({ pickerState: true });
-              }}
-              style={filterStyle.pickerInput}
-            />
 
-            {this.areCitiesAvailable()}
+            <View style={{ position: "relative" }}>
+              <Text
+                onPress={() => {
+                  this.setState({ pickerState: !this.state.pickerState });
+                }}
+                style={filterStyle.pickerInput}
+              />
+
+              <View
+                style={{
+                  position: "absolute",
+                  top: 45,
+                  left: 0,
+                  right: 0,
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                {this.areCitiesAvailable()}
+              </View>
+
+
+            </View>
+
+
           </View>
 
           <Text style={filterStyle.fieldBottom}> </Text>
 
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 1
+            }}
+          >
             <Text style={filterStyle.secondaryHeadingText}>
               How long is your layover?
             </Text>
@@ -129,6 +164,7 @@ class FilterSecond extends Component {
                 text={"Sightseeing"}
                 checkBoxState={false}
               />
+              <Text style={{marginTop: 10}}></Text>
               <CheckBox
                 width={120}
                 height={45}
@@ -144,6 +180,7 @@ class FilterSecond extends Component {
                 text={"Restaurants / Bars"}
                 checkBoxState={false}
               />
+              <Text style={{marginTop: 10}}></Text>
               <CheckBox
                 width={120}
                 height={45}
@@ -159,6 +196,7 @@ class FilterSecond extends Component {
                 text={"Theathers"}
                 checkBoxState={false}
               />
+              <Text style={{marginTop: 10}}></Text>
               <CheckBox
                 width={120}
                 height={45}
