@@ -27,6 +27,7 @@ export const filterStyle = {
   },
   checkBoxViewSA: {
     flexDirection: "row",
+    width: 100 + "%",
     justifyContent: "space-around"
   },
   checkBoxViewCenter: {

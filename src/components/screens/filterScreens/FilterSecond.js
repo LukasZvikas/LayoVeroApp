@@ -92,13 +92,25 @@ class FilterSecond extends Component {
               How long is your layover?
             </Text>
             <View style={filterStyle.checkBoxViewSA}>
-              <CheckBox text={"2-4 hours"} checkBoxState={false} />
               <CheckBox
-                marginForSides={10}
+                width={75}
+                height={45}
+                text={"2-4 hours"}
+                checkBoxState={false}
+              />
+              <CheckBox
+                width={75}
+                height={45}
+                marginForSides={12}
                 text={"4-6 hours"}
                 checkBoxState={false}
               />
-              <CheckBox text={">6 hours"} checkBoxState={false} />
+              <CheckBox
+                width={75}
+                height={45}
+                text={">6 hours"}
+                checkBoxState={false}
+              />
             </View>
           </View>
 
@@ -111,23 +123,48 @@ class FilterSecond extends Component {
 
             <View style={filterStyle.activitiesCheckBoxView}>
               <CheckBox
+                width={120}
+                height={45}
                 padding={20}
                 text={"Sightseeing"}
                 checkBoxState={false}
               />
-              <CheckBox text={"Museum"} checkBoxState={false} />
+              <CheckBox
+                width={120}
+                height={45}
+                text={"Museum"}
+                checkBoxState={false}
+              />
             </View>
             <View style={filterStyle.activitiesCheckBoxView}>
               <CheckBox
+                width={120}
+                height={45}
                 padding={20}
                 text={"Restaurants / Bars"}
                 checkBoxState={false}
               />
-              <CheckBox text={"Parks"} checkBoxState={false} />
+              <CheckBox
+                width={120}
+                height={45}
+                text={"Parks"}
+                checkBoxState={false}
+              />
             </View>
             <View style={filterStyle.activitiesCheckBoxView}>
-              <CheckBox padding={20} text={"Theathers"} checkBoxState={false} />
-              <CheckBox text={"Other"} checkBoxState={false} />
+              <CheckBox
+                width={120}
+                height={45}
+                padding={20}
+                text={"Theathers"}
+                checkBoxState={false}
+              />
+              <CheckBox
+                width={120}
+                height={45}
+                text={"Other"}
+                checkBoxState={false}
+              />
             </View>
           </View>
         </View>

@@ -13,20 +13,18 @@ class CheckBox extends Component {
       <View
         style={{
           flexDirection: "row",
-          marginRight: this.props.marginForSides,
-          marginLeft: this.props.marginForSides,
           marginTop: 10,
           marginBottom: 10,
-          justifyContent: "center",
+
           paddingRight: this.props.padding
         }}
       >
         <TouchableOpacity
           style={{
-            height: 16,
-            width: 16,
+            height: this.props.height,
+            width: this.props.width,
             borderWidth: 1,
-            borderRadius: 30,
+            borderRadius: 10,
             borderColor: "#009092",
             backgroundColor: this.state.isChecked ? "#009092" : "#fff",
             marginRight: 4
@@ -34,8 +32,17 @@ class CheckBox extends Component {
           onPress={() => {
             this.setState({ isChecked: !this.state.isChecked });
           }}
-        />
-        <Text style={{ fontSize: 13 }}>{this.props.text}</Text>
+        >
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: 100 + "%"
+            }}
+          >
+            <Text style={{ fontSize: 13, color: this.state.isChecked ? "#fff" : "#000" }}>{this.props.text}</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
