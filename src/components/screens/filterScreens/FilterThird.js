@@ -88,7 +88,7 @@ class FilterThird extends Component {
             borderColor: "#009092",
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: 25,
+            borderRadius: 25
           }}
         >
           <Text> USD</Text>

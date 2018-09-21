@@ -6,7 +6,7 @@ import { SIGN_IN } from "../reducers/types";
 
 export const SignInAction = (email, password) => async dispatch => {
   const res = await axios
-    .post("http://10.202.129.196:5000/signin", {
+    .post("http://localhost:5000/signin", {
       email,
       password
     })

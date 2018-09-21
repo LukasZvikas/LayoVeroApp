@@ -1,7 +1,8 @@
 export const filterStyle = {
-  pickerView: {
+  marginForView: {
     marginLeft: 100,
     marginRight: 100,
+    marginTop: 100,
     justifyContent: "center",
     zIndex: 200,
     height: 100+"%"
@@ -29,11 +30,11 @@ export const filterStyle = {
   checkBoxViewSA: {
     flexDirection: "row",
     width: 100 + "%",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   checkBoxViewCenter: {
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   activitiesCheckBoxView: {
     flexDirection: "row",
