@@ -12,6 +12,7 @@ import CheckBox from "./checkBox";
 import { getCities } from "../../../actions/routeActions";
 import { filterStyle } from "../../../styles/filterStyle";
 import { baseStyle } from "../../../styles/base";
+import { style } from "../../../styles/authStyle";
 
 class FilterSecond extends Component {
   constructor(props) {
@@ -69,7 +70,6 @@ class FilterSecond extends Component {
   render() {
     return (
       <View style={baseStyle.mainView}>
-
         <View style={filterStyle.pickerView}>
           <Text style={filterStyle.mainHeadingText}>
             In order to find you the best layover, we need you to provide us
@@ -83,7 +83,7 @@ class FilterSecond extends Component {
               zIndex: 3
             }}
           >
-            <Text style={filterStyle.secondaryHeadingText} >
+            <Text style={filterStyle.secondaryHeadingText}>
               What is the city of your layover?
             </Text>
 
@@ -107,11 +107,7 @@ class FilterSecond extends Component {
               >
                 {this.areCitiesAvailable()}
               </View>
-
-
             </View>
-
-
           </View>
 
           <Text style={filterStyle.fieldBottom}> </Text>
@@ -164,7 +160,7 @@ class FilterSecond extends Component {
                 text={"Sightseeing"}
                 checkBoxState={false}
               />
-              <Text style={{marginTop: 10}}></Text>
+              <Text style={{ marginTop: 10 }} />
               <CheckBox
                 width={120}
                 height={45}
@@ -180,7 +176,7 @@ class FilterSecond extends Component {
                 text={"Restaurants / Bars"}
                 checkBoxState={false}
               />
-              <Text style={{marginTop: 10}}></Text>
+              <Text style={{ marginTop: 10 }} />
               <CheckBox
                 width={120}
                 height={45}
@@ -196,7 +192,7 @@ class FilterSecond extends Component {
                 text={"Theathers"}
                 checkBoxState={false}
               />
-              <Text style={{marginTop: 10}}></Text>
+              <Text style={{ marginTop: 10 }} />
               <CheckBox
                 width={120}
                 height={45}
@@ -205,6 +201,19 @@ class FilterSecond extends Component {
               />
             </View>
           </View>
+
+          <TouchableOpacity
+            style={style.signinButton}
+            onPress={() => {
+              this.props.navigation.navigate("ThirdFilter");
+            }}
+          >
+            <Text
+              style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}
+            >
+              Sign in
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
