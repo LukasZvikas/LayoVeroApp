@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./src/components/screens/authScreens/Login";
+import SignUp from "./src/components/screens/authScreens/SignUp";
 import IndexDash from "./src/components/screens/dashScreens/IndexDash";
 import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
 import Saved from "./src/components/screens/dashScreens/Saved";
@@ -96,16 +97,18 @@ export const TabNavigation = createStackNavigator(
   }
 );
 
+
 export const MainNav = createStackNavigator(
   {
-    auth: { screen: Login },
+    login: { screen: Login },
+    signUp: {screen: SignUp},
     afterAuth: { screen: TabNavigation }
   },
   {
     // Default config for all screens
     headerMode: "none",
     title: "Main",
-    initialRouteName: "auth",
+    initialRouteName: "signUp",
     navigationOptions: {
       gesturesEnabled: false
     }

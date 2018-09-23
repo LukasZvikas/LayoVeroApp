@@ -29,8 +29,7 @@ export const style = {
     flexDirection: "row",
     alignItems: "center",
     height: 40,
-    justifyContent: "center",
-
+    justifyContent: "center"
   },
 
   buttonText: {
@@ -49,19 +48,23 @@ export const style = {
     justifyContent: "center",
     alignItems: "center"
   },
-
-  middleLineMargin: {
-    marginLeft: 15,
-    marginRight: 15,
-    color: "#000"
+  middleLineMargin: { marginRight: 15, marginLeft: 15 },
+  middleLineCenter: {
+    width: 1.8,
+    height: 13,
+    backgroundColor: "#009092",
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 5,
+    marginRight: 5
   },
 
   middleLinePosition: {
     backgroundColor: "#000",
     height: 2,
-    width: 100
+    width: 120
   },
-  
+
   authGradient: {
     justifyContent: "center",
     alignItems: "center",
@@ -74,7 +77,7 @@ export const style = {
     opacity: 0.6,
     height: 45,
     width: 200,
-    margin: 40,
+    marginTop: 35,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 25,
@@ -93,9 +96,11 @@ export const style = {
     height: 45,
     width: 280,
     borderWidth: 1.2,
-    borderColor: "#686868",
+    borderColor: "#009092",
     borderRadius: 25,
     paddingLeft: 10
+  },
+  passRepeatMargin: {
+    marginTop: 20
   }
-
 };

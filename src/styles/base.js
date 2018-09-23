@@ -8,8 +8,7 @@ export const baseStyle = {
   },
 
   centerItems: {
-  	justifyContent: "center",
+    justifyContent: "center",
     alignItems: "center"
-
   }
 };

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, Slider } from "react-native";
 import { style } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
 import { Plus, Minus } from "../../svg";
@@ -49,8 +49,13 @@ class FilterThird extends Component {
           >
             <Minus />
           </TouchableOpacity>
-
-          <View
+          ///CIRCLE
+          <Slider
+            minimumTrackTintColor={"#009092"}
+            style={{ margin: 20, width: 200 }}
+            maximumValue={100}
+          />
+          {/*  <View
             style={{
               borderWidth: 2.8,
               borderColor: "#D3D3D3",
@@ -62,9 +67,10 @@ class FilterThird extends Component {
               margin: 35
             }}
           >
+            <Text style={{height: 35, width: 35, borderWidth:2, borderRadius: 18}}> </Text>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>$ 45.5</Text>
-          </View>
-
+          </View>*/}
+          /////////
           <TouchableOpacity
             style={{
               justifyContent: "center",

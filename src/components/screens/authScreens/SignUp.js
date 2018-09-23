@@ -6,11 +6,9 @@ import { LinearGradient, SecureStore } from "expo";
 import layoveroLogo from "../../../assets/images/layovero.png";
 import { connect } from "react-redux";
 import { SignInAction } from "../../../actions/authActions";
-import { Facebook, Google } from "../../svg";
-import { NavigationActions } from "react-navigation";
 import AuthButtons from "./AuthButtons";
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,16 +20,6 @@ class Login extends Component {
     header: null
   };
 
-  isSignedIn = async () => {
-    await SecureStore.getItemAsync("jwt").then(token => {
-      if (token != null) this.props.navigation.navigate("afterAuth");
-    });
-  };
-
-  async componentDidMount() {
-    this.isSignedIn();
-  }
-
   render() {
     return (
       <View style={baseStyle.mainView}>
@@ -39,7 +27,8 @@ class Login extends Component {
           style={{ width: 90, height: 90, marginBottom: 60 }}
           source={layoveroLogo}
         />
-        <View style={(style.inputView, { padding: 20 })}>
+        //////////SIGNIN FIELDS
+        <View>
           <TextInput
             placeholder="Enter your email"
             placeholderTextColor="#009092"
@@ -48,6 +37,7 @@ class Login extends Component {
               this.setState({ email: text });
             }}
           />
+          {/*<View style={style.FieldBottom} />*/}
         </View>
         <View style={style.inputView}>
           <TextInput
@@ -58,18 +48,26 @@ class Login extends Component {
               this.setState({ password: text });
             }}
           />
-          {/*<View style={style.FieldBottom} />*/}
         </View>
-        <AuthButtons />
+        <View>
+          <TextInput
+            placeholder="Repeat password"
+            placeholderTextColor="#009092"
+            style={[style.fieldInput, style.passRepeatMargin]}
+            onChangeText={text => {
+              this.setState({ password: text });
+            }}
+          />
+        </View>
+        <AuthButtons
+          action={() => {
+            this.props.SignInAction(this.state.email, this.state.password);
+          }}
+          nav={() => this.props.navigation.navigate("login")}
+        />
       </View>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    isSigned: state.auth.authenticated
-  };
-};
-
-export default connect(null, { SignInAction })(Login);
+export default SignUp;
