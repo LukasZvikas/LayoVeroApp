@@ -1,7 +1,5 @@
 export const baseStyle = {
   mainView: {
-    justifyContent: "center",
-    alignItems: "center",
     height: 100 + "%",
     width: 100 + "%",
     backgroundColor: "#fff"
@@ -10,5 +8,9 @@ export const baseStyle = {
   centerItems: {
     justifyContent: "center",
     alignItems: "center"
+  },
+
+  flexRow: {
+    flexDirection: "row"
   }
 };

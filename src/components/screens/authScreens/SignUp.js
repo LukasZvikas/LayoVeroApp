@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-import { style } from "../../../styles/authStyle";
+import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
 import { LinearGradient, SecureStore } from "expo";
 import layoveroLogo from "../../../assets/images/layovero.png";
 import { connect } from "react-redux";
 import { SignInAction } from "../../../actions/authActions";
-import AuthButtons from "./AuthButtons";
+import  {AuthButtons}  from "./authButtons";
 
 class SignUp extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <View style={baseStyle.mainView}>
+      <View style={[baseStyle.mainView, baseStyle.centerItems]}>
         <Image
           style={{ width: 90, height: 90, marginBottom: 60 }}
           source={layoveroLogo}
@@ -32,18 +32,17 @@ class SignUp extends Component {
           <TextInput
             placeholder="Enter your email"
             placeholderTextColor="#009092"
-            style={style.fieldInput}
+            style={authStyle.fieldInput}
             onChangeText={text => {
               this.setState({ email: text });
             }}
           />
-          {/*<View style={style.FieldBottom} />*/}
         </View>
-        <View style={style.inputView}>
+        <View style={authStyle.inputView}>
           <TextInput
             placeholder="Password (6+ characters)"
             placeholderTextColor="#009092"
-            style={style.fieldInput}
+            style={authStyle.fieldInput}
             onChangeText={text => {
               this.setState({ password: text });
             }}
@@ -53,18 +52,13 @@ class SignUp extends Component {
           <TextInput
             placeholder="Repeat password"
             placeholderTextColor="#009092"
-            style={[style.fieldInput, style.passRepeatMargin]}
+            style={[authStyle.fieldInput, authStyle.passRepeatMargin]}
             onChangeText={text => {
               this.setState({ password: text });
             }}
           />
         </View>
-        <AuthButtons
-          action={() => {
-            this.props.SignInAction(this.state.email, this.state.password);
-          }}
-          nav={() => this.props.navigation.navigate("login")}
-        />
+        <AuthButtons nav={() => this.props.navigation.navigate("login")} />
       </View>
     );
   }

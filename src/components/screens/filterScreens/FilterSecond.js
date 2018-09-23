@@ -40,7 +40,7 @@ class FilterSecond extends Component {
       activityTypes,
       ({ labelOne, labelTwo }) => {
         return (
-          <View style={filterStyle.activitiesCheckBoxView} key={labelOne}>
+          <View style={[filterStyle.activitiesCheckBoxView, baseStyle.centerItems]} key={labelOne}>
             <CheckBox
               width={120}
               height={45}
@@ -92,7 +92,7 @@ class FilterSecond extends Component {
             </View>
           </View>
           <Text style={filterStyle.fieldBottom}> </Text>
-          <View style={filterStyle.checkBoxViewCenter}>
+          <View style={baseStyle.centerItems}>
             <Text style={filterStyle.secondaryHeadingText}>
               What would you like to do during your layover?
             </Text>

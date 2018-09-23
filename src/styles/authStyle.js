@@ -1,35 +1,26 @@
-export const style = {
-  buttonViewFb: {
+export const authStyle = {
+  oauthButtonMainView: {
     height: 40,
     width: 280,
     borderRadius: 20,
     marginBottom: 10,
-    backgroundColor: "#3b5998",
     elevation: 4,
     shadowOffset: { width: 5, height: 5 },
     shadowColor: "grey",
     shadowOpacity: 0.5,
     shadowRadius: 10
   },
-  buttonViewGoogle: {
-    height: 40,
-    width: 280,
-    borderRadius: 20,
-    marginBottom: 10,
-    marginTop: 10,
+  googleButtonColor: {
     backgroundColor: "#dd4b39",
-    elevation: 4,
-    shadowOffset: { width: 5, height: 5 },
-    shadowColor: "grey",
-    shadowOpacity: 0.5,
-    shadowRadius: 10
+    marginTop: 10
+  },
+
+  facebookButtonColor: {
+    backgroundColor: "#3b5998"
   },
 
   buttonView: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 40,
-    justifyContent: "center"
+    height: 40
   },
 
   buttonText: {
@@ -43,10 +34,7 @@ export const style = {
   },
 
   middleLineView: {
-    flexDirection: "row",
-    marginBottom: 40,
-    justifyContent: "center",
-    alignItems: "center"
+    marginBottom: 40
   },
   middleLineMargin: { marginRight: 15, marginLeft: 15 },
   middleLineCenter: {
@@ -65,29 +53,18 @@ export const style = {
     width: 120
   },
 
-  authGradient: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 100 + "%",
-    width: 100 + "%"
-  },
-
   signinButton: {
     backgroundColor: "#fff",
     opacity: 0.6,
     height: 45,
     width: 200,
     marginTop: 35,
-    alignItems: "center",
-    justifyContent: "center",
     borderRadius: 25,
-    borderWidth: 1.2,
+    borderWidth: 1.5,
     borderColor: "#009092"
   },
 
   inputView: {
-    alignItems: "center",
-    justifyContent: "center",
     marginTop: 20
   },
 

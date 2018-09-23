@@ -1,24 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { View, TouchableOpacity, Text } from "react-native";
-import { style } from "../../../styles/authStyle";
+import { authStyle } from "../../../styles/authStyle";
+import { baseStyle } from "../../../styles/base";
 import { Facebook, Google } from "../../svg";
+import { SignInAction } from "../../../actions/authActions";
 
-class authButtons extends Component {
-  constructor(props) {
-    super(props);
+export const AuthButtons = ({action, nav} ) => {
 
-    this.state = { email: this.props.email, password: this.props.password };
-  }
-
-  render() {
     return (
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
+      <View style={baseStyle.centerItems}>
         <View>
           <TouchableOpacity
-            style={style.signinButton}
-            onPress={() => {
-              this.props.SignInAction(this.state.email, this.state.password);
-            }}
+            style={[authStyle.signinButton, baseStyle.centerItems]}
+            onPress={action}
           >
             <Text
               style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}
@@ -28,11 +23,7 @@ class authButtons extends Component {
           </TouchableOpacity>
         </View>
         <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
+          style={[baseStyle.centerItems, baseStyle.flexRow]}
         >
           <TouchableOpacity style={{ width: 70 }}>
             <Text
@@ -44,8 +35,8 @@ class authButtons extends Component {
               Password
             </Text>
           </TouchableOpacity>
-          <View style={style.middleLineCenter} />
-          <TouchableOpacity onPress={this.props.nav} style={{ width: 70 }}>
+          <View style={authStyle.middleLineCenter} />
+          <TouchableOpacity onPress={nav} style={{ width: 70 }}>
             <Text
               style={{
                 color: "#009092",
@@ -57,32 +48,31 @@ class authButtons extends Component {
           </TouchableOpacity>
         </View>
         ////////////////////////////////////////////////// //////////MIDDLE LINE
-        <View style={style.middleLineView}>
-          <View style={style.middleLinePosition} />
-          <Text style={style.middleLineMargin}>or</Text>
-          <View style={style.middleLinePosition} />
+        <View style={[authStyle.middleLineView, baseStyle.centerItems, baseStyle.flexRow]}>
+          <View style={authStyle.middleLinePosition} />
+          <Text style={authStyle.middleLineMargin}>or</Text>
+          <View style={authStyle.middleLinePosition} />
         </View>
         ////////////////////////////////////////////////// //////////OAUTH
-        <TouchableOpacity style={style.buttonViewFb} onPress={this.onPress}>
-          <View style={style.buttonView}>
-            <View style={style.buttonIconView}>
+        <TouchableOpacity style={[authStyle.oauthButtonMainView, authStyle.facebookButtonColor]} onPress={this.onPress}>
+          <View style={[authStyle.buttonView, baseStyle.centerItems, baseStyle.flexRow]}>
+            <View style={authStyle.buttonIconView}>
               <Facebook />
             </View>
-            <Text style={style.buttonText}>Sign in with Facebook</Text>
+            <Text style={authStyle.buttonText}>Sign in with Facebook</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={style.buttonViewGoogle} onPress={this.onPress}>
-          <View style={style.buttonView}>
-            <View style={style.buttonIconView}>
+        <TouchableOpacity style={[authStyle.oauthButtonMainView, authStyle.googleButtonColor]} onPress={this.onPress}>
+          <View style={[authStyle.buttonView, baseStyle.centerItems, baseStyle.flexRow]}>
+            <View style={authStyle.buttonIconView}>
               <Google />
             </View>
-            <Text style={style.buttonText}>Sign in with Google</Text>
+            <Text style={authStyle.buttonText}>Sign in with Google</Text>
           </View>
         </TouchableOpacity>
       </View>
       //////////////////////////////////////////////////
     );
-  }
+  
 }
 
-export default authButtons;

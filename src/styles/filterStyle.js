@@ -32,13 +32,7 @@ export const filterStyle = {
     width: 100 + "%",
     justifyContent: "space-between"
   },
-  checkBoxViewCenter: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
   activitiesCheckBoxView: {
-    flexDirection: "row",
-    justifyContent: "center",
     width: 100 + "%",
     height: 55,
   },
