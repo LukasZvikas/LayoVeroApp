@@ -22,10 +22,14 @@ export const SignInAction = (email, password) => async dispatch => {
 };
 
 export const SignUpAction = (email, password) => async dispatch => {
-  const res = await axios.post("http://localhost:5000/signup", {
-    email,
-    password
-  });
+  const res = await axios
+    .post("http://localhost:5000/signup", {
+      email,
+      password
+    })
+    .then(() => {
+      NavigationService.navigate("login");
+    });
 
   console.log(res.data);
   dispatch({ type: SIGN_IN, payload: res.data });

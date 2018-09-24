@@ -1,13 +1,18 @@
 import React from "react";
+
 import Login from "./src/components/screens/authScreens/Login";
 import SignUp from "./src/components/screens/authScreens/SignUp";
+import ForgotPass from "./src/components/screens/authScreens/ForgotPass";
+
 import IndexDash from "./src/components/screens/dashScreens/IndexDash";
 import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
 import Saved from "./src/components/screens/dashScreens/Saved";
 import Profile from "./src/components/screens/dashScreens/Profile";
+
 import FilterFirst from "./src/components/screens/filterScreens/FilterFirst";
 import FilterSecond from "./src/components/screens/filterScreens/FilterSecond";
 import FilterThird from "./src/components/screens/filterScreens/FilterThird";
+
 import { Plane, Search, Favorites, Account } from "./src/components/svg";
 import {
   createStackNavigator,
@@ -97,11 +102,11 @@ export const TabNavigation = createStackNavigator(
   }
 );
 
-
 export const MainNav = createStackNavigator(
   {
     login: { screen: Login },
-    signUp: {screen: SignUp},
+    signUp: { screen: SignUp },
+    forgotPass: { screen: ForgotPass },
     afterAuth: { screen: TabNavigation }
   },
   {

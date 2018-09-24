@@ -73,6 +73,7 @@ class SignUp extends Component {
             this.props.SignUpAction(this.state.email, this.state.password)
           }
           nav={() => this.props.navigation.navigate("login")}
+          buttonName={"Sign Up"}
         />
       </View>
     );

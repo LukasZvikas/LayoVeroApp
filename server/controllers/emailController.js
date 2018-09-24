@@ -45,7 +45,7 @@ exports.confirmEmail = async (req, res, next) => {
     }
   );
 
-  res.send({});
+  res.send({success: "true"});
 };
 
 exports.forgot = async (req, res, next) => {

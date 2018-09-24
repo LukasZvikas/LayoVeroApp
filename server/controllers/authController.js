@@ -56,7 +56,7 @@ exports.signup = async (req, res, next) => {
         to: email,
         from: "lzvikas1@gmail.com",
         subject: "Confirm Your Email",
-        text: "and easy to do anywhere, even with Node.js",
+        text: "Confirm password",
         html: confirmTemplate(url)
       };
       sgMail.send(msg);

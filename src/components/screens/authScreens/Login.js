@@ -58,11 +58,11 @@ class Login extends Component {
               this.setState({ password: text });
             }}
           />
-          {/*<View style={style.FieldBottom} />*/}
         </View>
         <AuthButtons
           action ={() => { this.props.SignInAction(this.state.email, this.state.password)}}
           nav={() => this.props.navigation.navigate("signUp")}
+          buttonName={"Sign In"}
         />
       </View>
     );

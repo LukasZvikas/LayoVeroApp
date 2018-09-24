@@ -26,7 +26,7 @@ class Profile extends Component {
           }}
           onPress={() => {
             SecureStore.deleteItemAsync("jwt");
-            this.props.navigation.navigate("auth");
+            this.props.navigation.navigate("login");
           }}
         >
           <Text
