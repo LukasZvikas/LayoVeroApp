@@ -61,7 +61,7 @@ export const authStyle = {
     marginTop: 35,
     borderRadius: 25,
     borderWidth: 1.5,
-    borderColor: "#009092"
+    borderColor: "#009092",
   },
 
   inputView: {

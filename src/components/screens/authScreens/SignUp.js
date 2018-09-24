@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
 import { LinearGradient, SecureStore } from "expo";
 import layoveroLogo from "../../../assets/images/layovero.png";
-import { connect } from "react-redux";
-import { SignInAction } from "../../../actions/authActions";
-import  {AuthButtons}  from "./authButtons";
+import { SignUpAction } from "../../../actions/authActions";
+import { AuthButtons } from "./authButtons";
 
 class SignUp extends Component {
   constructor(props) {
@@ -19,6 +19,16 @@ class SignUp extends Component {
   static navigationOptions = {
     header: null
   };
+
+  isSignedIn = async () => {
+    await SecureStore.getItemAsync("jwt").then(token => {
+      if (token != null) this.props.navigation.navigate("afterAuth");
+    });
+  };
+
+  async componentDidMount() {
+    this.isSignedIn();
+  }
 
   render() {
     return (
@@ -58,10 +68,15 @@ class SignUp extends Component {
             }}
           />
         </View>
-        <AuthButtons nav={() => this.props.navigation.navigate("login")} />
+        <AuthButtons
+          action={() =>
+            this.props.SignUpAction(this.state.email, this.state.password)
+          }
+          nav={() => this.props.navigation.navigate("login")}
+        />
       </View>
     );
   }
 }
 
-export default SignUp;
+export default connect(null, { SignUpAction })(SignUp);

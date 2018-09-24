@@ -16,7 +16,7 @@ exports.signup = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  console.log(email, password);
+  console.log(email, password)
 
   if (!email || !password) {
     return res
@@ -33,7 +33,10 @@ exports.signup = async (req, res, next) => {
       res.status(422).send({ error: "This email is in use" });
     }
 
+    const id = crypto.randomBytes(16).toString("hex");
+
     const newUser = User({
+      _id: id,
       username: email,
       password: password
     });

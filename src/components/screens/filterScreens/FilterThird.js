@@ -50,12 +50,12 @@ class FilterThird extends Component {
             <Minus />
           </TouchableOpacity>
           ///CIRCLE
-          <Slider
+    {/*      <Slider
             minimumTrackTintColor={"#009092"}
             style={{ margin: 20, width: 200 }}
             maximumValue={100}
-          />
-          {/*  <View
+          />*/}
+            <View
             style={{
               borderWidth: 2.8,
               borderColor: "#D3D3D3",
@@ -69,7 +69,7 @@ class FilterThird extends Component {
           >
             <Text style={{height: 35, width: 35, borderWidth:2, borderRadius: 18}}> </Text>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>$ 45.5</Text>
-          </View>*/}
+          </View>
           /////////
           <TouchableOpacity
             style={{

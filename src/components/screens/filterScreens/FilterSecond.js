@@ -5,7 +5,7 @@ import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { getCities } from "../../../actions/routeActions";
 import { filterStyle } from "../../../styles/filterStyle";
 import { baseStyle } from "../../../styles/base";
-import { style } from "../../../styles/authStyle";
+import { authStyle } from "../../../styles/authStyle";
 import Picker from "../../customUiComponents/Picker";
 import CheckBox from "../../customUiComponents/CheckBox";
 import activityTypes from "./activityTypes";
@@ -40,7 +40,14 @@ class FilterSecond extends Component {
       activityTypes,
       ({ labelOne, labelTwo }) => {
         return (
-          <View style={[filterStyle.activitiesCheckBoxView, baseStyle.centerItems]} key={labelOne}>
+          <View
+            style={[
+              filterStyle.activitiesCheckBoxView,
+              baseStyle.centerItems,
+              baseStyle.flexRow
+            ]}
+            key={labelOne}
+          >
             <CheckBox
               width={120}
               height={45}
@@ -67,7 +74,7 @@ class FilterSecond extends Component {
   }
   render() {
     return (
-      <View style={baseStyle.mainView}>
+      <View style={[baseStyle.mainView, baseStyle.centerItems]}>
         <View style={filterStyle.marginForView}>
           <Text style={filterStyle.mainHeadingText}>
             In order to find you the best layover, we need you to provide us
@@ -100,18 +107,20 @@ class FilterSecond extends Component {
             {this.renderActivityCheckBoxes()}
             /////
           </View>
-          <TouchableOpacity
-            style={style.signinButton}
-            onPress={() => {
-              this.props.navigation.navigate("ThirdFilter");
-            }}
-          >
-            <Text
-              style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}
+          <View style={baseStyle.centerItems}>
+            <TouchableOpacity
+              style={[authStyle.signinButton, baseStyle.centerItems]}
+              onPress={() => {
+                this.props.navigation.navigate("ThirdFilter");
+              }}
             >
-              Next
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}
+              >
+                Next
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
