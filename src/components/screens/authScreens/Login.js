@@ -8,7 +8,8 @@ import { connect } from "react-redux";
 import { SignInAction } from "../../../actions/authActions";
 import { Facebook, Google } from "../../svg";
 import { NavigationActions } from "react-navigation";
-import {AuthButtons} from "./authButtons";
+import { AuthButtons } from "./authButtons";
+import { AuthHeader } from "./authHeader";
 
 class Login extends Component {
   constructor(props) {
@@ -34,36 +35,44 @@ class Login extends Component {
 
   render() {
     return (
-      <View style={[baseStyle.mainView, baseStyle.centerItems]}>
-        <Image
-          style={{ width: 90, height: 90, marginBottom: 60 }}
-          source={layoveroLogo}
-        />
-        <View style={[authStyle.inputView, baseStyle.centerItems]}>
-          <TextInput
-            placeholder="Enter your email"
-            placeholderTextColor="#009092"
-            style={authStyle.fieldInput}
-            onChangeText={text => {
-              this.setState({ email: text });
+      <View
+        style={{
+          height: 100 + "%",
+          backgroundColor: "#fff",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <AuthHeader name={"Sign In"} />
+        <View style={[authStyle.authMainView, authStyle.authCenterItems]}>
+          <View style={[authStyle.inputView, baseStyle.centerItems]}>
+            <TextInput
+              placeholder="Enter your email"
+              placeholderTextColor="#009092"
+              style={authStyle.fieldInput}
+              onChangeText={text => {
+                this.setState({ email: text });
+              }}
+            />
+          </View>
+          <View style={[authStyle.inputView, baseStyle.centerItems]}>
+            <TextInput
+              placeholder="Password (6+ characters)"
+              placeholderTextColor="#009092"
+              style={authStyle.fieldInput}
+              onChangeText={text => {
+                this.setState({ password: text });
+              }}
+            />
+          </View>
+          <AuthButtons
+            action={() => {
+              this.props.SignInAction(this.state.email, this.state.password);
             }}
+            nav={() => this.props.navigation.navigate("signUp")}
+            buttonName={"Sign In"}
           />
         </View>
-        <View style={[authStyle.inputView, baseStyle.centerItems]}>
-          <TextInput
-            placeholder="Password (6+ characters)"
-            placeholderTextColor="#009092"
-            style={authStyle.fieldInput}
-            onChangeText={text => {
-              this.setState({ password: text });
-            }}
-          />
-        </View>
-        <AuthButtons
-          action ={() => { this.props.SignInAction(this.state.email, this.state.password)}}
-          nav={() => this.props.navigation.navigate("signUp")}
-          buttonName={"Sign In"}
-        />
       </View>
     );
   }

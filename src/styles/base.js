@@ -1,5 +1,5 @@
 export const baseStyle = {
-  mainView: {
+ mainView: {
     height: 100 + "%",
     width: 100 + "%",
     backgroundColor: "#fff"

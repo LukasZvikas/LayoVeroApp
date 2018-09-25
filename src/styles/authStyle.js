@@ -1,4 +1,15 @@
 export const authStyle = {
+  authMainView: {
+    height: 80 + "%",
+    width: 100 + "%",
+    backgroundColor: "#fff",
+    paddingTop: 70
+  },
+
+  authCenterItems: {
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
   oauthButtonMainView: {
     height: 40,
     width: 280,
@@ -34,7 +45,7 @@ export const authStyle = {
   },
 
   middleLineView: {
-    marginBottom: 40
+    marginBottom: 25
   },
   middleLineMargin: { marginRight: 15, marginLeft: 15 },
   middleLineCenter: {
@@ -54,14 +65,14 @@ export const authStyle = {
   },
 
   signinButton: {
-    backgroundColor: "#fff",
-    opacity: 0.6,
+    backgroundColor: "#009092",
     height: 45,
     width: 200,
     marginTop: 35,
-    borderRadius: 25,
-    borderWidth: 1.5,
-    borderColor: "#009092",
+    borderRadius: 25
+
+    // borderWidth: 1.5,
+    // borderColor: "#009092",
   },
 
   inputView: {
