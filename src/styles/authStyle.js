@@ -3,7 +3,7 @@ export const authStyle = {
     height: 80 + "%",
     width: 100 + "%",
     backgroundColor: "#fff",
-    paddingTop: 70
+    paddingTop: 60
   },
 
   authCenterItems: {
@@ -12,22 +12,25 @@ export const authStyle = {
   },
   oauthButtonMainView: {
     height: 40,
-    width: 280,
+    width: 100,
     borderRadius: 20,
-    marginBottom: 10,
     elevation: 4,
     shadowOffset: { width: 5, height: 5 },
     shadowColor: "grey",
     shadowOpacity: 0.5,
     shadowRadius: 10
   },
+
+
   googleButtonColor: {
-    backgroundColor: "#dd4b39",
-    marginTop: 10
+    backgroundColor: "#dd4b39"
   },
 
   facebookButtonColor: {
     backgroundColor: "#3b5998"
+  },
+  oauthWidth: {
+    width: 250
   },
 
   buttonView: {
@@ -37,23 +40,23 @@ export const authStyle = {
   buttonText: {
     color: "#fff",
     fontSize: 13,
-    margin: 12
+    margin: 12,
+    fontWeight: "bold"
   },
 
   buttonIconView: {
     paddingLeft: 20
   },
-
   middleLineView: {
-    marginBottom: 25
+    marginBottom: 18,
+    marginTop: 18
   },
   middleLineMargin: { marginRight: 15, marginLeft: 15 },
-  middleLineCenter: {
+  middleNavCenter: {
     width: 1.8,
-    height: 13,
+    height: 12,
+
     backgroundColor: "#009092",
-    marginTop: 20,
-    marginBottom: 20,
     marginLeft: 5,
     marginRight: 5
   },
@@ -68,8 +71,14 @@ export const authStyle = {
     backgroundColor: "#009092",
     height: 45,
     width: 200,
-    marginTop: 35,
-    borderRadius: 25
+    marginTop: 25,
+    marginBottom: 15,
+    borderRadius: 25,
+    elevation: 4,
+    shadowOffset: { width: 5, height: 5 },
+    shadowColor: "grey",
+    shadowOpacity: 0.5,
+    shadowRadius: 10
 
     // borderWidth: 1.5,
     // borderColor: "#009092",

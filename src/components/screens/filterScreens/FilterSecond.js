@@ -115,7 +115,7 @@ class FilterSecond extends Component {
               }}
             >
               <Text
-                style={{ fontSize: 15, fontWeight: "bold", color: "#009092" }}
+                style={{ fontSize: 15, fontWeight: "bold", color: "#fff" }}
               >
                 Next
               </Text>

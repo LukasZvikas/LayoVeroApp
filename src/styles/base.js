@@ -1,5 +1,5 @@
 export const baseStyle = {
- mainView: {
+  mainView: {
     height: 100 + "%",
     width: 100 + "%",
     backgroundColor: "#fff"
@@ -9,7 +9,10 @@ export const baseStyle = {
     justifyContent: "center",
     alignItems: "center"
   },
-
+  spaceBetweenHorizontal: {
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
   flexRow: {
     flexDirection: "row"
   }
