@@ -1,9 +1,12 @@
 export const authStyle = {
   authMainView: {
-    height: 80 + "%",
-    width: 100 + "%",
+    height: 60 + "%",
+    width: 110 + "%",
     backgroundColor: "#fff",
-    paddingTop: 60
+    paddingTop: 50,
+    borderTopRightRadius: 100,
+    borderTopLeftRadius: 100,
+    zIndex: 10
   },
 
   authCenterItems: {
@@ -20,7 +23,6 @@ export const authStyle = {
     shadowOpacity: 0.5,
     shadowRadius: 10
   },
-
 
   googleButtonColor: {
     backgroundColor: "#dd4b39"
@@ -48,8 +50,8 @@ export const authStyle = {
     paddingLeft: 20
   },
   middleLineView: {
-    marginBottom: 18,
-    marginTop: 18
+    marginBottom: 10,
+    marginTop: 10
   },
   middleLineMargin: { marginRight: 15, marginLeft: 15 },
   middleNavCenter: {
@@ -92,8 +94,8 @@ export const authStyle = {
     fontSize: 15,
     height: 45,
     width: 280,
-    borderWidth: 1.2,
-    borderColor: "#009092",
+    borderWidth: 1,
+    borderColor: "#000",
     borderRadius: 25,
     paddingLeft: 10
   },

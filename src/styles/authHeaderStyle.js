@@ -8,7 +8,7 @@ export const authHeader = (width, height) =>
       height: height * 0.33,
       borderBottomRightRadius: width + width * 0.6,
       borderBottomLeftRadius: width + width * 0.6,
-      zIndex: 2
+      zIndex: 2,
     },
 
     logoAndNameView: {
@@ -34,7 +34,6 @@ export const authHeader = (width, height) =>
       height: 120 + "%",
       borderBottomRightRadius: width + width,
       borderBottomLeftRadius: width + width,
-      backgroundColor: "#78B7B1",
       position: "absolute",
       zIndex: 1
     }
