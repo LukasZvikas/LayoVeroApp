@@ -1,5 +1,11 @@
 export const authStyle = {
   authMainView: {
+    height: 100 + "%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  authFormView: {
     height: 60 + "%",
     width: 110 + "%",
     backgroundColor: "#fff",
@@ -57,10 +63,14 @@ export const authStyle = {
   middleNavCenter: {
     width: 1.8,
     height: 12,
-
     backgroundColor: "#009092",
     marginLeft: 5,
     marginRight: 5
+  },
+
+  middleNavText: {
+    color: "#009092",
+    fontWeight: "bold"
   },
 
   middleLinePosition: {
@@ -101,5 +111,16 @@ export const authStyle = {
   },
   passRepeatMargin: {
     marginTop: 20
+  },
+  forgotMainHeading: {
+    fontSize: 16,
+    fontWeight: "bold",
+    margin: 15
+  },
+  forgotSecondaryHeading: {
+    marginRight: 70,
+    marginLeft: 70,
+    textAlign: "center",
+    lineHeight: 20
   }
 };

@@ -17,25 +17,11 @@ export const AuthButtons = ({ action, nav, buttonName }) => {
           onPress={() => NavigationService.navigate("forgotPass")}
           style={{ width: 70 }}
         >
-          <Text
-            style={{
-              color: "#009092",
-              fontWeight: "bold"
-            }}
-          >
-            Password
-          </Text>
+          <Text style={authStyle.middleNavText}>Password</Text>
         </TouchableOpacity>
         <View style={authStyle.middleNavCenter} />
         <TouchableOpacity onPress={nav} style={{ width: 70 }}>
-          <Text
-            style={{
-              color: "#009092",
-              fontWeight: "bold"
-            }}
-          >
-            Sign In
-          </Text>
+          <Text style={authStyle.middleNavText}>Sign In</Text>
         </TouchableOpacity>
       </View>
       ////////////////////////////////////////////////// //////////MIDDLE LINE

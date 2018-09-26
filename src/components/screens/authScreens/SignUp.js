@@ -39,20 +39,11 @@ class SignUp extends Component {
 
   render() {
     const { width, height } = Dimensions.get("window");
-
-    console.log(width, height);
     return (
-      <View
-        style={{
-          height: 100 + "%",
-          backgroundColor: "#fff",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <View style={authStyle.authMainView}>
         <AuthHeader name={"Sign Up"} />
 
-        <View style={[authStyle.authMainView, authStyle.authCenterItems]}>
+        <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
           //////////SIGNIN FIELDS
           <View>
             <TextInput

@@ -35,16 +35,9 @@ class Login extends Component {
 
   render() {
     return (
-      <View
-        style={{
-          height: 100 + "%",
-          backgroundColor: "#fff",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <View style={authStyle.authMainView}>
         <AuthHeader name={"Sign In"} />
-        <View style={[authStyle.authMainView, authStyle.authCenterItems]}>
+        <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
           <View style={[authStyle.inputView, baseStyle.centerItems]}>
             <TextInput
               placeholder="Enter your email"

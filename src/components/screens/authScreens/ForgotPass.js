@@ -15,20 +15,11 @@ class ForgotPass extends Component {
   }
   render() {
     return (
-      <View
-        style={{
-          height: 100 + "%",
-          backgroundColor: "#fff",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <View style={authStyle.authMainView}>
         <AuthHeader name={"Reset Password"} />
-        <View style={[authStyle.authMainView, authStyle.authCenterItems]}>
-          <Text>Forgot your password? </Text>
-          <Text
-            style={{ marginRight: 50, marginLeft: 50, textAlign: "center" }}
-          >
+        <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
+          <Text style={authStyle.forgotMainHeading}>Forgot your password?</Text>
+          <Text style={authStyle.forgotSecondaryHeading}>
             Don't worry! Just fill in your email and we will help you to reset
             it.
           </Text>
@@ -43,6 +34,19 @@ class ForgotPass extends Component {
             />
           </View>
           <AuthButton buttonName={"Send"} />
+          <View style={[baseStyle.centerItems, baseStyle.flexRow]}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("signUp")}
+            >
+              <Text style={authStyle.middleNavText}>Sign Up</Text>
+            </TouchableOpacity>
+            <View style={authStyle.middleNavCenter} />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("login")}
+            >
+              <Text style={authStyle.middleNavText}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );

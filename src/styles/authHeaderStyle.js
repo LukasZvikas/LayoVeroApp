@@ -8,18 +8,16 @@ export const authHeader = (width, height) =>
       height: height * 0.33,
       borderBottomRightRadius: width + width * 0.6,
       borderBottomLeftRadius: width + width * 0.6,
-      zIndex: 2,
+      zIndex: 2
     },
 
     logoAndNameView: {
-      alignItems: "center",
+      marginTop: 60,
+      position: "absolute",
+      top: 50,
+      zIndex: 5,
       justifyContent: "center",
-      width: width + 40,
-      height: height * 0.35,
-      borderBottomRightRadius: width + width * 0.5,
-      borderBottomLeftRadius: width + width * 0.5,
-      backgroundColor: "#009092",
-      zIndex: 2
+      alignItems: "center"
     },
 
     nameText: {
@@ -36,5 +34,10 @@ export const authHeader = (width, height) =>
       borderBottomLeftRadius: width + width,
       position: "absolute",
       zIndex: 1
+    },
+    backgroundImage: {
+      zIndex: 2,
+      width: width + 40,
+      height: height * 0.5
     }
   });
