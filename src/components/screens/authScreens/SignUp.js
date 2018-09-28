@@ -9,9 +9,8 @@ import {
 } from "react-native";
 import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
-import { LinearGradient, SecureStore } from "expo";
-import layoveroLogo from "../../../assets/images/layovero.png";
-import { SignUpAction } from "../../../actions/authActions";
+import { SecureStore } from "expo";
+import { SignUpAction, clearErrorMessages } from "../../../actions/authActions";
 import { AuthButtons } from "./authButtons";
 import { AuthHeader } from "./authHeader";
 
@@ -39,6 +38,7 @@ class SignUp extends Component {
 
   render() {
     const { width, height } = Dimensions.get("window");
+    const { error, clearErrorMessages, SignUpAction, navigation } = this.props;
     return (
       <View style={authStyle.authMainView}>
         <AuthHeader name={"Sign Up"} />
@@ -76,10 +76,8 @@ class SignUp extends Component {
             />
           </View>
           <AuthButtons
-            action={() =>
-              this.props.SignUpAction(this.state.email, this.state.password)
-            }
-            nav={() => this.props.navigation.navigate("login")}
+            action={() => SignUpAction(this.state.email, this.state.password)}
+            nav={() => navigation.navigate("login")}
             buttonName={"Sign Up"}
           />
         </View>
@@ -88,4 +86,4 @@ class SignUp extends Component {
   }
 }
 
-export default connect(null, { SignUpAction })(SignUp);
+export default connect(null, { SignUpAction, clearErrorMessages })(SignUp);

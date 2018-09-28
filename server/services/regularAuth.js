@@ -35,7 +35,7 @@ passport.use(
         return done(err, false);
       }
       if (!user) {
-        return done(null, false);
+        return done(null, false,  {error: "Wrong credentials"});
       }
 
       user.verifyPassword(password, (err, isMatch) => {
@@ -44,12 +44,11 @@ passport.use(
         }
 
         if (!isMatch) {
-          return done(null, false);
+          return done(null, false, {error: "Wrong credentials"});
         }
 
         return done(null, user);
       });
-
     });
   })
 );

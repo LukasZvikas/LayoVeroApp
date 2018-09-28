@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
-import { LinearGradient, SecureStore } from "expo";
-import layoveroLogo from "../../../assets/images/layovero.png";
+import { SecureStore } from "expo";
 import { connect } from "react-redux";
-import { SignInAction } from "../../../actions/authActions";
-import { Facebook, Google } from "../../svg";
-import { NavigationActions } from "react-navigation";
+import { SignInAction, clearErrorMessages } from "../../../actions/authActions";
 import { AuthButtons } from "./authButtons";
 import { AuthHeader } from "./authHeader";
 
@@ -33,11 +30,23 @@ class Login extends Component {
     this.isSignedIn();
   }
 
+  errorCheck = () => {
+    if (this.props.error)
+      return (
+        <Text style={{ color: "red", borderWidth: 1 }}>{this.props.error}</Text>
+      );
+    if (this.props.error === null) return null;
+
+    return null;
+  };
+
   render() {
+    const { error, clearErrorMessages, SignInAction, navigation } = this.props;
     return (
       <View style={authStyle.authMainView}>
         <AuthHeader name={"Sign In"} />
         <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
+          {this.errorCheck()}
           <View style={[authStyle.inputView, baseStyle.centerItems]}>
             <TextInput
               placeholder="Enter your email"
@@ -45,6 +54,9 @@ class Login extends Component {
               style={authStyle.fieldInput}
               onChangeText={text => {
                 this.setState({ email: text });
+                if (error) {
+                  clearErrorMessages();
+                }
               }}
             />
           </View>
@@ -55,14 +67,17 @@ class Login extends Component {
               style={authStyle.fieldInput}
               onChangeText={text => {
                 this.setState({ password: text });
+                if (error) {
+                  clearErrorMessages();
+                }
               }}
             />
           </View>
           <AuthButtons
             action={() => {
-              this.props.SignInAction(this.state.email, this.state.password);
+              SignInAction(this.state.email, this.state.password);
             }}
-            nav={() => this.props.navigation.navigate("signUp")}
+            nav={() => navigation.navigate("signUp")}
             buttonName={"Sign In"}
           />
         </View>
@@ -71,4 +86,12 @@ class Login extends Component {
   }
 }
 
-export default connect(null, { SignInAction })(Login);
+const mapStateToProps = state => {
+  return {
+    error: state.authErrors.errorMessage
+  };
+};
+
+export default connect(mapStateToProps, { SignInAction, clearErrorMessages })(
+  Login
+);

@@ -2,23 +2,20 @@ import axios from "axios";
 import { SecureStore } from "expo";
 import NavigationService from "../../NavigationService";
 
-import { SIGN_IN } from "../reducers/types";
+import { AUTH_ERROR, CLEAR_ERRORS } from "../reducers/types";
 
 export const SignInAction = (email, password) => async dispatch => {
-  console.log(email, password);
-  const res = await axios
-    .post("http://localhost:5000/signin", {
-      email,
-      password
-    })
-    .then(res => {
-      SecureStore.setItemAsync("jwt", res.data.token);
-    })
-    .then(() => {
-      NavigationService.navigate("afterAuth");
-    });
+  const res = await axios.post("http://localhost:5000/signin", {
+    email,
+    password
+  });
 
-  dispatch({ type: SIGN_IN, payload: res.data.token });
+  if (res.data.token) {
+    SecureStore.setItemAsync("jwt", res.data.token);
+    NavigationService.navigate("afterAuth");
+  } else {
+    dispatch({ type: AUTH_ERROR, payload: res.data });
+  }
 };
 
 export const SignUpAction = (email, password) => async dispatch => {
@@ -33,4 +30,8 @@ export const SignUpAction = (email, password) => async dispatch => {
 
   console.log(res.data);
   dispatch({ type: SIGN_IN, payload: res.data });
+};
+
+export const clearErrorMessages = () => {
+  return { type: CLEAR_ERRORS };
 };

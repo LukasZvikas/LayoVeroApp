@@ -6,7 +6,10 @@ const JWT = require("jwt-simple");
 const keys = require("../config/dev");
 const cors = require("cors");
 
-const requireSignin = passport.authenticate("local", { session: false });
+const requireSignin = passport.authenticate("local", {
+  session: false,
+  failWithError: true
+});
 const requireAuth = passport.authenticate("jwt", { session: false });
 const googleAuth = passport.authenticate("google", {
   session: false,
@@ -38,7 +41,17 @@ module.exports = app => {
 
   app.post(
     "/signin",
-    requireSignin,
+    (req, res, next) => {
+      passport.authenticate("local", (err, user, info) => {
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          return res.json({ message: info.error });
+        }
+        res.json(user);
+      })(req, res, next);
+    },
     authController.signin
   );
 

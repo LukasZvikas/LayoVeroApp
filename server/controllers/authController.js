@@ -16,7 +16,7 @@ exports.signup = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  console.log(email, password)
+  console.log(email, password);
 
   if (!email || !password) {
     return res
@@ -65,8 +65,14 @@ exports.signup = async (req, res, next) => {
   });
 };
 
+exports.signinError = async (err, req, res, next) => {
+  console.log("ERROR", err);
+  return res.json({error: err})
+
+}
+
 exports.signin = async (req, res, next) => {
-  console.log(req.user._id);
+  console.log("user", req.user._id);
   await User.findById({ _id: req.user.id }, (err, user) => {
     if (err) {
       return next(err);
