@@ -30,14 +30,38 @@ class Login extends Component {
     this.isSignedIn();
   }
 
+  buttonCheck = () => {
+    if ((this.state.email && this.state.password) !== "") {
+      return (
+        <AuthButtons
+          action={() => {
+            SignInAction(this.state.email, this.state.password);
+          }}
+          nav={() => navigation.navigate("signUp")}
+          buttonName={"Sign In"}
+          disabled={false}
+          opacity={1}
+        />
+      );
+    }
+    return (
+      <AuthButtons
+        disabled={true}
+        opacity={0.5}
+        buttonName={"Sign In"}
+        nav={() => navigation.navigate("signUp")}
+      />
+    );
+  };
+
   errorCheck = () => {
     if (this.props.error)
       return (
-        <Text style={{ color: "red", borderWidth: 1 }}>{this.props.error}</Text>
+        <Text style={{ color: "red", fontSize: 15 }}>{this.props.error}</Text>
       );
-    if (this.props.error === null) return null;
+    if (this.props.error === null) return <Text> </Text>;
 
-    return null;
+    return <Text> </Text>;
   };
 
   render() {
@@ -73,13 +97,7 @@ class Login extends Component {
               }}
             />
           </View>
-          <AuthButtons
-            action={() => {
-              SignInAction(this.state.email, this.state.password);
-            }}
-            nav={() => navigation.navigate("signUp")}
-            buttonName={"Sign In"}
-          />
+          {this.buttonCheck()}
         </View>
       </View>
     );

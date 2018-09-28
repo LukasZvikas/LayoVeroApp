@@ -6,7 +6,7 @@ export const authStyle = {
     alignItems: "center"
   },
   authFormView: {
-    height: 60 + "%",
+    height: 55 + "%",
     width: 110 + "%",
     backgroundColor: "#fff",
     paddingTop: 50,
@@ -91,7 +91,6 @@ export const authStyle = {
     shadowColor: "grey",
     shadowOpacity: 0.5,
     shadowRadius: 10
-
     // borderWidth: 1.5,
     // borderColor: "#009092",
   },

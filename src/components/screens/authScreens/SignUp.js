@@ -36,6 +36,29 @@ class SignUp extends Component {
     this.isSignedIn();
   }
 
+  buttonCheck = () => {
+    if ((this.state.email && this.state.password) !== "") {
+      return (
+        <AuthButtons
+          action={() =>
+            this.prop.SignUpAction(this.state.email, this.state.password)
+          }
+          nav={() => this.props.navigation.navigate("login")}
+          buttonName={"Sign Up"}
+          disabled={false}
+        />
+      );
+    }
+    return (
+      <AuthButtons
+        disabled={true}
+        opacity={0.5}
+        buttonName={"Sign Up"}
+        nav={() => this.props.navigation.navigate("login")}
+      />
+    );
+  };
+
   render() {
     const { width, height } = Dimensions.get("window");
     const { error, clearErrorMessages, SignUpAction, navigation } = this.props;
@@ -75,11 +98,7 @@ class SignUp extends Component {
               }}
             />
           </View>
-          <AuthButtons
-            action={() => SignUpAction(this.state.email, this.state.password)}
-            nav={() => navigation.navigate("login")}
-            buttonName={"Sign Up"}
-          />
+          {this.buttonCheck()}
         </View>
       </View>
     );

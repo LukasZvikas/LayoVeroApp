@@ -8,10 +8,10 @@ import { SignInAction } from "../../../actions/authActions";
 import { AuthButton } from "../../customUiComponents/authButton";
 import NavigationService from "../../../../NavigationService";
 
-export const AuthButtons = ({ action, nav, buttonName }) => {
+export const AuthButtons = ({ action, nav, buttonName, disabled, opacity }) => {
   return (
     <View style={baseStyle.centerItems}>
-      <AuthButton action={action} buttonName={buttonName} />
+      <AuthButton action={action} buttonName={buttonName} isDisabled={disabled} opacity={opacity} />
       <View style={[baseStyle.centerItems, baseStyle.flexRow]}>
         <TouchableOpacity
           onPress={() => NavigationService.navigate("forgotPass")}
