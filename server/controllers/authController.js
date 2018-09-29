@@ -17,21 +17,13 @@ exports.signup = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  console.log(email, password);
-
-  if (!email || !password) {
-    return res
-      .status(422)
-      .send({ error: "You must provide email and password" });
-  }
-
   await User.findOne({ username: email }, async (err, existingUser) => {
     if (err) {
       return next(err);
     }
 
     if (existingUser) {
-      res.status(422).send({ error: "This email is in use" });
+      res.send({ error: "This email is in use" });
     }
 
     const id = crypto.randomBytes(16).toString("hex");
@@ -72,7 +64,7 @@ exports.signin = (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.json({ message: info.error });
+      return res.json({ error: info.error });
     }
     await User.findById({ _id: user._id }, (err, user) => {
       if (err) {

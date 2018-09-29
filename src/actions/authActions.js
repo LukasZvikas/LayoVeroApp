@@ -14,22 +14,23 @@ export const SignInAction = (email, password) => async dispatch => {
     SecureStore.setItemAsync("jwt", res.data.token);
     NavigationService.navigate("afterAuth");
   } else {
+    console.log(res);
     dispatch({ type: AUTH_ERROR, payload: res.data });
   }
 };
 
 export const SignUpAction = (email, password) => async dispatch => {
-  const res = await axios
-    .post("http://localhost:5000/signup", {
-      email,
-      password
-    })
-    .then(() => {
-      NavigationService.navigate("login");
-    });
+  const res = await axios.post("http://localhost:5000/signup", {
+    email,
+    password
+  });
 
-  console.log(res.data);
-  dispatch({ type: SIGN_IN, payload: res.data });
+  if (res.data.token) {
+    NavigationService.navigate("login");
+  } else {
+    console.log(res.data);
+    dispatch({ type: AUTH_ERROR, payload: res.data });
+  }
 };
 
 export const showEmailError = () => {
