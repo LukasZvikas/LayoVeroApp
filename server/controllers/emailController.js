@@ -29,10 +29,9 @@ exports.confirmEmail = async (req, res, next) => {
         }
       });
 
+      const url = `http://localhost:5000/reset/${resetToken}`;
 
-      const url = `http://localhost:5000/reset/${resetToken}`; 
-
-      console.log(msg)
+      console.log(msg);
 
       const msg = {
         to: email,
@@ -45,7 +44,7 @@ exports.confirmEmail = async (req, res, next) => {
     }
   );
 
-  res.send({success: "true"});
+  res.send({ success: "true" });
 };
 
 exports.forgot = async (req, res, next) => {
@@ -61,11 +60,13 @@ exports.forgot = async (req, res, next) => {
   );
 
   await User.findOne({ username: email }, async (err, user) => {
+    console.log(user);
     if (err) {
       return next(err);
     }
     if (!user) {
-      res.status(422).send({ error: "User was not found" });
+      console.log(user);
+      return res.send({ error: "User was not found" });
     }
 
     user.resetPassToken = resetToken;
@@ -75,6 +76,7 @@ exports.forgot = async (req, res, next) => {
         next(err);
       }
     });
+    console.log("2");
 
     const url = `http://localhost:5000/reset/${resetToken}`;
 
@@ -87,8 +89,9 @@ exports.forgot = async (req, res, next) => {
     };
     sgMail.send(msg);
   });
+  console.log("3");
 
-  res.send({});
+  res.send({ message: "Details were successfully sent to your email!" });
 };
 
 exports.forgotTokenGet = async (req, res, next) => {

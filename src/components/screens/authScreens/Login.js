@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {
   SignInAction,
   showEmailError,
-  clearErrorMessages
+  clearMessages
 } from "../../../actions/authActions";
 import { AuthHeader } from "./authHeader";
 import loginCheck from "../../../utilities/loginCheck";
@@ -31,7 +31,7 @@ class Login extends Component {
   render() {
     const {
       error,
-      clearErrorMessages,
+      clearMessages,
       SignInAction,
       showEmailError,
       navigation
@@ -50,7 +50,7 @@ class Login extends Component {
               onChangeText={text => {
                 this.setState({ email: text });
                 if (error) {
-                  clearErrorMessages();
+                  clearMessages();
                 }
               }}
             />
@@ -63,7 +63,7 @@ class Login extends Component {
               onChangeText={text => {
                 this.setState({ password: text });
                 if (error) {
-                  clearErrorMessages();
+                  clearMessages();
                 }
               }}
             />
@@ -93,5 +93,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   SignInAction,
   showEmailError,
-  clearErrorMessages
+  clearMessages
 })(Login);

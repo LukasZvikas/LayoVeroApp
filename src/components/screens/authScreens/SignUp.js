@@ -11,7 +11,7 @@ import { baseStyle } from "../../../styles/base";
 import {
   SignUpAction,
   showEmailError,
-  clearErrorMessages
+  clearMessages
 } from "../../../actions/authActions";
 import { AuthHeader } from "./authHeader";
 import { ButtonCheck, ErrorCheck } from "./authViewComponents";
@@ -37,7 +37,7 @@ class SignUp extends Component {
     const { width, height } = Dimensions.get("window");
     const {
       error,
-      clearErrorMessages,
+      clearMessages,
       SignUpAction,
       showEmailError,
       navigation
@@ -103,5 +103,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   SignUpAction,
   showEmailError,
-  clearErrorMessages
+  clearMessages
 })(SignUp);
