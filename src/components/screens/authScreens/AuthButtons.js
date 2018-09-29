@@ -8,7 +8,7 @@ import { SignInAction } from "../../../actions/authActions";
 import { AuthButton } from "../../customUiComponents/authButton";
 import NavigationService from "../../../../NavigationService";
 
-export const AuthButtons = ({ action, nav, buttonName, disabled, opacity }) => {
+export const AuthButtons = ({ action, nav, buttonName, middleNavLinkName, disabled, opacity }) => {
   return (
     <View style={baseStyle.centerItems}>
       <AuthButton action={action} buttonName={buttonName} isDisabled={disabled} opacity={opacity} />
@@ -21,7 +21,7 @@ export const AuthButtons = ({ action, nav, buttonName, disabled, opacity }) => {
         </TouchableOpacity>
         <View style={authStyle.middleNavCenter} />
         <TouchableOpacity onPress={nav} style={{ width: 70 }}>
-          <Text style={authStyle.middleNavText}>Sign In</Text>
+          <Text style={authStyle.middleNavText}>{middleNavLinkName}</Text>
         </TouchableOpacity>
       </View>
       ////////////////////////////////////////////////// //////////MIDDLE LINE

@@ -4,9 +4,14 @@ import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
 import { SecureStore } from "expo";
 import { connect } from "react-redux";
-import { SignInAction, clearErrorMessages } from "../../../actions/authActions";
+import {
+  SignInAction,
+  showEmailError,
+  clearErrorMessages
+} from "../../../actions/authActions";
 import { AuthButtons } from "./authButtons";
 import { AuthHeader } from "./authHeader";
+import emailValidation from "../../../utilities/emailValidation";
 
 class Login extends Component {
   constructor(props) {
@@ -35,10 +40,17 @@ class Login extends Component {
       return (
         <AuthButtons
           action={() => {
-            SignInAction(this.state.email, this.state.password);
+            if (emailValidation(this.state.email)) {
+              console.log("here!")
+              this.props.SignInAction(this.state.email, this.state.password);
+            } else {
+              console.log("bad!")
+              this.props.showEmailError();
+            }
           }}
-          nav={() => navigation.navigate("signUp")}
+          nav={() => this.props.navigation.navigate("signUp")}
           buttonName={"Sign In"}
+          middleNavLinkName={"Sign Up"}
           disabled={false}
           opacity={1}
         />
@@ -49,7 +61,8 @@ class Login extends Component {
         disabled={true}
         opacity={0.5}
         buttonName={"Sign In"}
-        nav={() => navigation.navigate("signUp")}
+        middleNavLinkName={"Sign Up"}
+        nav={() => this.props.navigation.navigate("signUp")}
       />
     );
   };
@@ -110,6 +123,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { SignInAction, clearErrorMessages })(
-  Login
-);
+export default connect(mapStateToProps, {
+  SignInAction,
+  showEmailError,
+  clearErrorMessages
+})(Login);

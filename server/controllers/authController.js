@@ -4,6 +4,7 @@ const jsonToken = require("jsonwebtoken");
 const keys = require("../config/dev");
 const sgMail = require("@sendgrid/mail");
 const crypto = require("crypto");
+const passport = require("passport");
 const confirmTemplate = require("../services/confirmEmailTemplate");
 sgMail.setApiKey(keys.SENDGRID_KEY);
 
@@ -65,29 +66,30 @@ exports.signup = async (req, res, next) => {
   });
 };
 
-exports.signinError = async (err, req, res, next) => {
-  console.log("ERROR", err);
-  return res.json({error: err})
-
-}
-
-exports.signin = async (req, res, next) => {
-  console.log("user", req.user._id);
-  await User.findById({ _id: req.user.id }, (err, user) => {
+exports.signin = (req, res, next) => {
+  passport.authenticate("local", async (err, user, info) => {
     if (err) {
       return next(err);
     }
-
     if (!user) {
-      return res.status(422).send({ error: "User was not found" });
+      return res.json({ message: info.error });
     }
+    await User.findById({ _id: user._id }, (err, user) => {
+      if (err) {
+        return next(err);
+      }
 
-    if (!user.confirmed) {
-      return res.status(401).send({ error: "Please confirm your account" });
-    }
+      if (!user) {
+        return res.status(422).send({ error: "User was not found" });
+      }
 
-    res.json({ token: userToken(req.user) });
-  });
+      if (!user.confirmed) {
+        return res.status(401).send({ error: "Please confirm your account" });
+      }
+
+      res.json({ token: userToken(user) });
+    });
+  })(req, res, next);
 };
 
 exports.googleToken = async (req, res, next) => {

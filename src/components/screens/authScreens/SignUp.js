@@ -45,6 +45,7 @@ class SignUp extends Component {
           }
           nav={() => this.props.navigation.navigate("login")}
           buttonName={"Sign Up"}
+          middleNavLinkName={"Sign In"}
           disabled={false}
         />
       );
@@ -54,6 +55,7 @@ class SignUp extends Component {
         disabled={true}
         opacity={0.5}
         buttonName={"Sign Up"}
+        middleNavLinkName={"Sign In"}
         nav={() => this.props.navigation.navigate("login")}
       />
     );
