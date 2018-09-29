@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput} from "react-native";
 import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
-import { SecureStore } from "expo";
 import { connect } from "react-redux";
 import {
   SignInAction,
   showEmailError,
   clearErrorMessages
 } from "../../../actions/authActions";
-import { AuthButtons } from "./authButtons";
 import { AuthHeader } from "./authHeader";
-import emailValidation from "../../../utilities/emailValidation";
+import loginCheck from "../../../utilities/loginCheck";
+import { ButtonCheck, ErrorCheck } from "./authViewComponents";
 
 class Login extends Component {
   constructor(props) {
@@ -25,65 +24,24 @@ class Login extends Component {
     header: null
   };
 
-  isSignedIn = async () => {
-    await SecureStore.getItemAsync("jwt").then(token => {
-      if (token != null) this.props.navigation.navigate("afterAuth");
-    });
-  };
-
   async componentDidMount() {
-    this.isSignedIn();
+    loginCheck();
   }
 
-  buttonCheck = () => {
-    if ((this.state.email && this.state.password) !== "") {
-      return (
-        <AuthButtons
-          action={() => {
-            if (emailValidation(this.state.email)) {
-              console.log("here!")
-              this.props.SignInAction(this.state.email, this.state.password);
-            } else {
-              console.log("bad!")
-              this.props.showEmailError();
-            }
-          }}
-          nav={() => this.props.navigation.navigate("signUp")}
-          buttonName={"Sign In"}
-          middleNavLinkName={"Sign Up"}
-          disabled={false}
-          opacity={1}
-        />
-      );
-    }
-    return (
-      <AuthButtons
-        disabled={true}
-        opacity={0.5}
-        buttonName={"Sign In"}
-        middleNavLinkName={"Sign Up"}
-        nav={() => this.props.navigation.navigate("signUp")}
-      />
-    );
-  };
-
-  errorCheck = () => {
-    if (this.props.error)
-      return (
-        <Text style={{ color: "red", fontSize: 15 }}>{this.props.error}</Text>
-      );
-    if (this.props.error === null) return <Text> </Text>;
-
-    return <Text> </Text>;
-  };
-
   render() {
-    const { error, clearErrorMessages, SignInAction, navigation } = this.props;
+    const {
+      error,
+      clearErrorMessages,
+      SignInAction,
+      showEmailError,
+      navigation
+    } = this.props;
     return (
       <View style={authStyle.authMainView}>
         <AuthHeader name={"Sign In"} />
         <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
-          {this.errorCheck()}
+          <ErrorCheck error={error} />
+          //LOGIN FIELDS
           <View style={[authStyle.inputView, baseStyle.centerItems]}>
             <TextInput
               placeholder="Enter your email"
@@ -110,8 +68,17 @@ class Login extends Component {
               }}
             />
           </View>
-          {this.buttonCheck()}
+          <ButtonCheck
+            authAction={() =>
+              SignInAction(this.state.email, this.state.password)
+            }
+            emailErrorAction={() => showEmailError()}
+            navigateTo={() => navigation.navigate("signUp")}
+            email={this.state.email}
+            password={this.state.password}
+          />
         </View>
+        //LOGIN FIELDS END
       </View>
     );
   }

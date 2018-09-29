@@ -8,10 +8,26 @@ import { SignInAction } from "../../../actions/authActions";
 import { AuthButton } from "../../customUiComponents/authButton";
 import NavigationService from "../../../../NavigationService";
 
-export const AuthButtons = ({ action, nav, buttonName, middleNavLinkName, disabled, opacity }) => {
+export const AuthLowerView = ({
+  action,
+  nav,
+  buttonName,
+  middleNavLinkName,
+  disabled,
+  opacity
+}) => {
   return (
+    ///VIEW FROM AUTH BUTTON TO OAUTH BUTTONS
     <View style={baseStyle.centerItems}>
-      <AuthButton action={action} buttonName={buttonName} isDisabled={disabled} opacity={opacity} />
+      //AUTHBUTTON
+      <AuthButton
+        action={action}
+        buttonName={buttonName}
+        isDisabled={disabled}
+        opacity={opacity}
+      />
+      //AUTHBUTTON END 
+      //MIDDLE NAV
       <View style={[baseStyle.centerItems, baseStyle.flexRow]}>
         <TouchableOpacity
           onPress={() => NavigationService.navigate("forgotPass")}
@@ -24,7 +40,8 @@ export const AuthButtons = ({ action, nav, buttonName, middleNavLinkName, disabl
           <Text style={authStyle.middleNavText}>{middleNavLinkName}</Text>
         </TouchableOpacity>
       </View>
-      ////////////////////////////////////////////////// //////////MIDDLE LINE
+      //MIDDLE NAV END 
+      //MIDDLE LINE
       <View
         style={[
           authStyle.middleLineView,
@@ -36,7 +53,8 @@ export const AuthButtons = ({ action, nav, buttonName, middleNavLinkName, disabl
         <Text style={authStyle.middleLineMargin}>or</Text>
         <View style={authStyle.middleLinePosition} />
       </View>
-      ////////////////////////////////////////////////// //////////OAUTH
+      //MIDDLE LINE END 
+      //OAUTH
       <View
         style={[
           authStyle.oauthWidth,
@@ -61,7 +79,8 @@ export const AuthButtons = ({ action, nav, buttonName, middleNavLinkName, disabl
           </View>
         </TouchableOpacity>
       </View>
+      //OAUTH END
     </View>
-    //////////////////////////////////////////////////
+    
   );
 };

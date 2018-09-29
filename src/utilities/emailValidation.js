@@ -4,4 +4,5 @@ export default email => {
   const invalidEmail = regex.test(email);
 
   return invalidEmail;
+  
 };
