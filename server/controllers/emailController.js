@@ -91,7 +91,7 @@ exports.forgot = async (req, res, next) => {
   });
   console.log("3");
 
-  res.send({ message: "Details were successfully sent to your email!" });
+  res.send({ message: `Details were successfully sent to ${email}` });
 };
 
 exports.forgotTokenGet = async (req, res, next) => {

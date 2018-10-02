@@ -5,7 +5,7 @@ export const filterStyle = {
     marginTop: 100,
     justifyContent: "center",
     zIndex: 200,
-    height: 100+"%"
+    height: 100 + "%"
   },
   pickerInput: {
     height: 45,
@@ -13,14 +13,19 @@ export const filterStyle = {
     borderWidth: 1.2,
     borderColor: "#009092",
     borderRadius: 22,
-    paddingLeft: 10,
+    paddingLeft: 10
   },
   mainHeadingText: {
     fontWeight: "bold",
     fontSize: 16,
     textAlign: "center"
   },
-  secondaryHeadingText: { fontSize: 13, zIndex: 1, marginBottom: 10, textAlign: "center" },
+  secondaryHeadingText: {
+    fontSize: 13,
+    zIndex: 1,
+    marginBottom: 10,
+    textAlign: "center"
+  },
   pickerItemStyle: {
     borderColor: "#009092",
     borderTopColor: "#fff",
@@ -34,7 +39,7 @@ export const filterStyle = {
   },
   activitiesCheckBoxView: {
     width: 100 + "%",
-    height: 55,
+    height: 55
   },
   fieldBottom: {
     backgroundColor: "#009092",

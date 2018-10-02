@@ -10,7 +10,7 @@ import {
 } from "../reducers/types";
 
 export const SignInAction = (email, password) => async dispatch => {
-  const res = await axios.post("http://localhost:5000/signin", {
+  const res = await axios.post("http://10.202.138.222:5000/signin", {
     email,
     password
   });
@@ -48,10 +48,8 @@ export const showSuccessMessage = email => async dispatch => {
     dispatch({ type: SUCCESS_MESSAGE, payload: res.data.message });
   }
   else{
-    console.log(res.data.error)
     dispatch({type: AUTH_ERROR, payload: res.data.error})
   }
-  console.log(res);
 };
 
 export const clearMessages = () => {

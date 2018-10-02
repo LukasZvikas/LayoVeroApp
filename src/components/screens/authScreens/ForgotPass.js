@@ -22,7 +22,7 @@ class ForgotPass extends Component {
   isSuccess = () => {
     if (this.props.successMessage)
       return (
-        <Text style={{ color: "#009092", fontSize: 15 }}>
+        <Text style={{ color: "#009092", fontSize: 15, marginRight:30, marginLeft:30, textAlign:"center" }}>
           {this.props.successMessage}
         </Text>
       );
