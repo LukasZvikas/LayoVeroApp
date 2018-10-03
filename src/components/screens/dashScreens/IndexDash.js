@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { dashStyle } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
-import { Search } from "../../svg";
+import { Search, Location } from "../../svg";
 import {
   getCities,
   getCityFromPartialQuery,
@@ -44,14 +44,17 @@ class IndexDash extends Component {
       console.log("CITY", city);
       return (
         <View
+          key={city}
           style={{
             borderBottomWidth: 1.2,
             borderBottomColor: "#D3D3D3",
             marginTop: 0,
-            justifyContent: "center",
-            marginTop: 30
+            justifyContent: "flex-start",
+            marginTop: 30,
+            flexDirection: "row",
           }}
-        >
+        > 
+          <Text style={{marginRight: 10}}><Location /></Text>
           <Text
             style={{
               justifyContent: "center",
@@ -94,56 +97,68 @@ class IndexDash extends Component {
           }
         >
           <View
-            style={[
-              dashStyle.searchBarView,
-              baseStyle.centerItems,
-              this.state.searchBarState
-                ? { width: 50 + "%" }
-                : { width: 80 + "%" }
-            ]}
+            style={{
+              width: 400,
+              justifyContent: "space-around",
+              alignItems: "center",
+              flexDirection: "row"
+            }}
           >
-            {this.state.showSearchIcon ? (
-              <View style={{ paddingRight: 5 }}>
-                <Search color="#686868" />
-              </View>
-            ) : null}
-
-            <TextInput
-              ref={this.myTextInput}
-              style={{ width: 80 + "%" }}
-              placeholder="Try London"
-              onFocus={() => {
-                this.setState({ searchBarState: !this.state.searchBarState });
-              }}
-              value={this.state.text}
-              onChange={event => {
-                this.handleInputChange(event);
-                this.setState({ text: event.nativeEvent.text });
-              }}
-            />
-          </View>
-          {this.state.searchBarState ? (
-            <TouchableOpacity
-              style={{ margin: 150 }}
-              onPress={() => {
-
-                this.setState({text: ""})
-                Keyboard.dismiss();
-                this.setState({ searchBarState: !this.state.searchBarState });
-                this.props.getCities();
-                this.props.clearSuggestions();
-              }}
+            <View
+              style={[
+                dashStyle.searchBarView,
+                baseStyle.centerItems,
+                this.state.searchBarState
+                  ? { width: 50 + "%" }
+                  : { width: 80 + "%" }
+              ]}
             >
-              <Text>Cancel</Text>
-            </TouchableOpacity>
-          ) : null}
+              {this.state.showSearchIcon ? (
+                <View style={{ paddingRight: 5 }}>
+                  <Search color="#686868" />
+                </View>
+              ) : null}
+
+              <TextInput
+                ref={this.myTextInput}
+                style={{ width: 80 + "%" }}
+                placeholder="Try London"
+                onFocus={() => {
+                  this.setState({ searchBarState: !this.state.searchBarState });
+                }}
+                value={this.state.text}
+                onChange={event => {
+                  this.handleInputChange(event);
+                  this.setState({ text: event.nativeEvent.text });
+                }}
+              />
+            </View>
+            {this.state.searchBarState ? (
+              <TouchableOpacity
+                style={{
+                  marginRight: 30,
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+                onPress={() => {
+                  this.setState({ text: "" });
+                  Keyboard.dismiss();
+                  this.setState({ searchBarState: !this.state.searchBarState });
+                  this.props.getCities();
+                  this.props.clearSuggestions();
+                }}
+              >
+                <Text>Cancel</Text>
+              </TouchableOpacity>
+            ) : null}
+          </View>
 
           {this.props.suggestions ? (
             <View
               style={{
                 position: "absolute",
                 top: 60,
-                width: 70 + "%",
+                width: 80 + "%",
                 justifyContent: "center"
               }}
             >

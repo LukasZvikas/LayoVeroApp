@@ -10,7 +10,7 @@ import {
 } from "../reducers/types";
 
 export const SignInAction = (email, password) => async dispatch => {
-  const res = await axios.post("http://10.202.138.222:5000/signin", {
+  const res = await axios.post("http://10.202.137.197:5000/signin", {
     email,
     password
   });

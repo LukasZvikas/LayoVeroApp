@@ -47,8 +47,8 @@ export const ButtonCheck = ({
 export const ErrorCheck = ({ error }) => {
   const isError = () => {
     if (error)
-      return <Text style={{ color: "red", fontSize: 15 }}>{error}</Text>;
-    if (error === null) return <Text> </Text>;
+      return <Text style={{ color: "red", fontSize: 15, height: 20 }}>{error}</Text>;
+    if (error === null) return <Text style={{height: 20 }}> </Text>;
 
     return <Text> </Text>;
   };

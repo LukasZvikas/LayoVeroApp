@@ -5,8 +5,8 @@ export const authHeader = (width, height) =>
       alignItems: "center",
       justifyContent: "center",
       width: width + width * 0.15,
-      height: height * 0.30,
-      zIndex: 2
+      height: height * 0.35,
+      zIndex: 2,
     },
 
     logoAndNameView: {

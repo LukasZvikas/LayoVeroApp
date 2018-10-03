@@ -2,7 +2,6 @@ export const dashStyle = {
   searchBarView: {
     borderWidth: 1.2,
     borderColor: "#686868",
-    width: 300,
     borderRadius: 30,
     flexDirection: "row",
     height: 55

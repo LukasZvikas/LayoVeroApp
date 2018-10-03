@@ -6,10 +6,10 @@ export const authStyle = {
     alignItems: "center"
   },
   authFormView: {
-    height: 55 + "%",
+    height: 65 + "%",
     width: 110 + "%",
     backgroundColor: "#fff",
-    paddingTop: 50,
+    paddingTop: 30,
     borderTopRightRadius: 100,
     borderTopLeftRadius: 100,
     zIndex: 10
