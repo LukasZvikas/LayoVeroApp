@@ -12,3 +12,27 @@ exports.getRoutes = async (req, res, next) => {
   });
 };
 
+exports.getPartialQuery = async (req, res, next) => {
+  const letters = req.body.partialQuery;
+  console.log(letters);
+
+  Routes.find(
+    { city: { $regex: "^" + letters, $options: "im" } },
+    (err, routes) => {
+      console.log(routes);
+      if (err) {
+        return next(err);
+      }
+
+      const cities = routes.map(route => {
+        return route.city;
+      });
+
+      const uniqueCities = [...new Set(cities)];
+
+      console.log("REsults", uniqueCities);
+
+      res.send(uniqueCities);
+    }
+  );
+};
