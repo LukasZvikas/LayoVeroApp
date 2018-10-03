@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
-  Image
+  Image,
+  Keyboard
 } from "react-native";
 import { dashStyle } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
@@ -23,7 +24,7 @@ class IndexDash extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showSearchIcon: true, searchBarState: false };
+    this.state = { showSearchIcon: true, searchBarState: false, text: "" };
   }
   static navigationOptions = {
     header: null,
@@ -31,11 +32,9 @@ class IndexDash extends Component {
   };
 
   handleInputChange = event => {
-    console.log(event.nativeEvent);
     if (event.nativeEvent.text && event.nativeEvent.text.length > 0) {
       this.props.getCityFromPartialQuery(event.nativeEvent.text);
-    }
-    else {
+    } else {
       this.props.clearSuggestions();
     }
   };
@@ -94,7 +93,15 @@ class IndexDash extends Component {
               : {}
           }
         >
-          <View style={[dashStyle.searchBarView, baseStyle.centerItems]}>
+          <View
+            style={[
+              dashStyle.searchBarView,
+              baseStyle.centerItems,
+              this.state.searchBarState
+                ? { width: 50 + "%" }
+                : { width: 80 + "%" }
+            ]}
+          >
             {this.state.showSearchIcon ? (
               <View style={{ paddingRight: 5 }}>
                 <Search color="#686868" />
@@ -102,14 +109,35 @@ class IndexDash extends Component {
             ) : null}
 
             <TextInput
+              ref={this.myTextInput}
               style={{ width: 80 + "%" }}
               placeholder="Try London"
               onFocus={() => {
                 this.setState({ searchBarState: !this.state.searchBarState });
               }}
-              onChange={event => this.handleInputChange(event)}
+              value={this.state.text}
+              onChange={event => {
+                this.handleInputChange(event);
+                this.setState({ text: event.nativeEvent.text });
+              }}
             />
           </View>
+          {this.state.searchBarState ? (
+            <TouchableOpacity
+              style={{ margin: 150 }}
+              onPress={() => {
+
+                this.setState({text: ""})
+                Keyboard.dismiss();
+                this.setState({ searchBarState: !this.state.searchBarState });
+                this.props.getCities();
+                this.props.clearSuggestions();
+              }}
+            >
+              <Text>Cancel</Text>
+            </TouchableOpacity>
+          ) : null}
+
           {this.props.suggestions ? (
             <View
               style={{
@@ -146,9 +174,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getCities, getCityFromPartialQuery, clearSuggestions })(
-  IndexDash
-);
+export default connect(mapStateToProps, {
+  getCities,
+  getCityFromPartialQuery,
+  clearSuggestions
+})(IndexDash);
 
 //onFocus={() => this.setState({ showSearchIcon: false })}
 //onBlur={() => this.setState({ showSearchIcon: true })}

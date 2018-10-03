@@ -8,7 +8,6 @@ import {
 export const getCities = () => async dispatch => {
   const res = await axios.get("http://10.202.138.222:5000/getCities");
 
-  console.log(res);
   dispatch({ type: GET_CITIES, payload: res.data });
 };
 
@@ -17,7 +16,6 @@ export const getCityFromPartialQuery = query => async dispatch => {
     partialQuery: query
   });
 
-  console.log(res.data);
   dispatch({ type: PARTIAL_QUERY, payload: res.data });
 };
 

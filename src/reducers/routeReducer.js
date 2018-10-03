@@ -6,7 +6,6 @@ export default function(state = initialState, action) {
     case GET_CITIES:
       return { ...state, routesArray: action.payload };
     case PARTIAL_QUERY:
-      console.log("redux", action.payload);
       return { ...state, options: action.payload };
     case CLEAR_SUGGESTIONS: 
       return initialState;
