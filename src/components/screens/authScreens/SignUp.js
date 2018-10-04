@@ -47,7 +47,7 @@ class SignUp extends Component {
         <AuthHeader name={"Sign Up"} />
         <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
           <ErrorCheck error={error} />
-          //SIGNIN FIELDS
+          {/*SIGNIN FIELDS*/}
           <View style={[authStyle.inputView, baseStyle.centerItems]}>
             <TextInput
               placeholder="Enter your email"
@@ -88,7 +88,7 @@ class SignUp extends Component {
             password={this.state.password}
           />
         </View>
-        //SIGNIN FIELD END
+        {/**/}
       </View>
     );
   }

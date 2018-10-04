@@ -7,6 +7,15 @@ export const dashStyle = {
     height: 55
   },
 
+  focusedSearchBarView: {
+    height: 100 + "%",
+    width: 100 + "%"
+  },
+
+  searchBarWrappper: {
+    width: 400
+  },
+
   helpText: {
     marginTop: 12,
     fontWeight: "bold",
@@ -19,12 +28,7 @@ export const dashStyle = {
     marginRight: 15,
     marginLeft: 15,
     marginTop: 10,
-    marginBottom: 10,
-    elevation: 4,
-    shadowOffset: { width: 5, height: 5 },
-    shadowColor: "grey",
-    shadowOpacity: 0.5,
-    shadowRadius: 4
+    marginBottom: 10
   },
 
   iconImageView: {
@@ -32,15 +36,12 @@ export const dashStyle = {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     width: 100 + "%",
-    height: 130,
-    justifyContent: "flex-end",
-    alignItems: "center"
+    height: 130
   },
   iconImage: {
     width: 100,
     height: 110,
-    resizeMode: "contain",
-    justifyContent: "flex-end"
+    resizeMode: "contain"
   },
   itemTextView: {
     backgroundColor: "#98d3ce",
@@ -54,8 +55,20 @@ export const dashStyle = {
     fontSize: 11,
     fontWeight: "bold"
   },
-  contentContainer: {
-    justifyContent: "space-between",
-    alignItems: "center"
+
+  suggestionMainView: {
+    position: "absolute",
+    top: 60,
+    width: 80 + "%"
+  },
+  suggestionItemView: {
+    borderBottomWidth: 1.2,
+    borderBottomColor: "#D3D3D3",
+    marginTop: 0,
+    marginTop: 30
+  },
+  suggestionText: {
+    height: 30,
+    fontSize: 18
   }
 };

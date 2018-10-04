@@ -17,17 +17,17 @@ export const AuthLowerView = ({
   opacity
 }) => {
   return (
-    ///VIEW FROM AUTH BUTTON TO OAUTH BUTTONS
+    //VIEW FROM AUTH BUTTON TO OAUTH BUTTONS
     <View style={baseStyle.centerItems}>
-      //AUTHBUTTON
+      {/*AUTHBUTTON*/}
       <AuthButton
         action={action}
         buttonName={buttonName}
         isDisabled={disabled}
         opacity={opacity}
       />
-      //AUTHBUTTON END 
-      //MIDDLE NAV
+      {/**/}
+      {/*MIDDLE NAV*/}
       <View style={[baseStyle.centerItems, baseStyle.flexRow]}>
         <TouchableOpacity
           onPress={() => NavigationService.navigate("forgotPass")}
@@ -40,8 +40,8 @@ export const AuthLowerView = ({
           <Text style={authStyle.middleNavText}>{middleNavLinkName}</Text>
         </TouchableOpacity>
       </View>
-      //MIDDLE NAV END 
-      //MIDDLE LINE
+       {/**/}
+      {/*MIDDLE LINE*/}
       <View
         style={[
           authStyle.middleLineView,
@@ -53,8 +53,8 @@ export const AuthLowerView = ({
         <Text style={authStyle.middleLineMargin}>or</Text>
         <View style={authStyle.middleLinePosition} />
       </View>
-      //MIDDLE LINE END 
-      //OAUTH
+      {/**/} 
+      {/*OAUTH*/}
       <View
         style={[
           authStyle.oauthWidth,
@@ -79,7 +79,7 @@ export const AuthLowerView = ({
           </View>
         </TouchableOpacity>
       </View>
-      //OAUTH END
+      {/*OAUTH END*/}
     </View>
     
   );

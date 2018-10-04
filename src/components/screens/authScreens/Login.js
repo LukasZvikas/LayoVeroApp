@@ -41,7 +41,7 @@ class Login extends Component {
         <AuthHeader name={"Sign In"} />
         <View style={[authStyle.authFormView, authStyle.authCenterItems]}>
           <ErrorCheck error={error} />
-          //LOGIN FIELDS
+          {/*LOGIN FIELDS*/}
           <View style={[authStyle.inputView, baseStyle.centerItems]}>
             <TextInput
               placeholder="Enter your email"
@@ -78,7 +78,7 @@ class Login extends Component {
             password={this.state.password}
           />
         </View>
-        //LOGIN FIELDS END
+        {/**/}
       </View>
     );
   }
