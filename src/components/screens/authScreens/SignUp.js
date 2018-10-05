@@ -62,6 +62,7 @@ class SignUp extends Component {
             <TextInput
               placeholder="Password (6+ characters)"
               placeholderTextColor="#009092"
+              secureTextEntry
               style={authStyle.fieldInput}
               onChangeText={text => {
                 this.setState({ password: text });
@@ -72,6 +73,7 @@ class SignUp extends Component {
             <TextInput
               placeholder="Repeat password"
               placeholderTextColor="#009092"
+              secureTextEntry
               style={[authStyle.fieldInput, authStyle.passRepeatMargin]}
               onChangeText={text => {
                 this.setState({ password: text });

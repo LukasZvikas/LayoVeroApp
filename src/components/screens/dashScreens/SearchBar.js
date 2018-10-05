@@ -17,7 +17,7 @@ import {
   getCityFromPartialQuery,
   clearSuggestions
 } from "../../../actions/routeActions";
-import { Suggestions } from "./suggestions";
+import Suggestions from "./suggestions";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -25,6 +25,10 @@ class SearchBar extends Component {
 
     this.state = { showSearchIcon: true, searchBarState: false, text: "" };
   }
+
+  changeSearchState = () => {
+    this.setState({ searchBarState: !this.state.searchBarState, text: "" });
+  };
 
   handleInputChange = event => {
     if (event.nativeEvent.text && event.nativeEvent.text.length > 0) {
@@ -47,7 +51,13 @@ class SearchBar extends Component {
             : {}
         }
       >
-        <View style={[dashStyle.searchBarWrappper, baseStyle.flexRow, baseStyle.centerItems]}>
+        <View
+          style={[
+            dashStyle.searchBarWrappper,
+            baseStyle.flexRow,
+            baseStyle.centerItems
+          ]}
+        >
           {/*SEARCH BAR INPUT*/}
           <View
             style={[
@@ -90,15 +100,18 @@ class SearchBar extends Component {
                 this.setState({ text: "" });
                 Keyboard.dismiss();
                 this.setState({ searchBarState: !this.state.searchBarState });
-                this.props.getCities();
-                this.props.clearSuggestions();
               }}
             >
               <Text>Cancel</Text>
             </TouchableOpacity>
           ) : null}
           {/**/}
-          <Suggestions suggestions={this.props.suggestions} />
+          <Suggestions
+            suggestions={this.props.suggestions}
+            setSearchBarState={() => this.changeSearchState()}
+            clearSuggestions={() => this.props.clearSuggestions()}
+            dismissKeyboard={() => Keyboard.dismiss()}
+          />
         </View>
       </View>
     );

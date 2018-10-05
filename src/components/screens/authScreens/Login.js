@@ -60,6 +60,7 @@ class Login extends Component {
               placeholder="Password (6+ characters)"
               placeholderTextColor="#009092"
               style={authStyle.fieldInput}
+              secureTextEntry
               onChangeText={text => {
                 this.setState({ password: text });
                 if (error) {

@@ -1,20 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Text, View, TouchableOpacity } from "react-native";
 import { dashStyle } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
 import { Location } from "../../svg";
+import { getCities } from "../../../actions/routeActions";
 
-export const Suggestions = ({ suggestions }) => {
-  const renderCityNames = cities => {
+class Suggestions extends Component {
+  renderCityNames = cities => {
     return cities.map(city => {
       return (
-        <View
+        <TouchableOpacity
           key={city}
           style={[
             dashStyle.suggestionItemView,
             baseStyle.justifyFlexStart,
             baseStyle.flexRow
           ]}
+          onPress={() => {
+            this.props.setSearchBarState();
+            this.props.getCities(city);
+            this.props.clearSuggestions();
+            this.props.dismissKeyboard();
+          }}
         >
           <Text style={{ marginRight: 10 }}>
             <Location />
@@ -22,14 +30,17 @@ export const Suggestions = ({ suggestions }) => {
           <Text style={[dashStyle.suggestionText, baseStyle.justifyCenter]}>
             {city}
           </Text>
-        </View>
+        </TouchableOpacity>
       );
     });
   };
+  render() {
+    return this.props.suggestions ? (
+      <View style={[dashStyle.suggestionMainView, baseStyle.justifyCenter]}>
+        {this.renderCityNames(this.props.suggestions)}
+      </View>
+    ) : null;
+  }
+}
 
-  return suggestions ? (
-    <View style={[dashStyle.suggestionMainView, baseStyle.justifyCenter]}>
-      {renderCityNames(suggestions)}
-    </View>
-  ) : null;
-};
+export default connect(null, { getCities })(Suggestions);

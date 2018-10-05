@@ -14,7 +14,7 @@ class IndexDash extends Component {
   };
 
   componentDidMount() {
-    this.props.getCities();
+    this.props.getCities("London");
   }
   render() {
     return (
@@ -38,7 +38,7 @@ class IndexDash extends Component {
           <Text style={dashStyle.helpText}>Need Help Looking?</Text>
         </TouchableOpacity>
         {this.props.layovers ? (
-          <FlatListRenderer data={this.props.layovers} />
+          <View style={baseStyle.centerItems}> <FlatListRenderer data={this.props.layovers} /> </View>
         ) : null}
       </View>
     );
