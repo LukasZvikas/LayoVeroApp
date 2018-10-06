@@ -39,6 +39,8 @@ class SearchBar extends Component {
   };
 
   render() {
+
+    const { clearSuggestions, suggestions} = this.props;
     return (
       <View
         style={
@@ -107,9 +109,9 @@ class SearchBar extends Component {
           ) : null}
           {/**/}
           <Suggestions
-            suggestions={this.props.suggestions}
+            suggestions={suggestions}
             setSearchBarState={() => this.changeSearchState()}
-            clearSuggestions={() => this.props.clearSuggestions()}
+            clearSuggestions={() => clearSuggestions()}
             dismissKeyboard={() => Keyboard.dismiss()}
           />
         </View>

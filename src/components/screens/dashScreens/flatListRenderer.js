@@ -41,7 +41,6 @@ export const FlatListRenderer = ({ data }) => {
     <FlatList
       data={data}
       renderItem={({ item }) => {
-        console.log(item.hours);
         return (
           <View style={[dashStyle.iconItemView, baseStyle.centerItems, baseStyle.mainShadow]}>
             <View style={[dashStyle.iconImageView, baseStyle.justifyFlexEnd, baseStyle.alignCenter]}>

@@ -16,6 +16,25 @@ class IndexDash extends Component {
   componentDidMount() {
     this.props.getCities("London");
   }
+
+  renderCityName = layovers => {
+    if (layovers) {
+      return (
+        <Text
+          style={{
+            textAlign: "center",
+            marginTop: 15,
+            fontSize: 30,
+            fontWeight: "bold"
+          }}
+        >
+          {layovers[0].city}
+        </Text>
+      );
+    } else {
+      return null;
+    }
+  };
   render() {
     return (
       <View
@@ -36,9 +55,12 @@ class IndexDash extends Component {
           }}
         >
           <Text style={dashStyle.helpText}>Need Help Looking?</Text>
+          {this.renderCityName(this.props.layovers)}
         </TouchableOpacity>
         {this.props.layovers ? (
-          <View style={baseStyle.centerItems}> <FlatListRenderer data={this.props.layovers} /> </View>
+          <View style={baseStyle.centerItems}>
+            <FlatListRenderer data={this.props.layovers} />
+          </View>
         ) : null}
       </View>
     );
