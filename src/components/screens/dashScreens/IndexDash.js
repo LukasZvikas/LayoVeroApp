@@ -8,10 +8,6 @@ import { FlatListRenderer } from "./flatListRenderer";
 import SearchBar from "./SearchBar";
 
 class IndexDash extends Component {
-  static navigationOptions = {
-    header: null,
-    headerLeft: null
-  };
 
   componentDidMount() {
     this.props.getCities("London");

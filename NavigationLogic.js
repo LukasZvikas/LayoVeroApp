@@ -5,6 +5,7 @@ import SignUp from "./src/components/screens/authScreens/SignUp";
 import ForgotPass from "./src/components/screens/authScreens/ForgotPass";
 
 import IndexDash from "./src/components/screens/dashScreens/IndexDash";
+import RouteDetails from "./src/components/screens/dashScreens/RouteDetails";
 import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
 import Saved from "./src/components/screens/dashScreens/Saved";
 import Profile from "./src/components/screens/dashScreens/Profile";
@@ -25,10 +26,28 @@ export const FilterStack = createStackNavigator({
   SecondFilter: { screen: FilterSecond },
   ThirdFilter: { screen: FilterThird }
 });
+
 export const DashStack = createStackNavigator(
   {
+    routeDashboard: {
+      screen: IndexDash
+    },
+    routeDetails: {
+      screen: RouteDetails
+    }
+  },
+  {
+    headerMode: "none",
+    navigationOptions: {
+      headerVisible: false
+    }
+  }
+);
+
+export const mainDashStack = createStackNavigator(
+  {
     dashboard: {
-      screen: IndexDash,
+      screen: DashStack,
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: <Search />
@@ -46,7 +65,7 @@ export const DashStack = createStackNavigator(
 export const BottomTab = createBottomTabNavigator(
   {
     dashboard: {
-      screen: DashStack,
+      screen: mainDashStack,
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: <Search />

@@ -9,11 +9,10 @@ import {
 } from "react-native";
 
 import { Star } from "../../svg";
-
 import { baseStyle } from "../../../styles/base";
 import { dashStyle } from "../../../styles/indexAfterLogin";
-
 import RequiredAssets from "../../requiredImages";
+import NavigationService from "../../../../NavigationService";
 
 export const FlatListRenderer = ({ data }) => {
   const renderStars = numberOfStars => {
@@ -42,8 +41,23 @@ export const FlatListRenderer = ({ data }) => {
       data={data}
       renderItem={({ item }) => {
         return (
-          <View style={[dashStyle.iconItemView, baseStyle.centerItems, baseStyle.mainShadow]}>
-            <View style={[dashStyle.iconImageView, baseStyle.justifyFlexEnd, baseStyle.alignCenter]}>
+          <TouchableOpacity
+            onPress={() => {
+              NavigationService.navigate("routeDetails");
+            }}
+            style={[
+              dashStyle.iconItemView,
+              baseStyle.centerItems,
+              baseStyle.mainShadow
+            ]}
+          >
+            <View
+              style={[
+                dashStyle.iconImageView,
+                baseStyle.justifyFlexEnd,
+                baseStyle.alignCenter
+              ]}
+            >
               <Image
                 style={[dashStyle.iconImage, baseStyle.justifyFlexEnd]}
                 source={RequiredAssets[item.no]}
@@ -64,7 +78,7 @@ export const FlatListRenderer = ({ data }) => {
             >
               {renderStars(item.stars)}
             </View>
-          </View>
+          </TouchableOpacity>
         );
       }}
       keyExtractor={item => item.name}
