@@ -5,7 +5,7 @@ import { authStyle } from "../../styles/authStyle";
 import { baseStyle } from "../../styles/base";
 
 
-export const AuthButton = ({ action, buttonName, isDisabled, opacity }) => {
+export const Button = ({ action, buttonName, isDisabled, opacity }) => {
   return (
     <View>
     {/*<LinearGradient style={[authStyle.signinButton, baseStyle.centerItems]} start={[0.1, 0.6 ]}colors={["#02787a", "#78B7B1"]}>*/}

@@ -7,7 +7,7 @@ import {
   showSuccessMessage,
   clearMessages
 } from "../../../actions/authActions";
-import { AuthButton } from "../../customUiComponents/authButton";
+import { Button } from "../../customUiComponents/button";
 import layoveroLogo from "../../../assets/images/layovero.png";
 import { AuthHeader } from "./authHeader";
 
@@ -68,7 +68,7 @@ class ForgotPass extends Component {
               }}
             />
           </View>
-          <AuthButton
+          <Button
             action={() => {
               showSuccessMessage(this.state.email);
             }}

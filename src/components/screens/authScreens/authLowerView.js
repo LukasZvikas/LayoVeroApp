@@ -5,7 +5,7 @@ import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
 import { Facebook, Google } from "../../svg";
 import { SignInAction } from "../../../actions/authActions";
-import { AuthButton } from "../../customUiComponents/authButton";
+import { Button } from "../../customUiComponents/button";
 import NavigationService from "../../../../NavigationService";
 
 export const AuthLowerView = ({
@@ -20,7 +20,7 @@ export const AuthLowerView = ({
     //VIEW FROM AUTH BUTTON TO OAUTH BUTTONS
     <View style={baseStyle.centerItems}>
       {/*AUTHBUTTON*/}
-      <AuthButton
+      <Button
         action={action}
         buttonName={buttonName}
         isDisabled={disabled}
