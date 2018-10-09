@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  View,
-  Text,
-  TextInput,
-  Dimensions
-} from "react-native";
+import { View, Text, TextInput, Dimensions } from "react-native";
 import { authStyle } from "../../../styles/authStyle";
 import { baseStyle } from "../../../styles/base";
 import {
@@ -13,8 +8,9 @@ import {
   showEmailError,
   clearMessages
 } from "../../../actions/authActions";
-import { AuthHeader } from "./authHeader";
-import { ButtonCheck, ErrorCheck } from "./authViewComponents";
+import { AuthHeader } from "./authViewComponents/authHeader";
+import { ButtonCheck, ErrorCheck } from "./authViewComponents/authControlLogic";
+import { AuthLowerView } from "./authViewComponents/authLowerView";
 import loginCheck from "../../../utilities/loginCheck";
 
 class SignUp extends Component {
@@ -88,6 +84,14 @@ class SignUp extends Component {
             navigateTo={() => navigation.navigate("login")}
             email={this.state.email}
             password={this.state.password}
+            buttonName={"Sign Up"}
+          />
+          <AuthLowerView
+            leftNav={() => navigation.navigate("forgotPass")}
+            rightNav={() => navigation.navigate("login")}
+            leftTitle={"Password"}
+            rightTitle={"Sign In"}
+            midNavWidth={67}
           />
         </View>
         {/**/}

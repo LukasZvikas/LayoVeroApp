@@ -11,7 +11,7 @@ export const Button = ({ action, buttonName, isDisabled, opacity }) => {
     {/*<LinearGradient style={[authStyle.signinButton, baseStyle.centerItems]} start={[0.1, 0.6 ]}colors={["#02787a", "#78B7B1"]}>*/}
       <TouchableOpacity
         disabled={isDisabled}
-        style={[authStyle.signinButton, baseStyle.centerItems, {opacity: opacity}]}
+        style={[authStyle.signinButton, baseStyle.tertiaryColorBackground, baseStyle.centerItems, , {opacity: opacity}]}
         onPress={action}
       >
         <Text style={{ fontSize: 15, fontWeight: "bold", color: "#fff" }}>

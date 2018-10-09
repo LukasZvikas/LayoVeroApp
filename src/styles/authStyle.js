@@ -63,13 +63,11 @@ export const authStyle = {
   middleNavCenter: {
     width: 1.8,
     height: 12,
-    backgroundColor: "#009092",
     marginLeft: 5,
     marginRight: 5
   },
 
   middleNavText: {
-    color: "#009092",
     fontWeight: "bold"
   },
 
@@ -80,7 +78,6 @@ export const authStyle = {
   },
 
   signinButton: {
-    backgroundColor: "#009092",
     height: 45,
     width: 200,
     marginTop: 25,

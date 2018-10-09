@@ -9,7 +9,8 @@ import {
 } from "../../../actions/authActions";
 import { Button } from "../../customUiComponents/button";
 import layoveroLogo from "../../../assets/images/layovero.png";
-import { AuthHeader } from "./authHeader";
+import { AuthHeader } from "./authViewComponents/authHeader";
+import { MiddleNav } from "./authViewComponents/middleNav";
 
 class ForgotPass extends Component {
   constructor(props) {
@@ -22,7 +23,15 @@ class ForgotPass extends Component {
   isSuccess = () => {
     if (this.props.successMessage)
       return (
-        <Text style={{ color: "#009092", fontSize: 15, marginRight:30, marginLeft:30, textAlign:"center" }}>
+        <Text
+          style={{
+            color: "#009092",
+            fontSize: 15,
+            marginRight: 30,
+            marginLeft: 30,
+            textAlign: "center"
+          }}
+        >
           {this.props.successMessage}
         </Text>
       );
@@ -42,7 +51,8 @@ class ForgotPass extends Component {
       showSuccessMessage,
       clearMessages,
       error,
-      successMessage
+      successMessage,
+      navigation
     } = this.props;
     return (
       <View style={authStyle.authMainView}>
@@ -75,21 +85,17 @@ class ForgotPass extends Component {
             isDisabled={false}
             buttonName={"Send"}
           />
-          <View style={[baseStyle.centerItems, baseStyle.flexRow]}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("signUp")}
-            >
-              <Text style={authStyle.middleNavText}>Sign Up</Text>
-            </TouchableOpacity>
-            <View style={authStyle.middleNavCenter} />
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate("login");
-              }}
-            >
-              <Text style={authStyle.middleNavText}>Sign In</Text>
-            </TouchableOpacity>
-          </View>
+          <MiddleNav
+            leftTitle={"Sign Up"}
+            rightTitle={"Sign In"}
+            leftNav={() => {
+              navigation.navigate("signUp");
+            }}
+            rightNav={() => {
+              navigation.navigate("login");
+            }}
+            width={54}
+          />
         </View>
       </View>
     );

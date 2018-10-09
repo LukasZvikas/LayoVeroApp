@@ -32,7 +32,6 @@ export const dashStyle = {
   },
 
   iconImageView: {
-    backgroundColor: "#59c0c1",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     width: 100 + "%",
@@ -44,7 +43,6 @@ export const dashStyle = {
     resizeMode: "contain"
   },
   itemTextView: {
-    backgroundColor: "#98d3ce",
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     width: 100 + "%",

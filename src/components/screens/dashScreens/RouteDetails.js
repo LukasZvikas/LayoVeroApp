@@ -38,8 +38,8 @@ class RouteDetails extends Component {
           style={[
             baseStyle.centerItems,
             {
-              height: 180,
-              width: 80 + "%",
+              height: 170,
+              width: 85 + "%",
               backgroundColor: "#59c0c1",
               borderTopLeftRadius: 20,
               borderTopRightRadius: 20
@@ -59,7 +59,7 @@ class RouteDetails extends Component {
             baseStyle.centerItems,
             {
               height: 40,
-              width: 80 + "%",
+              width: 85 + "%",
               borderBottomLeftRadius: 20,
               borderBottomRightRadius: 20,
               backgroundColor: "#98d3ce"
@@ -69,19 +69,19 @@ class RouteDetails extends Component {
           <Text style={{ fontWeight: "bold" }}>Big Ben</Text>
         </View>
 
-        <View style={{width: 80+"%"}}>
+        <View style={{width: 85+"%", marginTop: 5}}>
           <Text
             style={{
               fontWeight: "bold",
               fontSize: 18,
               marginTop: 15,
-              marginBottom: 15,
+              marginBottom: 5,
      
             }}
           >
             Big Ben
           </Text>
-          <Text style={{lineHeight: 20 }}>
+          <Text style={{lineHeight: 20, fontSize: 14 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             scelerisque, odio nec scelerisque ultricies, arcu metus mattis quam,
             vitae lacinia ex nulla eu lectus. Mauris ullamcorper a leo vitae

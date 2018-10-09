@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Dimensions, Image } from "react-native";
-import { authHeader } from "../../../styles/authHeaderStyle";
-import { baseStyle } from "../../../styles/base";
-import { LogoWhite } from "../../svg";
-import three from "../../../assets/images/three_resized.jpg";
-import threeTn from "../../../assets/images/three_tn.jpg";
-import ProgressiveImage from "../../ProgressiveImage";
+import { authHeader } from "../../../../styles/authHeaderStyle";
+import { baseStyle } from "../../../../styles/base";
+import { LogoWhite } from "../../../svg";
+import three from "../../../../assets/images/three_resized.jpg";
+import threeTn from "../../../../assets/images/three_tn.jpg";
+import ProgressiveImage from "../../../ProgressiveImage";
 
 export const AuthHeader = ({ name }) => {
   const { width, height } = Dimensions.get("window");

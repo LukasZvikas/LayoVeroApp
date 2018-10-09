@@ -34,5 +34,25 @@ export const baseStyle = {
     shadowColor: "grey",
     shadowOpacity: 0.5,
     shadowRadius: 4
+  },
+
+  mainColorBackground: {
+    backgroundColor: "#59c0c1"
+  },
+
+  mainColorText: {
+    color: "#59c0c1"
+  },
+  secondaryColorBackground: {
+    backgroundColor: "#98d3ce"
+  },
+  secondaryColorText: {
+    color: "#98d3ce"
+  },
+  tertiaryColorBackground: {
+    backgroundColor: "#009092"
+  },
+  tertiaryColorText: {
+    color: "#009092"
   }
 };

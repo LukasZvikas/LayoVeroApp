@@ -55,7 +55,8 @@ export const FlatListRenderer = ({ data }) => {
               style={[
                 dashStyle.iconImageView,
                 baseStyle.justifyFlexEnd,
-                baseStyle.alignCenter
+                baseStyle.alignCenter,
+                baseStyle.mainColorBackground
               ]}
             >
               <Image
@@ -63,7 +64,7 @@ export const FlatListRenderer = ({ data }) => {
                 source={RequiredAssets[item.no]}
               />
             </View>
-            <View style={[dashStyle.itemTextView, baseStyle.centerItems]}>
+            <View style={[dashStyle.itemTextView, baseStyle.centerItems, baseStyle.secondaryColorBackground]}>
               <Text style={dashStyle.iconText}>{item.name}</Text>
               <Text style={dashStyle.iconText}>({item.hours} hours)</Text>
             </View>
