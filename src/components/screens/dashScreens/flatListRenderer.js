@@ -43,7 +43,7 @@ export const FlatListRenderer = ({ data }) => {
         return (
           <TouchableOpacity
             onPress={() => {
-              NavigationService.navigate("routeDetails");
+              NavigationService.navigate("routeDetails", {name: item.name, about: item.about, image: item.no});
             }}
             style={[
               dashStyle.iconItemView,

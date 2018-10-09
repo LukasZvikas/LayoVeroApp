@@ -30,7 +30,7 @@ export const ButtonCheck = ({
     return (
       <Button
         action={checkEmail()}
-        disabled={false}
+        isDisabled={false}
         opacity={1}
         buttonName={buttonName}
       />
@@ -38,7 +38,7 @@ export const ButtonCheck = ({
   }
   return (
     <Button
-      disabled={true}
+      isDisabled={true}
       opacity={0.5}
       buttonName={buttonName}
     />

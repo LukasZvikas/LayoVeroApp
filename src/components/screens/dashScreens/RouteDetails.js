@@ -3,10 +3,12 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import { dashStyle } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
 import { Button } from "../../customUiComponents/button";
-import BigBen from "../../../assets/icons/London/bigBen.png";
+import RequiredAssets from "../../requiredImages";
 
 class RouteDetails extends Component {
   render() {
+    console.log(this.props.navigation);
+    const { navigation } = this.props;
     return (
       <View style={[baseStyle.mainView, { alignItems: "center" }]}>
         <View
@@ -24,13 +26,13 @@ class RouteDetails extends Component {
           ]}
         >
           <View style={{ borderBottomWidth: 2.8, borderColor: "#59c0c1" }}>
-            <Text style={{ fontSize: 16 }}>About</Text>
+            <Text style={{ fontSize: 17 }}>About</Text>
           </View>
           <View>
-            <Text style={{ fontSize: 16 }}>Notes</Text>
+            <Text style={{ fontSize: 17 }}>Notes</Text>
           </View>
           <View>
-            <Text style={{ fontSize: 16 }}>Map</Text>
+            <Text style={{ fontSize: 17 }}>Map</Text>
           </View>
         </View>
 
@@ -51,7 +53,7 @@ class RouteDetails extends Component {
               height: 100 + "%",
               resizeMode: "contain"
             }}
-            source={BigBen}
+            source={RequiredAssets[navigation.state.params.image]}
           />
         </View>
         <View
@@ -66,35 +68,28 @@ class RouteDetails extends Component {
             }
           ]}
         >
-          <Text style={{ fontWeight: "bold" }}>Big Ben</Text>
+          <Text style={{ fontWeight: "bold" }}>
+            {navigation.state.params.name}
+          </Text>
         </View>
 
-        <View style={{width: 85+"%", marginTop: 5}}>
+        <View style={{ width: 85 + "%", marginTop: 5 }}>
           <Text
             style={{
               fontWeight: "bold",
               fontSize: 18,
               marginTop: 15,
-              marginBottom: 5,
-     
+              marginBottom: 5
             }}
           >
-            Big Ben
+            {navigation.state.params.name}
           </Text>
-          <Text style={{lineHeight: 20, fontSize: 14 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            scelerisque, odio nec scelerisque ultricies, arcu metus mattis quam,
-            vitae lacinia ex nulla eu lectus. Mauris ullamcorper a leo vitae
-            luctus. Donec dictum, sem id laoreet pellentesque, massa quam
-            eleifend risus, id congue quam lacus nec ante. Proin sit amet purus
-            vel sem malesuada feugiat faucibus sit amet eros. Nam ante augue,
-            ultrices et lacus eu, dapibus molestie nisl. Quisque porttitor
-            feugiat ligula in maximus. Praesent erat nunc, tincidunt id
-            pellentesque eu, tempor tincidunt tortor.
+          <Text style={{ lineHeight: 25, fontSize: 15 }}>
+            {navigation.state.params.about}
           </Text>
         </View>
 
-        <Button buttonName={"Back"} />
+        <Button action={() => navigation.goBack()} buttonName={"Back"} />
       </View>
     );
   }
