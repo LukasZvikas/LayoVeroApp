@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Animated, View, ScrollView, Text, Dimensions } from "react-native";
-import { dashStyle } from "../../../styles/indexAfterLogin";
+import { scrollableBarStyle } from "../../../styles/indexDashboard/scrollableBar";
 import { baseStyle } from "../../../styles/base";
 import { Button } from "../../customUiComponents/button";
 import { RouteAbout } from "./routeAbout";
@@ -53,7 +53,12 @@ class RouteDetailsWrapper extends Component {
         >
           {scrollableItemsObject.views}
         </ScrollView>
-        <View style={[dashStyle.scrollableBarsContainer, baseStyle.centerItems]}>
+        <View
+          style={[
+            scrollableBarStyle.scrollableBarsContainer,
+            baseStyle.centerItems
+          ]}
+        >
           {scrollableItemsObject.bars}
         </View>
       </View>

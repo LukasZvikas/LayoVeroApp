@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
-import { dashStyle } from "../../../styles/indexAfterLogin";
 import { baseStyle } from "../../../styles/base";
 import RequiredAssets from "../../requiredImages";
 import { Button } from "../../customUiComponents/button";
@@ -8,7 +7,7 @@ import { Button } from "../../customUiComponents/button";
 export const RouteAbout = ({ image, name, about, action, width }) => {
   console.log(name, image);
   return (
-    <View style={[baseStyle.mainView, { alignItems: "center"}, width]}>
+    <View style={[baseStyle.mainView, { alignItems: "center" }, width]}>
       <View
         style={[
           baseStyle.alignCenter,
@@ -22,17 +21,7 @@ export const RouteAbout = ({ image, name, about, action, width }) => {
             flexDirection: "row"
           }
         ]}
-      >
-       {/* <View style={{ borderBottomWidth: 2.8, borderColor: "#59c0c1" }}>
-          <Text style={{ fontSize: 17 }}>About</Text>
-        </View>
-        <View>
-          <Text style={{ fontSize: 17 }}>Notes</Text>
-        </View>
-        <View>
-          <Text style={{ fontSize: 17 }}>Map</Text>
-        </View>
-*/}      </View>
+      />
 
       <View
         style={[

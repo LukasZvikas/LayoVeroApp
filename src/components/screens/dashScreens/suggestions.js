@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, View, TouchableOpacity } from "react-native";
-import { dashStyle } from "../../../styles/indexAfterLogin";
+import { suggestionStyle } from "../../../styles/indexDashboard/suggestion";
 import { baseStyle } from "../../../styles/base";
 import { Location } from "../../svg";
 import { getCities } from "../../../actions/routeActions";
@@ -13,7 +13,7 @@ class Suggestions extends Component {
         <TouchableOpacity
           key={city}
           style={[
-            dashStyle.suggestionItemView,
+            suggestionStyle.suggestionItemView,
             baseStyle.justifyFlexStart,
             baseStyle.flexRow
           ]}
@@ -27,7 +27,7 @@ class Suggestions extends Component {
           <Text style={{ marginRight: 10 }}>
             <Location />
           </Text>
-          <Text style={[dashStyle.suggestionText, baseStyle.justifyCenter]}>
+          <Text style={[suggestionStyle.suggestionText, baseStyle.justifyCenter]}>
             {city}
           </Text>
         </TouchableOpacity>
@@ -36,7 +36,7 @@ class Suggestions extends Component {
   };
   render() {
     return this.props.suggestions ? (
-      <View style={[dashStyle.suggestionMainView, baseStyle.justifyCenter]}>
+      <View style={[suggestionStyle.suggestionMainView, baseStyle.justifyCenter]}>
         {this.renderCityNames(this.props.suggestions)}
       </View>
     ) : null;

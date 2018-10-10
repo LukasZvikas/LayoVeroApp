@@ -10,7 +10,7 @@ import {
 
 import { Star } from "../../svg";
 import { baseStyle } from "../../../styles/base";
-import { dashStyle } from "../../../styles/indexAfterLogin";
+import { routeItemsStyle } from "../../../styles/indexDashboard/routeItems";
 import RequiredAssets from "../../requiredImages";
 import NavigationService from "../../../../NavigationService";
 
@@ -54,33 +54,33 @@ export const FlatListRenderer = ({ data }) => {
               });
             }}
             style={[
-              dashStyle.iconItemView,
+              routeItemsStyle.iconItemView,
               baseStyle.centerItems,
               baseStyle.mainShadow
             ]}
           >
             <View
               style={[
-                dashStyle.iconImageView,
+                routeItemsStyle.iconImageView,
                 baseStyle.justifyFlexEnd,
                 baseStyle.alignCenter,
                 baseStyle.mainColorBackground
               ]}
             >
               <Image
-                style={[dashStyle.iconImage, baseStyle.justifyFlexEnd]}
+                style={[routeItemsStyle.iconImage, baseStyle.justifyFlexEnd]}
                 source={RequiredAssets[item.no]}
               />
             </View>
             <View
               style={[
-                dashStyle.itemTextView,
+                routeItemsStyle.itemTextView,
                 baseStyle.centerItems,
                 baseStyle.secondaryColorBackground
               ]}
             >
-              <Text style={dashStyle.iconText}>{item.name}</Text>
-              <Text style={dashStyle.iconText}>({item.hours} hours)</Text>
+              <Text style={routeItemsStyle.iconText}>{item.name}</Text>
+              <Text style={routeItemsStyle.iconText}>({item.hours} hours)</Text>
             </View>
             <View
               style={{
@@ -98,7 +98,7 @@ export const FlatListRenderer = ({ data }) => {
       }}
       keyExtractor={item => item.name}
       style={{ marginTop: 20, width: 100 + "%" }}
-      contentContainerStyle={dashStyle.contentContainer}
+      contentContainerStyle={routeItemsStyle.contentContainer}
       numColumns={2}
     />
   );

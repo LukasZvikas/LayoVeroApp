@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, Animated, StyleSheet, Dimensions } from "react-native";
-import { dashStyle } from "../../../styles/indexAfterLogin";
+import { scrollableBarStyle } from "../../../styles/indexDashboard/scrollableBar";
 import { baseStyle } from "../../../styles/base";
 
 export default (getScrollableProperties = (
@@ -29,7 +29,7 @@ export default (getScrollableProperties = (
         <View
           key={`bar${i}`}
           style={[
-            dashStyle.scrollableTrack,
+            scrollableBarStyle.scrollableTrack,
             baseStyle.centerItems,
             {
               width: itemWidth
@@ -39,7 +39,7 @@ export default (getScrollableProperties = (
           <Text style={{ fontSize: 17 }}>{barNames[i]}</Text>
           <Animated.View
             style={[
-              dashStyle.scrollableBar,
+              scrollableBarStyle.scrollableBar,
               {
                 borderWidth: 1,
                 borderColor: "#59c0c1",

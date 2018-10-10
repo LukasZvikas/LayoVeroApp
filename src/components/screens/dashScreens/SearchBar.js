@@ -9,7 +9,7 @@ import {
   Image,
   Keyboard
 } from "react-native";
-import { dashStyle } from "../../../styles/indexAfterLogin";
+import { searchBarStyle } from "../../../styles/indexDashboard/searchBar";
 import { baseStyle } from "../../../styles/base";
 import { Search } from "../../svg";
 import {
@@ -39,14 +39,13 @@ class SearchBar extends Component {
   };
 
   render() {
-
-    const { clearSuggestions, suggestions} = this.props;
+    const { clearSuggestions, suggestions, getCities } = this.props;
     return (
       <View
         style={
           this.state.searchBarState
             ? [
-                dashStyle.focusedSearchBarView,
+                searchBarStyle.focusedSearchBarView,
                 baseStyle.justifyFlexStart,
                 baseStyle.alignCenter
               ]
@@ -55,7 +54,7 @@ class SearchBar extends Component {
       >
         <View
           style={[
-            dashStyle.searchBarWrappper,
+            searchBarStyle.searchBarWrappper,
             baseStyle.flexRow,
             baseStyle.centerItems
           ]}
@@ -63,7 +62,7 @@ class SearchBar extends Component {
           {/*SEARCH BAR INPUT*/}
           <View
             style={[
-              dashStyle.searchBarView,
+              searchBarStyle.searchBarView,
               baseStyle.centerItems,
               this.state.searchBarState
                 ? { width: 70 + "%" }
@@ -101,6 +100,8 @@ class SearchBar extends Component {
               onPress={() => {
                 this.setState({ text: "" });
                 Keyboard.dismiss();
+                clearSuggestions();
+                getCities("London");
                 this.setState({ searchBarState: !this.state.searchBarState });
               }}
             >

@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
-import { dashStyle } from "../../../styles/indexAfterLogin";
+import { searchBarStyle } from "../../../styles/indexDashboard/searchBar";
 import { baseStyle } from "../../../styles/base";
 import { getCities } from "../../../actions/routeActions";
 import { FlatListRenderer } from "./flatListRenderer";
 import SearchBar from "./SearchBar";
 
 class IndexDash extends Component {
-
   componentDidMount() {
     this.props.getCities("London");
   }
@@ -42,15 +41,13 @@ class IndexDash extends Component {
           }
         ]}
       >
-        {/*SEARCH BAR*/}
         <SearchBar />
-        {/**/}
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.navigate("SecondFilter");
           }}
         >
-          <Text style={dashStyle.helpText}>Need Help Looking?</Text>
+          <Text style={searchBarStyle.helpText}>Need Help Looking?</Text>
           {this.renderCityName(this.props.layovers)}
         </TouchableOpacity>
         {this.props.layovers ? (
