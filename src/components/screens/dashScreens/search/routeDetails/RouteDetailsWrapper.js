@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Animated, View, ScrollView, Text, Dimensions } from "react-native";
-import { scrollableBarStyle } from "../../../styles/indexDashboard/scrollableBar";
-import { baseStyle } from "../../../styles/base";
-import { Button } from "../../customUiComponents/button";
+import { scrollableBarStyle } from "../../../../../styles/indexDashboard/scrollableBar";
+import { baseStyle } from "../../../../../styles/base";
+import { Button } from "../../../../customUiComponents/button";
 import { RouteAbout } from "./routeAbout";
 import { RouteNotes } from "./routeNotes";
 import { RouteMap } from "./routeMap";

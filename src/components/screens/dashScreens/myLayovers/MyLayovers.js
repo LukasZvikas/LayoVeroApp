@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
-import { style } from "../../../styles/authStyle";
+import { style } from "../../../../styles/authStyle";
 
 class MyLayovers extends Component {
   static navigationOptions = {

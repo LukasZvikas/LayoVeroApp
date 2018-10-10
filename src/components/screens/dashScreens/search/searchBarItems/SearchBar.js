@@ -9,14 +9,14 @@ import {
   Image,
   Keyboard
 } from "react-native";
-import { searchBarStyle } from "../../../styles/indexDashboard/searchBar";
-import { baseStyle } from "../../../styles/base";
-import { Search } from "../../svg";
+import { searchBarStyle } from "../../../../../styles/indexDashboard/searchBar";
+import { baseStyle } from "../../../../../styles/base";
+import { Search } from "../../../../svg";
 import {
   getCities,
   getCityFromPartialQuery,
   clearSuggestions
-} from "../../../actions/routeActions";
+} from "../../../../../actions/routeActions";
 import Suggestions from "./suggestions";
 
 class SearchBar extends Component {

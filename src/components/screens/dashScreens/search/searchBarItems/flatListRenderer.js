@@ -8,11 +8,11 @@ import {
   Image
 } from "react-native";
 
-import { Star } from "../../svg";
-import { baseStyle } from "../../../styles/base";
-import { routeItemsStyle } from "../../../styles/indexDashboard/routeItems";
-import RequiredAssets from "../../requiredImages";
-import NavigationService from "../../../../NavigationService";
+import { Star } from "../../../../svg";
+import { baseStyle } from "../../../../../styles/base";
+import { routeItemsStyle } from "../../../../../styles/indexDashboard/routeItems";
+import RequiredAssets from "../../../../requiredImages";
+import NavigationService from "../../../../../../NavigationService";
 
 export const FlatListRenderer = ({ data }) => {
   const renderStars = numberOfStars => {

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, View, TouchableOpacity } from "react-native";
-import { suggestionStyle } from "../../../styles/indexDashboard/suggestion";
-import { baseStyle } from "../../../styles/base";
-import { Location } from "../../svg";
-import { getCities } from "../../../actions/routeActions";
+import { suggestionStyle } from "../../../../../styles/indexDashboard/suggestion";
+import { baseStyle } from "../../../../../styles/base";
+import { Location } from "../../../../svg";
+import { getCities } from "../../../../../actions/routeActions";
 
 class Suggestions extends Component {
   renderCityNames = cities => {

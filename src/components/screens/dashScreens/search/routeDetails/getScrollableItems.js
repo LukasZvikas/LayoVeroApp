@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, Animated, StyleSheet, Dimensions } from "react-native";
-import { scrollableBarStyle } from "../../../styles/indexDashboard/scrollableBar";
-import { baseStyle } from "../../../styles/base";
+import { scrollableBarStyle } from "../../../../../styles/indexDashboard/scrollableBar";
+import { baseStyle } from "../../../../../styles/base";
 
 export default (getScrollableProperties = (
   list,

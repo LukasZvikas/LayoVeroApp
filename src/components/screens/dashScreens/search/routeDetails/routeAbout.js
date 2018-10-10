@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
-import { baseStyle } from "../../../styles/base";
-import RequiredAssets from "../../requiredImages";
-import { Button } from "../../customUiComponents/button";
+import { baseStyle } from "../../../../../styles/base";
+import RequiredAssets from "../../../../requiredImages";
+import { Button } from "../../../../customUiComponents/button";
 
 export const RouteAbout = ({ image, name, about, action, width }) => {
   console.log(name, image);

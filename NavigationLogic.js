@@ -4,11 +4,11 @@ import Login from "./src/components/screens/authScreens/Login";
 import SignUp from "./src/components/screens/authScreens/SignUp";
 import ForgotPass from "./src/components/screens/authScreens/ForgotPass";
 
-import IndexDash from "./src/components/screens/dashScreens/IndexDash";
-import RouteDetailsWrapper from "./src/components/screens/dashScreens/RouteDetailsWrapper";
-import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
-import Saved from "./src/components/screens/dashScreens/Saved";
-import Profile from "./src/components/screens/dashScreens/Profile";
+import IndexDash from "./src/components/screens/dashScreens/search/IndexDash";
+import RouteDetailsWrapper from "./src/components/screens/dashScreens/search/routeDetails/RouteDetailsWrapper";
+import MyLayovers from "./src/components/screens/dashScreens/myLayovers/MyLayovers";
+import Saved from "./src/components/screens/dashScreens/saved/Saved";
+import Profile from "./src/components/screens/dashScreens/profile/Profile";
 
 import FilterFirst from "./src/components/screens/filterScreens/FilterFirst";
 import FilterSecond from "./src/components/screens/filterScreens/FilterSecond";

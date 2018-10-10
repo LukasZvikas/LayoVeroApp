@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
-import { searchBarStyle } from "../../../styles/indexDashboard/searchBar";
-import { baseStyle } from "../../../styles/base";
-import { getCities } from "../../../actions/routeActions";
-import { FlatListRenderer } from "./flatListRenderer";
-import SearchBar from "./SearchBar";
+import { searchBarStyle } from "../../../../styles/indexDashboard/searchBar";
+import { baseStyle } from "../../../../styles/base";
+import { getCities } from "../../../../actions/routeActions";
+import { FlatListRenderer } from "./searchBarItems/flatListRenderer";
+import SearchBar from "./searchBarItems/SearchBar";
 
 class IndexDash extends Component {
   componentDidMount() {

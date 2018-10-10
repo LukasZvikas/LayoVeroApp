@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
-import { baseStyle } from "../../../styles/base";
+import { baseStyle } from "../../../../styles/base";
 import { SecureStore } from "expo";
 
 class Profile extends Component {
