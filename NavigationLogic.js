@@ -5,7 +5,7 @@ import SignUp from "./src/components/screens/authScreens/SignUp";
 import ForgotPass from "./src/components/screens/authScreens/ForgotPass";
 
 import IndexDash from "./src/components/screens/dashScreens/IndexDash";
-import RouteDetails from "./src/components/screens/dashScreens/RouteDetails";
+import RouteDetailsWrapper from "./src/components/screens/dashScreens/RouteDetailsWrapper";
 import MyLayovers from "./src/components/screens/dashScreens/MyLayovers";
 import Saved from "./src/components/screens/dashScreens/Saved";
 import Profile from "./src/components/screens/dashScreens/Profile";
@@ -33,7 +33,7 @@ export const DashStack = createStackNavigator(
       screen: IndexDash
     },
     routeDetails: {
-      screen: RouteDetails
+      screen: RouteDetailsWrapper
     }
   },
   {
@@ -138,3 +138,4 @@ export const MainNav = createStackNavigator(
     }
   }
 );
+

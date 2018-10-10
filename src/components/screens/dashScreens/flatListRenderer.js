@@ -17,11 +17,13 @@ import NavigationService from "../../../../NavigationService";
 export const FlatListRenderer = ({ data }) => {
   const renderStars = numberOfStars => {
     const starArray = [];
+    let num = 0;
 
     while (numberOfStars > 0) {
       --numberOfStars;
       starArray.push(
         <View
+          key={num}
           style={{
             justifyContent: "space-around",
             alignItems: "center",
@@ -31,6 +33,7 @@ export const FlatListRenderer = ({ data }) => {
           <Star />
         </View>
       );
+      num++;
     }
 
     return starArray;
@@ -42,8 +45,13 @@ export const FlatListRenderer = ({ data }) => {
       renderItem={({ item }) => {
         return (
           <TouchableOpacity
+            key={item.name}
             onPress={() => {
-              NavigationService.navigate("routeDetails", {name: item.name, about: item.about, image: item.no});
+              NavigationService.navigate("routeDetails", {
+                name: item.name,
+                about: item.about,
+                image: item.no
+              });
             }}
             style={[
               dashStyle.iconItemView,
@@ -64,7 +72,13 @@ export const FlatListRenderer = ({ data }) => {
                 source={RequiredAssets[item.no]}
               />
             </View>
-            <View style={[dashStyle.itemTextView, baseStyle.centerItems, baseStyle.secondaryColorBackground]}>
+            <View
+              style={[
+                dashStyle.itemTextView,
+                baseStyle.centerItems,
+                baseStyle.secondaryColorBackground
+              ]}
+            >
               <Text style={dashStyle.iconText}>{item.name}</Text>
               <Text style={dashStyle.iconText}>({item.hours} hours)</Text>
             </View>
