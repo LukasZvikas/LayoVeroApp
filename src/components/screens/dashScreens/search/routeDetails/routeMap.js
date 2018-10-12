@@ -9,7 +9,6 @@ export const RouteMap = ({ image, name, about, action, width }) => {
   return (
     <View style={[baseStyle.mainView, baseStyle.centerItems, width]}>
       <Text>Route Map</Text>
-      <Button action={action} buttonName={"Back"} />
     </View>
   );
 };

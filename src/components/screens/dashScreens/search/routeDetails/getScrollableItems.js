@@ -22,7 +22,7 @@ export default (getScrollableProperties = (
       outputRange: [-itemWidth, itemWidth],
       extrapolate: "clamp"
     });
-
+    
     const thisBar = (
       <View style={[baseStyle.centerItems, { width: 120 }]}>
         <Text style={{ fontSize: 17 }}>{barNames[i]}</Text>

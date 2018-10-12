@@ -50,7 +50,10 @@ export const FlatListRenderer = ({ data }) => {
               NavigationService.navigate("routeDetails", {
                 name: item.name,
                 about: item.about,
-                image: item.no
+                image: item.no,
+                before: item.before,
+                during: item.during,
+                after: item.after
               });
             }}
             style={[
@@ -98,7 +101,6 @@ export const FlatListRenderer = ({ data }) => {
       }}
       keyExtractor={item => item.name}
       style={{ marginTop: 20, width: 100 + "%" }}
-      contentContainerStyle={routeItemsStyle.contentContainer}
       numColumns={2}
     />
   );

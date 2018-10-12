@@ -13,9 +13,10 @@ class RouteDetailsWrapper extends Component {
     super(props);
 
     this.numItems = 3;
-    this.itemWidth = 70;
+    this.itemWidth = 80;
     this.animVal = new Animated.Value(0);
     this.deviceWidth = Dimensions.get("window").width;
+    this.deviceHeight = Dimensions.get("window").height;
 
     this.views = [
       <RouteAbout
@@ -25,7 +26,23 @@ class RouteDetailsWrapper extends Component {
         action={() => this.props.navigation.goBack()}
         width={{ width: this.deviceWidth }}
       />,
-      <RouteNotes width={{ width: this.deviceWidth }} />,
+      <RouteNotes
+        info={[
+          {
+            heading: "Before Layover",
+            text: this.props.navigation.state.params.before
+          },
+          {
+            heading: "During Layover",
+            text: this.props.navigation.state.params.during
+          },
+          {
+            heading: "After Layover",
+            text: this.props.navigation.state.params.after
+          }
+        ]}
+        width={{ width: this.deviceWidth }}
+      />,
       <RouteMap width={{ width: this.deviceWidth }} />
     ];
   }
@@ -39,10 +56,9 @@ class RouteDetailsWrapper extends Component {
     );
 
     return (
-      <View
-        style={[baseStyle.centerItems, { width: 100 + "%", height: 100 + "%" }]}
-      >
+      <View style={[baseStyle.centerItems]}>
         <ScrollView
+          style={{ height: this.deviceHeight }}
           horizontal
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={10}
@@ -60,6 +76,12 @@ class RouteDetailsWrapper extends Component {
           ]}
         >
           {scrollableItemsObject.bars}
+        </View>
+        <View style={{ position: "absolute", bottom: 55 }}>
+          <Button
+            action={() => this.props.navigation.goBack()}
+            buttonName={"Back"}
+          />
         </View>
       </View>
     );
