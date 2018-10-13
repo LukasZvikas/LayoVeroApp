@@ -4,14 +4,39 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "^2.8.4",
-    "expo": "^27.0.1",
+    "enzyme-to-json": "^3.3.4",
+    "expo": "^27.1.1",
+    "jest": "^23.6.0",
+    "jest-serializer-enzyme": "^1.0.0",
     "lodash": "^4.17.11",
-    "react": "16.3.1",
+    "react": "^16.3.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz",
     "react-navigation": "^2.2.4",
     "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.5.2",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFiles": [
+      "/Users/lukas/Documents/GitHub/layoveroApp/src/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "jest-expo": "^30.0.0",
+    "react-native-mock": "^0.3.1",
+    "react-native-mock-render": "^0.1.2"
   }
 }

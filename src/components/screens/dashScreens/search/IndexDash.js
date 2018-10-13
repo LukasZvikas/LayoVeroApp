@@ -4,8 +4,8 @@ import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { searchBarStyle } from "../../../../styles/indexDashboard/searchBar";
 import { baseStyle } from "../../../../styles/base";
 import { getCities } from "../../../../actions/routeActions";
-import { FlatListRenderer } from "./searchBarItems/flatListRenderer";
-import SearchBar from "./searchBarItems/SearchBar";
+import { FlatListRenderer } from "./indexDashItems/flatListRenderer";
+import SearchBar from "./indexDashItems/searchBarItems/SearchBar";
 
 class IndexDash extends Component {
   componentDidMount() {

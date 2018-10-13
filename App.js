@@ -1,8 +1,7 @@
 import React from "react";
-import { Provider } from "react-redux";
+import Root from "./root";
 import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo";
-import store from "./store";
 import {
   createStackNavigator,
   TabNavigator,
@@ -27,13 +26,13 @@ export default class App extends React.Component {
     </View>;
 
     return (
-      <Provider store={store}>
+      <Root>
         <MainNav
           ref={navigatorRef => {
             NavigationService.setTopLevelNavigator(navigatorRef);
           }}
         />
-      </Provider>
+      </Root>
     );
   }
 }
