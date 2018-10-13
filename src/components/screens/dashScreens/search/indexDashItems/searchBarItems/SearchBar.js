@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Keyboard } from "react-native";
 import {
   getCities,
   getCityFromPartialQuery,
@@ -11,7 +12,7 @@ import SearchBarInputView from "./searchBarInputView";
 import { SearchBarIcon } from "./searchBarIcon";
 import { SearchBarInput } from "./searchBarInput";
 import { SearchBarCancel } from "./searchBarCancel";
-import Suggestions from "../suggestions";
+import Suggestions from "../suggestionItems/suggestions";
 
 class SearchBar extends Component {
   constructor(props) {
