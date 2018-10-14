@@ -7,13 +7,7 @@ import { Button } from "../../../../customUiComponents/button";
 
 export const RouteAbout = ({ image, name, about, action, width }) => {
   return (
-    <View
-      style={[
-        baseStyle.mainView,
-        baseStyle.alignCenter,
-        width,
-      ]}
-    >
+    <View style={[baseStyle.mainView, baseStyle.alignCenter, width]}>
       <View style={[baseStyle.alignCenter, routeAboutStyle.mainView]} />
 
       <View style={[baseStyle.centerItems, routeAboutStyle.imageView]}>
@@ -22,9 +16,7 @@ export const RouteAbout = ({ image, name, about, action, width }) => {
           source={RequiredAssets[image]}
         />
       </View>
-      <View
-        style={[baseStyle.centerItems, routeAboutStyle.imageViewTextView]}
-      >
+      <View style={[baseStyle.centerItems, routeAboutStyle.imageViewTextView]}>
         <Text style={routeAboutStyle.imageViewText}>{name}</Text>
       </View>
 

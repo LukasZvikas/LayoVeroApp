@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Keyboard } from "react-native";
+import { Keyboard, View } from "react-native";
+import { searchBarStyle } from "../../../../../../styles/indexDashboard/searchBar";
+import { baseStyle } from "../../../../../../styles/base";
 import {
   getCities,
   getCityFromPartialQuery,
   clearSuggestions
 } from "../../../../../../actions/routeActions";
-import SearchBarMainView from "./searchBarMainView";
-import SearchBarWrappperView from "./searchBarWrapperView";
 import SearchBarInputView from "./searchBarInputView";
 import { SearchBarIcon } from "./searchBarIcon";
 import { SearchBarInput } from "./searchBarInput";
@@ -36,8 +36,24 @@ class SearchBar extends Component {
   render() {
     const { clearSuggestions, suggestions, getCities } = this.props;
     return (
-      <SearchBarMainView searchBarState={this.state.searchBarState}>
-        <SearchBarWrappperView>
+      <View
+        style={
+          this.state.searchBarState
+            ? [
+                searchBarStyle.focusedSearchBarView,
+                baseStyle.justifyFlexStart,
+                baseStyle.alignCenter
+              ]
+            : {}
+        }
+      >
+        <View
+          style={[
+            searchBarStyle.searchBarWrappper,
+            baseStyle.flexRow,
+            baseStyle.centerItems
+          ]}
+        >
           <SearchBarInputView searchBarState={this.state.searchBarState}>
             <SearchBarIcon showSearchIcon={this.state.showSearchIcon} />
             <SearchBarInput
@@ -67,8 +83,8 @@ class SearchBar extends Component {
             clearSuggestions={() => clearSuggestions()}
             dismissKeyboard={() => Keyboard.dismiss()}
           />
-        </SearchBarWrappperView>
-      </SearchBarMainView>
+        </View>
+      </View>
     );
   }
 }

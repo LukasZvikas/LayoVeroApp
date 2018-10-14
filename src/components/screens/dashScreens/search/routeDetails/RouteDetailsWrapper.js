@@ -6,7 +6,10 @@ import { Button } from "../../../../customUiComponents/button";
 import { RouteAbout } from "./routeAbout";
 import { RouteNotes } from "./routeNotes";
 import { RouteMap } from "./routeMap";
-import getScrollableItems from "./getScrollableItems";
+import ScrollItemsRenderer from "./scrollItems/scrollItemsRenderer";
+import { RouteDetailsScrollView } from "./routeDetailsScrollView";
+import { RouteDetailsScrollableBars } from "./routeDetailsScrollableBars";
+import { RouteDetailsButton } from "./routeDetailsButton";
 
 class RouteDetailsWrapper extends Component {
   constructor(props) {
@@ -48,7 +51,7 @@ class RouteDetailsWrapper extends Component {
   }
 
   render() {
-    const scrollableItemsObject = getScrollableItems(
+    const scrollableItemsObject = ScrollItemsRenderer(
       this.views,
       this.itemWidth,
       this.animVal,
@@ -57,32 +60,15 @@ class RouteDetailsWrapper extends Component {
 
     return (
       <View style={[baseStyle.centerItems]}>
-        <ScrollView
-          style={{ height: this.deviceHeight }}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={10}
-          pagingEnabled
-          onScroll={Animated.event([
-            { nativeEvent: { contentOffset: { x: this.animVal } } }
-          ])}
-        >
-          {scrollableItemsObject.views}
-        </ScrollView>
-        <View
-          style={[
-            scrollableBarStyle.scrollableBarsContainer,
-            baseStyle.centerItems
-          ]}
-        >
-          {scrollableItemsObject.bars}
-        </View>
-        <View style={{ position: "absolute", bottom: 55 }}>
-          <Button
-            action={() => this.props.navigation.goBack()}
-            buttonName={"Back"}
-          />
-        </View>
+        <RouteDetailsScrollView
+          deviceHeight={this.deviceHeight}
+          animVal={this.animVal}
+          scrollableObject={scrollableItemsObject.views}
+        />
+        <RouteDetailsScrollableBars
+          scrollableBarsObject={scrollableItemsObject.bars}
+        />
+        <RouteDetailsButton action={() => this.props.navigation.goBack()} />
       </View>
     );
   }
