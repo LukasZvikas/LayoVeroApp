@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { View } from "react-native";
-import SearchBar from "../SearchBar";
 import SearchBarIcon, { styles } from "../searchBarIcon";
 import { Search } from "../../../../../../svg";
 // import renderer from "react-test-renderer";

@@ -69,7 +69,7 @@ class SearchBar extends Component {
                 this.setState({ text: event.nativeEvent.text });
               }}
               textState={this.state.text}
-              setSearchBarState={() => {
+              onFocus={() => {
                 this.setState({ searchBarState: !this.state.searchBarState });
               }}
             />

@@ -1,16 +1,22 @@
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, StyleSheet } from "react-native";
 import { searchBarStyle } from "../../../../../../styles/indexDashboard/searchBar";
 import { baseStyle } from "../../../../../../styles/base";
 
-export const SearchBarInput = ({ setSearchBarState, textState, onChange }) => {
+export const styles = StyleSheet.create({
+  inputWidth: { width: 80 + "%" }
+});
+
+const SearchBarInput = ({ onFocus, textState, onChange }) => {
   return (
     <TextInput
-      style={{ width: 80 + "%" }}
+      style={styles.inputWidth}
       placeholder="Try London"
-      onFocus={setSearchBarState}
+      onFocus={onFocus}
       value={textState}
       onChange={onChange}
     />
   );
 };
+
+export default SearchBarInput;
