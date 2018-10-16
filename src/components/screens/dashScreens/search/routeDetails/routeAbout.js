@@ -27,3 +27,5 @@ export const RouteAbout = ({ image, name, about, action, width }) => {
     </View>
   );
 };
+
+

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { getCities } from "../../../../../../actions/routeActions";
-import SuggestionItemMainView from "./suggestionItemMainView";
-import SuggestionItemWrapper from "./suggestionItemWrapper";
+import { suggestionStyle } from "../../../../../../styles/indexDashboard/suggestion";
+import { baseStyle } from "../../../../../../styles/base";
 import { SuggestionIcon } from "./suggestionIcon";
 import { SuggestionCity } from "./suggestionCity";
 
@@ -10,8 +11,13 @@ class Suggestions extends Component {
   renderCityNames = cities => {
     return cities.map(city => {
       return (
-        <SuggestionItemWrapper
+        <TouchableOpacity
           key={city}
+          style={[
+            suggestionStyle.suggestionItemView,
+            baseStyle.justifyFlexStart,
+            baseStyle.flexRow
+          ]}
           onPress={() => {
             this.props.setSearchBarState();
             this.props.getCities(city);
@@ -21,15 +27,17 @@ class Suggestions extends Component {
         >
           <SuggestionIcon />
           <SuggestionCity city={city} />
-        </SuggestionItemWrapper>
+        </TouchableOpacity>
       );
     });
   };
   render() {
     return this.props.suggestions ? (
-      <SuggestionItemMainView>
+      <View
+        style={[suggestionStyle.suggestionMainView, baseStyle.justifyCenter]}
+      >
         {this.renderCityNames(this.props.suggestions)}
-      </SuggestionItemMainView>
+      </View>
     ) : null;
   }
 }

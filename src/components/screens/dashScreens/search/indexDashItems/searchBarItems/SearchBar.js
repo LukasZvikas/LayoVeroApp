@@ -8,8 +8,7 @@ import {
   getCityFromPartialQuery,
   clearSuggestions
 } from "../../../../../../actions/routeActions";
-import SearchBarInputView from "./searchBarInputView";
-import { SearchBarIcon } from "./searchBarIcon";
+import SearchBarIcon from "./searchBarIcon";
 import { SearchBarInput } from "./searchBarInput";
 import { SearchBarCancel } from "./searchBarCancel";
 import Suggestions from "../suggestionItems/suggestions";
@@ -54,7 +53,15 @@ class SearchBar extends Component {
             baseStyle.centerItems
           ]}
         >
-          <SearchBarInputView searchBarState={this.state.searchBarState}>
+          <View
+            style={[
+              searchBarStyle.searchBarView,
+              baseStyle.centerItems,
+              this.state.searchBarState
+                ? { width: 70 + "%" }
+                : { width: 80 + "%" }
+            ]}
+          >
             <SearchBarIcon showSearchIcon={this.state.showSearchIcon} />
             <SearchBarInput
               onChange={event => {
@@ -66,7 +73,7 @@ class SearchBar extends Component {
                 this.setState({ searchBarState: !this.state.searchBarState });
               }}
             />
-          </SearchBarInputView>
+          </View>
           <SearchBarCancel
             searchBarState={this.state.searchBarState}
             onPress={() => {
