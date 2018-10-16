@@ -7,27 +7,30 @@ import { Search } from "../../../../../../svg";
 // import renderer from "react-test-renderer";
 // import Root from "../../../../../../../root";
 
-const searchIconRenderer = type => {
-  return shallow(<SearchBarIcon showSearchIcon={type} />);
-};
-
-describe("SearchBar", () => {
-  it("has a View wrapper", () => {
-    const wrapper = searchIconRenderer(true);
+describe("SearchBar when showSearchIcon true", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<SearchBarIcon showSearchIcon={true} />);
+  });
+  it("shows a View wrapper if showSearchIcon is true", () => {
     expect(wrapper.find(View)).toHaveLength(1);
   });
 
-  it("has style property", () => {
-    const wrapper = searchIconRenderer(true);
+  it("View has a style property", () => {
     expect(wrapper.find(View).prop("style")).toEqual(styles.padding);
   });
-  it("shows SearchIcon if showSearchIcon is true", () => {
-    const wrapper = searchIconRenderer(true);
+
+  it("shows SearchIcon", () => {
     expect(wrapper.find(Search)).toHaveLength(1);
   });
+});
 
-  it("does not show SearchIcon if showSearchIcon is false", () => {
-    const wrapper = searchIconRenderer(false);
-    expect(wrapper.find(Search)).toHaveLength(0);
+describe("SearchBar shen showSearchIcon is false", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<SearchBarIcon showSearchIcon={false} />);
+  });
+  it("does not show View if showSearchIcon is false", () => {
+    expect(wrapper.find(View)).toHaveLength(0);
   });
 });

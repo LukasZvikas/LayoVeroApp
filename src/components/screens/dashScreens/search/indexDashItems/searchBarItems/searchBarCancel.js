@@ -1,16 +1,18 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
-export const SearchBarCancel = ({ searchBarState, onPress }) => {
+export const styles = StyleSheet.create({
+  wrapper: {
+    marginLeft: 20,
+    alignItems: "center"
+  }
+});
+const SearchBarCancel = ({ searchBarState, onPress }) => {
   return searchBarState ? (
-    <TouchableOpacity
-      style={{
-        marginLeft: 20,
-        alignItems: "center"
-      }}
-      onPress={onPress}
-    >
+    <TouchableOpacity style={styles.wrapper} onPress={onPress}>
       <Text>Cancel</Text>
     </TouchableOpacity>
   ) : null;
 };
+
+export default SearchBarCancel;
