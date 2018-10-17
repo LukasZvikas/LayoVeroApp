@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { TouchableOpacity, Text } from "react-native";
-import SearchBar from "../SearchBar";
 import SearchBarCancel, { styles } from "../searchBarCancel";
 
 describe("SearchBarCancel when searchBarState true", () => {
