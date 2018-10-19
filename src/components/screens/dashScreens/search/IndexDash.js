@@ -6,6 +6,9 @@ import { baseStyle } from "../../../../styles/base";
 import { getCities } from "../../../../actions/routeActions";
 import { FlatListRenderer } from "./indexDashItems/flatListRenderer";
 import SearchBar from "./indexDashItems/searchBarItems/SearchBar";
+import SearchBarIcon from "./indexDashItems/searchBarItems/searchBarIcon";
+import SearchBarInput from "./indexDashItems/searchBarItems/searchBarInput";
+import SearchBarCancel from "./indexDashItems/searchBarItems/searchBarCancel";
 
 class IndexDash extends Component {
   componentDidMount() {

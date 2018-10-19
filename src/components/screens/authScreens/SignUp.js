@@ -30,7 +30,7 @@ class SignUp extends Component {
   }
 
   render() {
-    const { width, height } = Dimensions.get("window");
+    // const { width, height } = Dimensions.get("window");
     const {
       error,
       clearMessages,

@@ -28,8 +28,12 @@ export class SearchBar extends Component {
     if (event.nativeEvent.text && event.nativeEvent.text.length > 0) {
       this.props.getCityFromPartialQuery(event.nativeEvent.text);
     } else {
-      this.props.clearSuggestions();
+      this.props.clearSuggestions;
     }
+  };
+
+  setSearchState = state => {
+    this.setState({ searchBarState: !state });
   };
 
   render() {

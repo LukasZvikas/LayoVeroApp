@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
 import { getCities } from "../../../../../../actions/routeActions";
 import { suggestionStyle } from "../../../../../../styles/indexDashboard/suggestion";
 import { baseStyle } from "../../../../../../styles/base";
-import { SuggestionIcon } from "./suggestionIcon";
-import { SuggestionCity } from "./suggestionCity";
+import SuggestionIcon from "./suggestionIcon";
+import SuggestionCity from "./suggestionCity";
 
-class Suggestions extends Component {
+export class Suggestions extends Component {
   renderCityNames = cities => {
     return cities.map(city => {
       return (
