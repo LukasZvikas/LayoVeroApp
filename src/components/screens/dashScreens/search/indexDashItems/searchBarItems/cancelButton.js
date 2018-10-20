@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
-const SearchBarCancel = ({ searchBarState, onPress }) => {
+const CancelButton = ({ searchBarState, onPress }) => {
   return searchBarState ? (
     <TouchableOpacity style={styles.wrapper} onPress={onPress}>
       <Text>Cancel</Text>
@@ -15,4 +15,4 @@ const SearchBarCancel = ({ searchBarState, onPress }) => {
   ) : null;
 };
 
-export default SearchBarCancel;
+export default CancelButton;

@@ -8,9 +8,9 @@ import {
   getCityFromPartialQuery,
   clearSuggestions
 } from "../../../../../../actions/routeActions";
-import SearchBarIcon from "./searchBarIcon";
-import SearchBarInput from "./searchBarInput";
-import SearchBarCancel from "./searchBarCancel";
+import InputIcon from "./inputIcon";
+import InputText from "./inputText";
+import CancelButton from "./cancelButton";
 import Suggestions from "../suggestionItems/suggestions";
 
 export class SearchBar extends Component {
@@ -20,8 +20,30 @@ export class SearchBar extends Component {
     this.state = { showSearchIcon: true, searchBarState: false, text: "" };
   }
 
+  setTextState = event => {
+    this.setState({ text: event.nativeEvent.text });
+  };
+  setSearchState = state => {
+    this.setState({ searchBarState: !this.state.searchBarState });
+  };
+  clearTextState = () => {
+    return this.setState({ text: "" });
+  };
+
   changeSearchState = () => {
     this.setState({ searchBarState: !this.state.searchBarState, text: "" });
+  };
+
+  getCity = city => {
+    return this.props.getCities(city);
+  };
+
+  clearSuggestions = () => {
+    return this.props.clearSuggestions();
+  };
+
+  keyboardDismiss = () => {
+    return Keyboard.dismiss();
   };
 
   handleInputChange = event => {
@@ -30,10 +52,6 @@ export class SearchBar extends Component {
     } else {
       this.props.clearSuggestions;
     }
-  };
-
-  setSearchState = state => {
-    this.setState({ searchBarState: !state });
   };
 
   render() {
@@ -66,33 +84,33 @@ export class SearchBar extends Component {
                 : { width: 80 + "%" }
             ]}
           >
-            <SearchBarIcon showSearchIcon={this.state.showSearchIcon} />
-            <SearchBarInput
+            <InputIcon showSearchIcon={this.state.showSearchIcon} />
+            <InputText
               onChange={event => {
                 this.handleInputChange(event);
-                this.setState({ text: event.nativeEvent.text });
+                this.setTextState(event);
               }}
               textState={this.state.text}
               onFocus={() => {
-                this.setState({ searchBarState: !this.state.searchBarState });
+                this.setSearchState();
               }}
             />
           </View>
-          <SearchBarCancel
+          <CancelButton
             searchBarState={this.state.searchBarState}
             onPress={() => {
-              this.setState({ text: "" });
-              Keyboard.dismiss();
-              clearSuggestions();
-              getCities("London");
-              this.setState({ searchBarState: !this.state.searchBarState });
+              this.clearTextState();
+              this.keyboardDismiss();
+              this.clearSuggestions();
+              this.getCity("London");
+              this.setSearchState();
             }}
           />
           <Suggestions
             suggestions={suggestions}
             setSearchBarState={() => this.changeSearchState()}
-            clearSuggestions={() => clearSuggestions()}
-            dismissKeyboard={() => Keyboard.dismiss()}
+            clearSuggestions={() => this.clearSuggestions()}
+            dismissKeyboard={() => this.keyboardDismiss()}
           />
         </View>
       </View>

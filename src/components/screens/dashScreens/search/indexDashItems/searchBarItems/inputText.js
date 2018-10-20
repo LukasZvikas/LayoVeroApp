@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   inputWidth: { width: 80 + "%" }
 });
 
-const SearchBarInput = ({ onFocus, textState, onChange }) => {
+const InputText = ({ onFocus, textState, onChange }) => {
   return (
     <TextInput
       style={styles.inputWidth}
@@ -19,4 +19,4 @@ const SearchBarInput = ({ onFocus, textState, onChange }) => {
   );
 };
 
-export default SearchBarInput;
+export default InputText;

@@ -1,14 +1,14 @@
 import React from "react";
 import { TextInput } from "react-native";
 import { shallow } from "enzyme";
-import SearchBarInput, { styles } from "../searchBarInput";
+import InputText, { styles } from "../inputText";
 
-describe("SearchBarInput", () => {
+describe("InputText", () => {
   let wrapper;
   let props;
   beforeEach(() => {
     props = { textState: "haha" };
-    wrapper = shallow(<SearchBarInput {...props} />);
+    wrapper = shallow(<InputText {...props} />);
   });
   it("has a TextInput", () => {
     expect(wrapper.find(TextInput)).toHaveLength(1);
@@ -23,7 +23,7 @@ describe("SearchBarInput", () => {
   });
 });
 
-describe("SearchBarInput interaction", () => {
+describe("InputText interaction", () => {
   let wrapper;
   let props;
   let event;
@@ -34,7 +34,7 @@ describe("SearchBarInput interaction", () => {
       textState: "",
       onChange: jest.fn()
     };
-    wrapper = shallow(<SearchBarInput {...props} />);
+    wrapper = shallow(<InputText {...props} />);
   });
 
   describe("onFocus", () => {

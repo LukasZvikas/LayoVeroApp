@@ -1,10 +1,10 @@
 import React from "react";
-import { TextInput } from "react-native";
+import { TextInput, View } from "react-native";
 import { shallow } from "enzyme";
 import { SearchBar } from "../SearchBar";
-import SearchBarCancel from "../searchBarCancel";
-import SearchBarInput from "../searchBarCancel";
-import SearchBarIcon from "../searchBarCancel";
+import CancelButton from "../cancelButton";
+import InputText from "../inputText";
+import InputIcon from "../cancelButton";
 import Suggestions from "../../suggestionItems/suggestions";
 
 const setSearchState = (setTo, wrapper) => {
@@ -23,37 +23,19 @@ describe("SearchBar", () => {
     wrapper = shallow(<SearchBar />);
   });
 
-  it("renders SearchBarIcon component", () => {
-    expect(wrapper.find(SearchBarIcon)).toHaveLength(1);
+  it("renders InputIcon component", () => {
+    expect(wrapper.find(InputIcon)).toHaveLength(1);
   });
 
-  it("renders SearchBarInput component", () => {
-    expect(wrapper.find(SearchBarInput)).toHaveLength(1);
+  it("renders InputText component", () => {
+    expect(wrapper.find(InputText)).toHaveLength(1);
   });
 
-  it("renders SearchBarCancel component", () => {
-    expect(wrapper.find(SearchBarCancel)).toHaveLength(1);
+  it("renders CancelButton component", () => {
+    expect(wrapper.find(CancelButton)).toHaveLength(1);
   });
 
   it("render Suggestions component", () => {
     expect(wrapper.find(Suggestions)).toHaveLength(1);
-  });
-});
-
-describe("Suggestions interaction", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = shallow(<SearchBar />);
-  });
-  it("Suggestions setSearchBarState sets searchBarState to true", () => {
-    setSearchState(true, wrapper);
-    expect(mockFn).toHaveBeenCalledTimes(1);
-    expect(wrapper.state().searchBarState).toBe(true);
-  });
-  it("Suggestions setSearchBarState sets searchBarState to false", () => {
-    wrapper.setState({ searchBarState: true });
-    setSearchState(false, wrapper);
-    expect(mockFn).toHaveBeenCalledTimes(1);
-    expect(wrapper.state().searchBarState).toBe(false);
   });
 });

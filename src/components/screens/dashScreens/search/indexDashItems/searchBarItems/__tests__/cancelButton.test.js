@@ -1,12 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { TouchableOpacity, Text } from "react-native";
-import SearchBarCancel, { styles } from "../searchBarCancel";
+import CancelButton, { styles } from "../cancelButton";
 
 describe("SearchBarCancel when searchBarState true", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<SearchBarCancel searchBarState={true} />);
+    wrapper = shallow(<CancelButton searchBarState={true} />);
   });
   it("shows TouchableOpacity", () => {
     expect(wrapper.find(TouchableOpacity)).toHaveLength(1);
@@ -23,10 +23,10 @@ describe("SearchBarCancel when searchBarState true", () => {
   });
 });
 
-describe("SearchBarCancel when searchBarState false", () => {
+describe("CancelButton when searchBarState false", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<SearchBarCancel searchBarState={false} />);
+    wrapper = shallow(<CancelButton searchBarState={false} />);
   });
 
   it("does not show TouchableOpacity if searchBarState is false", () => {
@@ -34,7 +34,7 @@ describe("SearchBarCancel when searchBarState false", () => {
   });
 });
 
-describe("SearchBarCancel interaction", () => {
+describe("CancelButton interaction", () => {
   let wrapper;
   let props;
   beforeEach(() => {
@@ -42,7 +42,7 @@ describe("SearchBarCancel interaction", () => {
       searchBarState: true,
       onPress: jest.fn()
     };
-    wrapper = shallow(<SearchBarCancel {...props} />);
+    wrapper = shallow(<CancelButton {...props} />);
   });
 
   describe("pressing the cancel button", () => {

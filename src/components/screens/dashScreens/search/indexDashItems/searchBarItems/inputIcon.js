@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   }
 });
 
-const SearchBarIcon = ({ showSearchIcon }) => {
+const InputIcon = ({ showSearchIcon }) => {
   return showSearchIcon ? (
     <View style={styles.padding}>
       <Search color="#686868" />
@@ -18,4 +18,4 @@ const SearchBarIcon = ({ showSearchIcon }) => {
   ) : null;
 };
 
-export default SearchBarIcon;
+export default InputIcon;
