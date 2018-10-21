@@ -1,4 +1,6 @@
-export const baseStyle = {
+import { StyleSheet } from "react-native";
+
+export const baseStyle = StyleSheet.create({
   mainView: {
     height: 100 + "%",
     width: 100 + "%",
@@ -55,4 +57,4 @@ export const baseStyle = {
   tertiaryColorText: {
     color: "#009092"
   }
-};
+});

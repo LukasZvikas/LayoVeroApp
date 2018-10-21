@@ -26,7 +26,7 @@ const setAndCallMock = (setTo, wrapper, type) => {
         .clearSuggestions();
       break;
     case "suggestionDismiss":
-      mockFn= jest.fn();
+      mockFn = jest.fn();
       wrapper.instance().keyboardDismiss = mockFn;
       wrapper
         .find(Suggestions)

@@ -2,7 +2,7 @@ import React from "react";
 import { Text } from "react-native";
 import { Location } from "../../../../../svg";
 
-const SuggestionIcon = () => {
+const SuggIcon = () => {
   return (
     <Text style={{ marginRight: 10 }}>
       <Location />
@@ -10,4 +10,4 @@ const SuggestionIcon = () => {
   );
 };
 
-export default SuggestionIcon;
+export default SuggIcon;

@@ -129,3 +129,9 @@ export default connect(mapStateToProps, {
   getCityFromPartialQuery,
   clearSuggestions
 })(SearchBar);
+
+
+
+
+
+

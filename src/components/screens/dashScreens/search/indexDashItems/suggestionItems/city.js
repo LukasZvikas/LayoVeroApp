@@ -3,7 +3,7 @@ import { Text } from "react-native";
 import { suggestionStyle } from "../../../../../../styles/indexDashboard/suggestion";
 import { baseStyle } from "../../../../../../styles/base";
 
-const SuggestionCity = ({ city }) => {
+const SuggCity = ({ city }) => {
   return (
     <Text style={[suggestionStyle.suggestionText, baseStyle.justifyCenter]}>
       {city}
@@ -11,4 +11,4 @@ const SuggestionCity = ({ city }) => {
   );
 };
 
-export default SuggestionCity;
+export default SuggCity;

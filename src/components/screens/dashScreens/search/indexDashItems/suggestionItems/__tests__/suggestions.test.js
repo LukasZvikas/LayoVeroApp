@@ -2,8 +2,8 @@ import React from "react";
 import { View, TouchableOpacity } from "react-native";
 import { shallow } from "enzyme";
 import { Suggestions } from "../suggestions";
-import SuggestionIcon from "../suggestionIcon";
-import SuggestionCity from "../suggestionCity";
+import SuggIcon from "../icon";
+import SuggCity from "../city";
 
 it("returns null if no suggestions passed", () => {
   const wrapper = shallow(<Suggestions />);
@@ -34,11 +34,11 @@ describe("Suggestions with suggestions prop passed", () => {
   it("has 2 TouchableOpacities", () => {
     expect(wrapper.find(TouchableOpacity)).toHaveLength(2);
   });
-  it("has SuggestionIcon", () => {
-    expect(wrapper.find(SuggestionIcon)).toHaveLength(2);
+  it("has SuggIcon", () => {
+    expect(wrapper.find(SuggIcon)).toHaveLength(2);
   });
-  it("has SuggestionCity", () => {
-    expect(wrapper.find(SuggestionCity)).toHaveLength(2);
+  it("has SuggCity", () => {
+    expect(wrapper.find(SuggCity)).toHaveLength(2);
   });
 
   describe("interactions", () => {

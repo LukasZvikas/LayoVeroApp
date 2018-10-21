@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { getCities } from "../../../../../../actions/routeActions";
 import { suggestionStyle } from "../../../../../../styles/indexDashboard/suggestion";
 import { baseStyle } from "../../../../../../styles/base";
-import SuggestionIcon from "./suggestionIcon";
-import SuggestionCity from "./suggestionCity";
+import SuggIcon from "./icon";
+import SuggCity from "./city";
 
 export class Suggestions extends Component {
   renderCityNames = cities => {
@@ -25,8 +25,8 @@ export class Suggestions extends Component {
             this.props.dismissKeyboard();
           }}
         >
-          <SuggestionIcon />
-          <SuggestionCity city={city} />
+          <SuggIcon />
+          <SuggCity city={city} />
         </TouchableOpacity>
       );
     });
