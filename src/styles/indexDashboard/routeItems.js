@@ -29,5 +29,22 @@ export const routeItemsStyle = {
   iconText: {
     fontSize: 11,
     fontWeight: "bold"
+  },
+  starMainView: {
+    flexDirection: "row",
+    width: 100 + " %",
+    marginTop: 5
+  },
+
+  starView: {
+    justifyContent: "space-around",
+    alignItems: "center",
+    margin: 4
+  },
+  cityName: {
+    textAlign: "center",
+    marginTop: 15,
+    fontSize: 30,
+    fontWeight: "bold"
   }
 };

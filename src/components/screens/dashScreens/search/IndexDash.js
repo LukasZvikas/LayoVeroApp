@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
-import { searchBarStyle } from "../../../../styles/indexDashboard/searchBar";
+import { routeItemsStyle } from "../../../../styles/indexDashboard/routeItems";
 import { baseStyle } from "../../../../styles/base";
 import { getCities } from "../../../../actions/routeActions";
-import { FlatListRenderer } from "./indexDashItems/flatListRenderer";
-import SearchBar from "./indexDashItems/searchBarItems/SearchBar";
+import RouteList from "./indexDashItems/routeListItems/routeList";
+import {SearchBar} from "./indexDashItems/searchBarItems/searchBar";
+import HelpLink from "./indexDashItems/searchBarItems/helpLink";
 
 class IndexDash extends Component {
   componentDidMount() {
@@ -14,18 +15,7 @@ class IndexDash extends Component {
 
   renderCityName = layovers => {
     if (layovers) {
-      return (
-        <Text
-          style={{
-            textAlign: "center",
-            marginTop: 15,
-            fontSize: 30,
-            fontWeight: "bold"
-          }}
-        >
-          {layovers[0].city}
-        </Text>
-      );
+      return <Text style={routeItemsStyle.cityName}>{layovers[0].city}</Text>;
     } else {
       return null;
     }
@@ -42,17 +32,15 @@ class IndexDash extends Component {
         ]}
       >
         <SearchBar />
-        <TouchableOpacity
-          onPress={() => {
+        <HelpLink
+          action={() => {
             this.props.navigation.navigate("SecondFilter");
           }}
-        >
-          <Text style={searchBarStyle.helpText}>Need Help Looking?</Text>
-          {this.renderCityName(this.props.layovers)}
-        </TouchableOpacity>
+        />
+        {this.renderCityName(this.props.layovers)}
         {this.props.layovers ? (
           <View style={baseStyle.centerItems}>
-            <FlatListRenderer data={this.props.layovers} />
+            <RouteList data={this.props.layovers} />
           </View>
         ) : null}
       </View>

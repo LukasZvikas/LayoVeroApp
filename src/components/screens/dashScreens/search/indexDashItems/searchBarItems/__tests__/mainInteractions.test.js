@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput, View } from "react-native";
 import { shallow } from "enzyme";
-import { SearchBar } from "../SearchBar";
+import { SearchBar } from "../searchBar";
 import CancelButton from "../cancelButton";
 import InputText from "../inputText";
 import InputIcon from "../cancelButton";

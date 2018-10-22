@@ -1,7 +1,8 @@
 import React from "react";
 import { TextInput, View } from "react-native";
 import { shallow } from "enzyme";
-import { SearchBar, styles } from "../SearchBar";
+import {SearchBar} from "../searchBar";
+import {SearchBarView} from "../SearchBarView";
 import CancelButton from "../cancelButton";
 import InputText from "../inputText";
 import InputIcon from "../cancelButton";
@@ -21,10 +22,11 @@ describe("SearchBar", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<SearchBar />);
+    wrapper = shallow(<SearchBarView />);
   });
 
   it("renders InputIcon component", () => {
+    // console.log(wrapper.find(SearchBarView).children())
     expect(wrapper.find(InputIcon)).toHaveLength(1);
   });
 

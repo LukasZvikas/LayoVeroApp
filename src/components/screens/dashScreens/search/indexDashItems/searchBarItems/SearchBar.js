@@ -12,126 +12,72 @@ import InputIcon from "./inputIcon";
 import InputText from "./inputText";
 import CancelButton from "./cancelButton";
 import Suggestions from "../suggestionItems/suggestions";
+import SearchBarView from "./SearchBarView";
 
-export class SearchBar extends Component {
-  constructor(props) {
-    super(props);
+export const SearchBar = () => {
+  return (
+    <SearchBarView>
+      {(state, showIcon, text, actions, suggestions) => {
+        console.log(actions);
 
-    this.state = { showSearchIcon: true, searchBarState: false, text: "" };
-  }
-
-  setTextState = event => {
-    this.setState({ text: event.nativeEvent.text });
-  };
-  setSearchState = state => {
-    this.setState({ searchBarState: !this.state.searchBarState });
-  };
-  clearTextState = () => {
-    return this.setState({ text: "" });
-  };
-
-  changeSearchState = () => {
-    this.setState({ searchBarState: !this.state.searchBarState, text: "" });
-  };
-
-  getCity = city => {
-    return this.props.getCities(city);
-  };
-
-  clearSuggestions = () => {
-    return this.props.clearSuggestions();
-  };
-
-  keyboardDismiss = () => {
-    return Keyboard.dismiss();
-  };
-
-  handleInputChange = event => {
-    if (event.nativeEvent.text && event.nativeEvent.text.length > 0) {
-      this.props.getCityFromPartialQuery(event.nativeEvent.text);
-    } else {
-      this.props.clearSuggestions;
-    }
-  };
-
-  render() {
-    const { clearSuggestions, suggestions, getCities } = this.props;
-    return (
-      <View
-        style={
-          this.state.searchBarState
-            ? [
-                searchBarStyle.focusedSearchBarView,
-                baseStyle.justifyFlexStart,
-                baseStyle.alignCenter
-              ]
-            : {}
-        }
-      >
-        <View
-          style={[
-            searchBarStyle.searchBarWrappper,
-            baseStyle.flexRow,
-            baseStyle.centerItems
-          ]}
-        >
+        return (
           <View
-            style={[
-              searchBarStyle.searchBarView,
-              baseStyle.centerItems,
-              this.state.searchBarState
-                ? { width: 70 + "%" }
-                : { width: 80 + "%" }
-            ]}
+            style={
+              state
+                ? [
+                    searchBarStyle.focusedSearchBarView,
+                    baseStyle.justifyFlexStart,
+                    baseStyle.alignCenter
+                  ]
+                : {}
+            }
           >
-            <InputIcon showSearchIcon={this.state.showSearchIcon} />
-            <InputText
-              onChange={event => {
-                this.handleInputChange(event);
-                this.setTextState(event);
-              }}
-              textState={this.state.text}
-              onFocus={() => {
-                this.setSearchState();
-              }}
-            />
+            <View
+              style={[
+                searchBarStyle.searchBarWrappper,
+                baseStyle.flexRow,
+                baseStyle.centerItems
+              ]}
+            >
+              <View
+                style={[
+                  searchBarStyle.searchBarView,
+                  baseStyle.centerItems,
+                  state ? { width: 70 + "%" } : { width: 80 + "%" }
+                ]}
+              >
+                <InputIcon showSearchIcon={showIcon} />
+                <InputText
+                  onChange={event => {
+                    actions.handleInputChange(event);
+                    actions.setTextState(event);
+                  }}
+                  textState={text}
+                  onFocus={() => {
+                    actions.setSearchState();
+                  }}
+                />
+              </View>
+              <CancelButton
+                searchBarState={state}
+                onPress={() => {
+                  actions.clearTextState();
+                  actions.keyboardDismiss();
+                  actions.clearSuggestions();
+                  actions.getCity("London");
+                  actions.setSearchState();
+                }}
+              />
+              <Suggestions
+                suggestions={suggestions}
+                setSearchBarState={() => actions.changeSearchState()}
+                clearSuggestions={() => actions.clearSuggestions()}
+                dismissKeyboard={() => actions.keyboardDismiss()}
+              />
+            </View>
           </View>
-          <CancelButton
-            searchBarState={this.state.searchBarState}
-            onPress={() => {
-              this.clearTextState();
-              this.keyboardDismiss();
-              this.clearSuggestions();
-              this.getCity("London");
-              this.setSearchState();
-            }}
-          />
-          <Suggestions
-            suggestions={suggestions}
-            setSearchBarState={() => this.changeSearchState()}
-            clearSuggestions={() => this.clearSuggestions()}
-            dismissKeyboard={() => this.keyboardDismiss()}
-          />
-        </View>
-      </View>
-    );
-  }
-}
-const mapStateToProps = state => {
-  return {
-    layovers: state.routes.routesArray,
-    suggestions: state.routes.options
-  };
+        );
+      }}
+    </SearchBarView>
+  );
 };
-
-export default connect(mapStateToProps, {
-  getCities,
-  getCityFromPartialQuery,
-  clearSuggestions
-})(SearchBar);
-
-
-
-
-
-
