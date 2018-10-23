@@ -1,7 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { baseStyle } from "../../../../../../styles/base";
-import { routeItemsStyle } from "../../../../../../styles/indexDashboard/routeItems";
+import styles from "./styles/itemStars";
 import { Star } from "../../../../../svg";
 
 const ItemStars = ({ stars }) => {
@@ -12,7 +11,7 @@ const ItemStars = ({ stars }) => {
     while (numberOfStars > 0) {
       --numberOfStars;
       starArray.push(
-        <View key={num} style={routeItemsStyle.starView}>
+        <View key={num} style={styles.starView}>
           <Star />
         </View>
       );
@@ -20,11 +19,7 @@ const ItemStars = ({ stars }) => {
     }
     return starArray;
   };
-  return (
-    <View style={[routeItemsStyle.starMainView, baseStyle.centerItems]}>
-      {renderStars(stars)}
-    </View>
-  );
+  return <View style={styles.starMainView}>{renderStars(stars)}</View>;
 };
 
 export default ItemStars;

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-
 import { Text, TouchableOpacity } from "react-native";
-import { searchBarStyle } from "../../../../../../styles/indexDashboard/searchBar";
+import styles from "./styles/helpLink";
 
 const HelpLink = ({ action }) => {
   return (
     <TouchableOpacity onPress={action}>
-      <Text style={searchBarStyle.helpText}>Need Help Looking?</Text>
+      <Text style={styles.helpText}>Need Help Looking?</Text>
     </TouchableOpacity>
   );
 };

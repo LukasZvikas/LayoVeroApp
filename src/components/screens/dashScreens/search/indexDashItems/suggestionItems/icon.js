@@ -1,10 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { Location } from "../../../../../svg";
+
+export const styles = StyleSheet.create({
+  textMargin: { marginRight: 10 }
+});
 
 const SuggIcon = () => {
   return (
-    <Text style={{ marginRight: 10 }}>
+    <Text style={styles.textMargin}>
       <Location />
     </Text>
   );

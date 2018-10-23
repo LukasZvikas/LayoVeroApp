@@ -1,19 +1,12 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { baseStyle } from "../../../../../../styles/base";
-import { routeItemsStyle } from "../../../../../../styles/indexDashboard/routeItems";
+import styles from "./styles/itemDetails";
 
 const ItemDetails = ({ name, hours }) => {
   return (
-    <View
-      style={[
-        routeItemsStyle.itemTextView,
-        baseStyle.centerItems,
-        baseStyle.secondaryColorBackground
-      ]}
-    >
-      <Text style={routeItemsStyle.iconText}>{name}</Text>
-      <Text style={routeItemsStyle.iconText}>({hours} hours)</Text>
+    <View style={styles.itemTextView}>
+      <Text style={styles.iconText}>{name}</Text>
+      <Text style={styles.iconText}>{hours} hours</Text>
     </View>
   );
 };

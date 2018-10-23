@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, FlatList } from "react-native";
-import { baseStyle } from "../../../../../../styles/base";
-import { routeItemsStyle } from "../../../../../../styles/indexDashboard/routeItems";
+import styles from "./styles/routeList";
+
 import RequiredAssets from "../../../../../requiredImages";
 import NavigationService from "../../../../../../../NavigationService";
 
@@ -27,11 +27,7 @@ const RouteList = ({ data }) => {
                 after: item.after
               });
             }}
-            style={[
-              routeItemsStyle.iconItemView,
-              baseStyle.centerItems,
-              baseStyle.mainShadow
-            ]}
+            style={styles.iconItemView}
           >
             <ItemImage source={RequiredAssets[item.no]} />
             <ItemDetails name={item.name} hours={item.hours} />

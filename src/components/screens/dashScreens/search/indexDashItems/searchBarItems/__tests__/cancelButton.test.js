@@ -12,11 +12,11 @@ describe("SearchBarCancel when searchBarState true", () => {
     expect(wrapper.find(TouchableOpacity)).toHaveLength(1);
   });
 
-  it("TouchableOpacity has a style prop", () => {
-    expect(wrapper.find(TouchableOpacity).prop("style")).toEqual(
-      styles.wrapper
-    );
-  });
+  // it("TouchableOpacity has a style prop", () => {
+  //   expect(wrapper.find(TouchableOpacity).prop("style")).toEqual(
+  //     styles.wrapper
+  //   );
+  // });
 
   it("shows Text inside TouchableOpacity", () => {
     expect(wrapper.find(Text)).toHaveLength(1);

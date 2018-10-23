@@ -21,6 +21,7 @@ class IndexDash extends Component {
     }
   };
   render() {
+    console.log(this.props.layovers)
     return (
       <View
         style={[

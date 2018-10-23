@@ -1,14 +1,9 @@
 import React from "react";
 import { Text } from "react-native";
-import { suggestionStyle } from "../../../../../../styles/indexDashboard/suggestion";
-import { baseStyle } from "../../../../../../styles/base";
+import styles from "./styles/city";
 
 const SuggCity = ({ city }) => {
-  return (
-    <Text style={[suggestionStyle.suggestionText, baseStyle.justifyCenter]}>
-      {city}
-    </Text>
-  );
+  return <Text style={styles.itemText}>{city}</Text>;
 };
 
 export default SuggCity;

@@ -1,7 +1,5 @@
 import React from "react";
 import { TextInput, StyleSheet } from "react-native";
-import { searchBarStyle } from "../../../../../../styles/indexDashboard/searchBar";
-import { baseStyle } from "../../../../../../styles/base";
 
 export const styles = StyleSheet.create({
   inputWidth: { width: 80 + "%" }

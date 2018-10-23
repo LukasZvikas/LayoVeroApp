@@ -1,12 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import styles from "./styles/cancelButton";
 
-export const styles = StyleSheet.create({
-  wrapper: {
-    marginLeft: 20,
-    alignItems: "center"
-  }
-});
 const CancelButton = ({ searchBarState, onPress }) => {
   return searchBarState ? (
     <TouchableOpacity style={styles.wrapper} onPress={onPress}>

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Keyboard, View } from "react-native";
-import { searchBarStyle } from "../../../../../../styles/indexDashboard/searchBar";
-import { baseStyle } from "../../../../../../styles/base";
+import styles from "./styles/searchBar";
 import {
   getCities,
   getCityFromPartialQuery,
@@ -19,29 +18,12 @@ const SearchBar = () => {
     <SearchBarView
       children={(state, showIcon, text, actions, suggestions) => {
         return (
-          <View
-            style={
-              state
-                ? [
-                    searchBarStyle.focusedSearchBarView,
-                    baseStyle.justifyFlexStart,
-                    baseStyle.alignCenter
-                  ]
-                : {}
-            }
-          >
-            <View
-              style={[
-                searchBarStyle.searchBarWrappper,
-                baseStyle.flexRow,
-                baseStyle.centerItems
-              ]}
-            >
+          <View style={state ? styles.focusedSearchBarView : {}}>
+            <View style={[styles.searchBarWrappper]}>
               <View
                 style={[
-                  searchBarStyle.searchBarView,
-                  baseStyle.centerItems,
-                  state ? { width: 70 + "%" } : { width: 80 + "%" }
+                  styles.searchBarView,
+                  state ? { width: 65 + "%" } : { width: 80 + "%" }
                 ]}
               >
                 <InputIcon showSearchIcon={showIcon} />

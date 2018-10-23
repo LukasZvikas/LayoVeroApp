@@ -1,17 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Keyboard, View } from "react-native";
-import { searchBarStyle } from "../../../../../../styles/indexDashboard/searchBar";
-import { baseStyle } from "../../../../../../styles/base";
+import { Keyboard } from "react-native";
 import {
   getCities,
   getCityFromPartialQuery,
   clearSuggestions
 } from "../../../../../../actions/routeActions";
-import InputIcon from "./inputIcon";
-import InputText from "./inputText";
-import CancelButton from "./cancelButton";
-import Suggestions from "../suggestionItems/suggestions";
 
 export class SearchBarView extends Component {
   constructor(props) {

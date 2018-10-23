@@ -47,7 +47,7 @@ describe("SearchBar", () => {
       );
     });
 
-    it("renders 3 Views", () => {
+    it("renders 2 Views inside a main View", () => {
       console.log(searchBarWrapper.find(View).length);
       expect(searchBarWrapper.find(View)).toHaveLength(2);
     });
