@@ -5,7 +5,7 @@ import { routeItemsStyle } from "../../../../styles/indexDashboard/routeItems";
 import { baseStyle } from "../../../../styles/base";
 import { getCities } from "../../../../actions/routeActions";
 import RouteList from "./indexDashItems/routeListItems/routeList";
-import {SearchBar} from "./indexDashItems/searchBarItems/searchBar";
+import SearchBar from "./indexDashItems/searchBarItems/searchBar";
 import HelpLink from "./indexDashItems/searchBarItems/helpLink";
 
 class IndexDash extends Component {

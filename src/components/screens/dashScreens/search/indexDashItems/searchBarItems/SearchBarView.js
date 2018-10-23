@@ -68,11 +68,11 @@ export class SearchBarView extends Component {
   };
 
   render() {
-    const { clearSuggestions, suggestions, getCities } = this.props;
+    const { clearSuggestions, suggestions, getCities, children } = this.props;
     const { searchBarState, showSearchIcon, text } = this.state;
     const { getActions } = this;
 
-    return this.props.children(
+    return children(
       searchBarState,
       showSearchIcon,
       text,

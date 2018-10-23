@@ -14,12 +14,10 @@ import CancelButton from "./cancelButton";
 import Suggestions from "../suggestionItems/suggestions";
 import SearchBarView from "./SearchBarView";
 
-export const SearchBar = () => {
+const SearchBar = () => {
   return (
-    <SearchBarView>
-      {(state, showIcon, text, actions, suggestions) => {
-        console.log(actions);
-
+    <SearchBarView
+      children={(state, showIcon, text, actions, suggestions) => {
         return (
           <View
             style={
@@ -78,6 +76,8 @@ export const SearchBar = () => {
           </View>
         );
       }}
-    </SearchBarView>
+    />
   );
 };
+
+export default SearchBar;
